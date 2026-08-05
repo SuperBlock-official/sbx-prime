@@ -15,7 +15,7 @@ const PORTFOLIO = {
 };
 
 const HOLDINGS = [
-  { name: "Central London Grade-A Office", loc: "Mayfair, W1", sqft: 25, value: 24_680, yieldPa: "6.5%", img: londonImg, status: "Income-producing" },
+  { name: "Grosvenor Gardens", loc: "Victoria & Belgravia, SW1", sqft: 25, value: 24_680, yieldPa: "6.5%", img: londonImg, status: "Income-producing" },
 ];
 
 const RENT_HISTORY = [88, 96, 104, 110, 118, 124, 128, 132]; // last 8 months USDC

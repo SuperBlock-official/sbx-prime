@@ -15,7 +15,7 @@ export const CITIES = [
  slug: "london",
  name: "London",
  country: "United Kingdom",
- asset: "Central London Grade-A Office",
+ asset: "Grosvenor Gardens, Victoria",
  status: "live",
  image: london,
  yieldPa: "6–7%",
@@ -23,7 +23,7 @@ export const CITIES = [
  totalPa: "9–11%",
  apprSource: "Savills / JLL forecasts",
  blurb:
- "13,146 sq ft of Grade-A office space in Central London, fully let to an investment-grade tenant. The launch asset of SBX Prime.",
+ "18,036 sq ft of Grade II listed office and residential in Victoria & Belgravia, income-producing with reversionary upside. The launch asset of SBX Prime.",
  },
  {
  slug: "dubai",

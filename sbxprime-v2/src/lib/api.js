@@ -55,10 +55,11 @@ export async function submitKyc({ email, documents }) {
 }
 
 export const RAISE = {
- targetUsd: 13_700_000,
- raisedUsd: 7_124_000,
- totalTokens: 13_146,
- tokensRemaining: 6_310,
- investors: 214,
- tokenPriceUsd: 1_042,
+ // Grosvenor Gardens flagship in USDC-equivalent (£582/sq ft ≈ $740), 32% pledged.
+ targetUsd: 13_350_000,
+ raisedUsd: 4_272_000,
+ totalTokens: 18_036,
+ tokensRemaining: 12_264,
+ investors: 120,
+ tokenPriceUsd: 740,
 };

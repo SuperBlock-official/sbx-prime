@@ -28,7 +28,7 @@ const POOL = {
 
 const STEPS = [
   ["Pledge", "Reserve your square feet at $900/sq ft. No KYC, no wallet, and no funds move today."],
-  ["We acquire", "Once the pool is committed, we purchase one Central London Grade-A asset from the shortlist below."],
+  ["We acquire", "Once the pool is committed, we purchase one Central London asset from the shortlist below."],
   ["Allocate", "Your square feet are allocated first-come, first-served against the acquired building, at the same $900/sq ft."],
   ["Any excess", "If the asset is smaller than total pledges, the balance rolls to the next asset in the pipeline, or is refunded in full. You are never over-allocated."],
 ];
@@ -42,7 +42,7 @@ export default function LondonPledge() {
     <>
       <Seo
         title="Pledge into London — 25,000 sq ft at $900 | SBX Prime"
-        description="Pledge into the Central London launch pool: 25,000 sq ft at $900 per square foot. Pledges fund the acquisition of a shortlisted Grade-A asset; allocation is first-come, first-served."
+        description="Pledge into the Central London launch pool: 25,000 sq ft at $900 per square foot. Pledges fund the acquisition of a shortlisted Central London asset; allocation is first-come, first-served."
         path="/invest/london-pledge"
       />
 
@@ -58,7 +58,7 @@ export default function LondonPledge() {
               </h1>
               <p className="lede">
                 We are pooling <b className="text-ink">25,000 square feet</b> of pledges to acquire a
-                Central London Grade-A office. You reserve square feet now; we buy the building once the
+                landmark Central London building. You reserve square feet now; we buy the building once the
                 pool is committed. No funds move until closing.
               </p>
               <div className="mt-5"><ReturnSplit yieldPa="6–7%" appreciationPa="3–5%" totalPa="9–11%" /></div>

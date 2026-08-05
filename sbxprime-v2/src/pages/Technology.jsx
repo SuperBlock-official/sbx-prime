@@ -52,7 +52,7 @@ const Connector = () => (
 const FLOW = [
  [I.building, "The building", "A fully-let, Grade-A commercial asset, independently valued."],
  [I.spv, "One SPV", "Held in a single-asset, English-law special purpose vehicle."],
- [I.token, "13,146 tokens", "The SPV is minted as ERC-3643 security tokens, one per saleable ft²."],
+ [I.token, "18,036 tokens", "The SPV is minted as ERC-3643 security tokens, one per saleable ft²."],
  [I.investors, "Verified investors", "Tokens settle only to KYC'd, eligible wallets, globally."],
 ];
 
@@ -341,7 +341,7 @@ export default function Technology() {
  <Fx>
  <h2 className="h-section mx-auto max-w-2xl">The technology is ready. The asset launches soon.</h2>
  <p className="lede mx-auto">
- <Counter value={13146} /> sq ft of Central London, tokenized under ERC-3643.
+ <Counter value={18036} /> sq ft of Central London, tokenized under ERC-3643.
  </p>
  <div className="mt-8 flex flex-wrap justify-center gap-3">
  <Link to="/invest/london" className="btn-primary">View the London asset</Link>

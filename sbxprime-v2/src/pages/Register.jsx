@@ -8,7 +8,7 @@ export default function Register() {
  <>
  <Seo
  title="Pledge Your Allocation | SBX Prime"
- description="Reserve your allocation in the Central London Grade-A office launch. Pledge by USDC amount or square feet, no KYC, no wallet, no funds move until closing."
+ description="Reserve your allocation in the Central London launch. Pledge by USDC amount or square feet, no KYC, no wallet, no funds move until closing."
  path="/register"
  />
  <section className="relative overflow-hidden">

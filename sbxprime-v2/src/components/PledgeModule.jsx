@@ -42,6 +42,7 @@ export default function PledgeModule({ compact = false, pool }) {
  const [state, setState] = useState("idle");
 
  const price = cfg.price;
+ const cur = cfg.cur || "$";
  const calc = useMemo(() => {
  const ft = tab === "usd" ? Math.max(1, Math.floor((usd || 0) / price)) : Math.max(1, Math.floor(sqft || 0));
  const amount = ft * price;
@@ -70,7 +71,7 @@ export default function PledgeModule({ compact = false, pool }) {
  <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-brand/12 font-display text-2xl text-brand-dark">✓</span>
  <h3 className="mt-4 font-display text-xl font-bold text-ink">Pledge received</h3>
  <p className="mt-2 text-sm leading-relaxed text-ink/65">
- You've reserved <b className="text-brand-dark">{calc.ft.toLocaleString()} sq ft</b> (~${fmtUsd(calc.amount)} USDC)
+ You've reserved <b className="text-brand-dark">{calc.ft.toLocaleString()} sq ft</b> (~{cur}{fmtUsd(calc.amount)}, settled in USDC)
  as investor <b className="text-ink">#{investorNo}</b>. We've emailed next steps, verification opens
  before closing, and no funds move until then.
  </p>
@@ -92,7 +93,7 @@ export default function PledgeModule({ compact = false, pool }) {
  </p>
  </div>
  <p className="mt-1 text-xs text-ink/55">
- ${(cfg.raisedUsd / 1e6).toFixed(1)}M pledged of ${(cfg.targetUsd / 1e6).toFixed(1)}M ·
+ {cur}{(cfg.raisedUsd / 1e6).toFixed(1)}M pledged of {cur}{(cfg.targetUsd / 1e6).toFixed(1)}M ·
  you would be <span className="font-bold text-brand-dark"> investor #{investorNo}</span>
  </p>
  </div>
@@ -101,7 +102,7 @@ export default function PledgeModule({ compact = false, pool }) {
  <div className={compact ? "p-5" : "p-6"}>
  {/* tabs */}
  <div className="grid grid-cols-2 rounded-xl bg-ink/5 p-1" role="tablist" aria-label="Pledge mode">
- {[["usd", "Pledge by $ amount"], ["sqft", "Pledge by sq ft"]].map(([k, label]) => (
+ {[["usd", `Pledge by ${cur} amount`], ["sqft", "Pledge by sq ft"]].map(([k, label]) => (
  <button key={k} type="button" role="tab" aria-selected={tab === k} onClick={() => setTab(k)}
  className={`rounded-lg px-3 py-2.5 font-display text-[12.5px] font-bold transition-colors ${
  tab === k ? "bg-brand text-white shadow-sm" : "text-ink/55 hover:text-ink"
@@ -115,12 +116,12 @@ export default function PledgeModule({ compact = false, pool }) {
  <div className="mt-4">
  {tab === "usd" ? (
  <label className="block">
- <span className="text-xs font-semibold uppercase tracking-wider text-ink/50">USDC amount</span>
+ <span className="text-xs font-semibold uppercase tracking-wider text-ink/50">Amount</span>
  <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-ink/15 bg-white px-4 focus-within:border-brand">
- <span className="font-display font-bold text-brand-dark">$</span>
+ <span className="font-display font-bold text-brand-dark">{cur}</span>
  <input type="number" min={price} step="500" value={usd} onChange={(e) => setUsd(+e.target.value)}
- className="w-full bg-transparent py-3 font-display text-lg font-bold text-ink outline-none" aria-label="Pledge amount in USDC" />
- <span className="text-xs text-ink/45">USDC</span>
+ className="w-full bg-transparent py-3 font-display text-lg font-bold text-ink outline-none" aria-label="Pledge amount" />
+ <span className="text-xs text-ink/45">→ USDC</span>
  </div>
  </label>
  ) : (
@@ -129,7 +130,7 @@ export default function PledgeModule({ compact = false, pool }) {
  <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-ink/15 bg-white px-4 focus-within:border-brand">
  <input type="number" min="1" max={cfg.tokensRemaining} value={sqft} onChange={(e) => setSqft(+e.target.value)}
  className="w-full bg-transparent py-3 font-display text-lg font-bold text-ink outline-none" aria-label="Pledge size in square feet" />
- <span className="text-xs text-ink/45">sq ft × ${price.toLocaleString()}</span>
+ <span className="text-xs text-ink/45">sq ft × {cur}{price.toLocaleString()}</span>
  </div>
  </label>
  )}
@@ -139,15 +140,15 @@ export default function PledgeModule({ compact = false, pool }) {
  <dl className="mt-4 space-y-2 rounded-xl bg-mist p-4 text-sm">
  <div className="flex justify-between">
  <dt className="text-ink/60">You would own</dt>
- <dd className="font-display font-bold text-ink">{calc.ft.toLocaleString()} sq ft · ${fmtUsd(calc.amount)}</dd>
+ <dd className="font-display font-bold text-ink">{calc.ft.toLocaleString()} sq ft · {cur}{fmtUsd(calc.amount)}</dd>
  </div>
  <div className="flex justify-between">
  <dt className="text-ink/60">Est. rental income (6–7% p.a.)</dt>
- <dd className="font-display font-bold text-brand-dark">${fmtUsd(calc.rentLow)}–{fmtUsd(calc.rentHigh)} / yr</dd>
+ <dd className="font-display font-bold text-brand-dark">{cur}{fmtUsd(calc.rentLow)}–{fmtUsd(calc.rentHigh)} / yr</dd>
  </div>
  <div className="flex justify-between">
  <dt className="text-ink/60">Est. capital appreciation (3–5% p.a.)</dt>
- <dd className="font-display font-bold text-[#1b7cb5]">+${fmtUsd(calc.apprLow)}–{fmtUsd(calc.apprHigh)} / yr</dd>
+ <dd className="font-display font-bold text-[#1b7cb5]">+{cur}{fmtUsd(calc.apprLow)}–{fmtUsd(calc.apprHigh)} / yr</dd>
  </div>
  <p className="pt-1 text-[10.5px] leading-relaxed text-ink/45">
  Appreciation per Savills/JLL Central London forecasts; unrealised until sale, not guaranteed.

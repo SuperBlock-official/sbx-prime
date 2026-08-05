@@ -411,6 +411,22 @@ export const ASSET = ASSETS[0]; // flagship: Grosvenor Gardens
 export function getProjection(a) {
   return a?.projection || DEFAULT_PROJECTION;
 }
+
+/* Build a PledgeModule pool for a given asset, in the asset's own currency. */
+export function poolFor(a) {
+  const target = a.size * a.pricePerSqft;
+  const pledgedFrac = 0.32; // indicative
+  return {
+    cur: a.cur,
+    price: a.pricePerSqft,
+    totalTokens: a.size,
+    tokensRemaining: Math.round(a.size * (1 - pledgedFrac)),
+    raisedUsd: Math.round(target * pledgedFrac),
+    targetUsd: target,
+    investors: 120,
+    unit: "investor",
+  };
+}
 export const PROJECTION = DEFAULT_PROJECTION;
 export { DOCUMENTS, REFERENCES };
 

@@ -8,7 +8,7 @@ export const FAQ_CATEGORIES = [
  },
  {
  q: "What does 1 token actually represent?",
- a: "One token = one square foot = one share in the special purpose vehicle (SPV) that owns the building. This is direct, register-backed economic ownership, not a synthetic exposure or a fund unit. The Central London launch asset is divided into 13,146 tokens, one per saleable square foot.",
+ a: "One token = one square foot = one share in the special purpose vehicle (SPV) that owns the building. This is direct, register-backed economic ownership, not a synthetic exposure or a fund unit. The Grosvenor Gardens launch asset is divided into 18,036 tokens, one per saleable square foot.",
  },
  {
  q: "What returns can I expect?",
@@ -16,7 +16,7 @@ export const FAQ_CATEGORIES = [
  },
  {
  q: "What is the minimum investment?",
- a: "One square foot. For the Central London launch asset, that is one token at $1,042. There is no institutional minimum, the point of tokenization is access.",
+ a: "One square foot. For the Grosvenor Gardens launch asset, that is one token at about $740 (£582). There is no institutional minimum, the point of tokenization is access.",
  },
  ],
  },

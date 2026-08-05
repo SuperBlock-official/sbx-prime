@@ -101,8 +101,8 @@ export default function Home() {
  <div className="border-t border-hairline bg-white">
  <div className="shell grid grid-cols-2 gap-4 py-10 lg:grid-cols-4">
  {[
- { label: "Launch asset", value: <Counter value={13146} suffix=" ft²" />, sub: "Central London, Grade-A" },
- { label: "Per token", value: <><span className="align-top text-lg">$</span><Counter value={1042} /></>, sub: "One saleable square foot" },
+ { label: "Launch asset", value: <Counter value={18036} suffix=" ft²" />, sub: "Victoria & Belgravia" },
+ { label: "Per token", value: <><span className="align-top text-lg">$</span><Counter value={740} /></>, sub: "One saleable square foot" },
  { label: "Total return", value: "9–11%", sub: "Yield + appreciation p.a.", grad: true },
  { label: "Per token", value: "1 share", sub: "Register-backed SPV" },
  ].map((s, i) => (
@@ -139,7 +139,7 @@ export default function Home() {
  />
  <ul className="mt-8 space-y-4">
  {[
- ["Fully-let Grade-A office", "13,146 sq ft in Central London, leased to an investment-grade tenant with upward-only reviews."],
+ ["Grade II listed, income-producing", "18,036 sq ft on Grosvenor Gardens in Victoria & Belgravia, part-let today with reversionary upside as vacant floors are let to market rent."],
  ["Two-part returns", "6–7% p.a. rental yield paid monthly, plus 3–5% p.a. capital appreciation potential (Savills/JLL forecasts)."],
  ["English-law SPV", "The building is held in a single-asset SPV; each token is a registered share, not synthetic exposure."],
  ].map(([t, b], i) => (
@@ -159,11 +159,11 @@ export default function Home() {
  <Fx scale delay={120} className="relative">
  <img
  src={londonImg}
- alt="Interior of the Central London Grade-A office launch asset"
+ alt="The Grosvenor Gardens launch asset in Victoria & Belgravia"
  className="w-full rounded-3xl border border-hairline object-cover shadow-[0_45px_90px_-40px_rgba(9,200,90,.4)]"
  />
  <div className="absolute -bottom-6 left-1/2 w-[min(88%,330px)] -translate-x-1/2">
- <PushNotification body="Central London Office, Q1 rent collected. Distribution scheduled for the 1st." time="2m" delay={900} />
+ <PushNotification body="Grosvenor Gardens, August rent collected. Distribution scheduled for the 1st." time="2m" delay={900} />
  </div>
  </Fx>
  </div>

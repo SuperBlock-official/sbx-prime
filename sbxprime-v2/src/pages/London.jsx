@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Seo from "../lib/Seo";
-import { RAISE } from "../lib/api";
+import { ASSET, poolFor } from "../data/asset";
 import PledgeModule from "../components/PledgeModule";
 import PushNotification from "../components/PushNotification";
 import NodeBackground from "../components/NodeBackground";
@@ -22,7 +22,8 @@ const FACTS = [
 ];
 
 export default function London() {
- const pct = Math.round((RAISE.raisedUsd / RAISE.targetUsd) * 100);
+ const pool = poolFor(ASSET);
+ const pct = Math.round((pool.raisedUsd / pool.targetUsd) * 100);
  return (
  <>
  <Seo
@@ -55,7 +56,7 @@ export default function London() {
 
  <Fx delay={130} scale className="relative mt-8">
  <TiltCard max={7} className="overflow-hidden rounded-3xl border border-hairline">
- <img src={londonImg} alt="Interior of the Central London Grade-A office" className="h-[300px] w-full object-cover sm:h-[360px]" />
+ <img src={londonImg} alt="Interior of the Grosvenor Gardens launch asset" className="h-[300px] w-full object-cover sm:h-[360px]" />
  </TiltCard>
  <div className="absolute -bottom-6 right-4 w-[min(85%,320px)]">
  <PushNotification body="You've been paid 1,050 USDC rental income for January 2025" time="now" delay={800} />
@@ -108,7 +109,7 @@ export default function London() {
  {/* ---------- sticky pledge module ---------- */}
  <div className="lg:sticky lg:top-24 lg:self-start">
  <Fx delay={100}>
- <PledgeModule />
+ <PledgeModule pool={pool} />
  </Fx>
  </div>
  </div>

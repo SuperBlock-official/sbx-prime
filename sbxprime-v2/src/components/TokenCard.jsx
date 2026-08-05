@@ -35,8 +35,8 @@ export default function TokenCard() {
  {/* back */}
  <div className="token-face token-back holo absolute inset-0 rounded-2xl border border-brand-teal/35 p-5">
  <div className="h-8 w-full rounded bg-ink/70" aria-hidden="true" />
- <p className="mt-5 font-display text-sm font-bold text-white">Central London Grade-A Office</p>
- <p className="mt-1 text-xs text-white/55">London W1 · 13,146 sq ft · fully let</p>
+ <p className="mt-5 font-display text-sm font-bold text-white">Grosvenor Gardens</p>
+ <p className="mt-1 text-xs text-white/55">Victoria SW1 · 18,036 sq ft · income-producing</p>
  <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
  <span className="rounded-full border border-brand-teal/50 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-widest text-brand-teal">
  ERC-3643 security token

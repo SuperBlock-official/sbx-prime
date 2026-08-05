@@ -6,7 +6,7 @@ import PushNotification from "../components/PushNotification";
 import { TiltCard } from "../components/cards";
 import { Fx, SectionHead, Counter, ReturnSplit } from "../components/ui";
 import ApproxMap from "../components/ApproxMap";
-import { ASSET_BY_SLUG, ASSET, getProjection, DOCUMENTS, REFERENCES } from "../data/asset";
+import { ASSET_BY_SLUG, ASSET, getProjection, poolFor, DOCUMENTS, REFERENCES } from "../data/asset";
 
 /* Simple, dependency-free comparison bar (current / comparable / forecast). */
 function CompareBars({ rows, prefix = "£", suffix = "" }) {
@@ -151,7 +151,7 @@ export default function Prospectus() {
 
           {/* sticky pledge */}
           <div className="lg:sticky lg:top-24 lg:self-start">
-            <Fx delay={100}><PledgeModule /></Fx>
+            <Fx delay={100}><PledgeModule pool={poolFor(a)} /></Fx>
           </div>
         </div>
       </section>
