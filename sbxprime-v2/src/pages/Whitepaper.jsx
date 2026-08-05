@@ -4,78 +4,182 @@ import Seo from "../lib/Seo";
 import { registerInterest } from "../lib/api";
 
 /* GitHub-docs-style whitepaper: persistent left nav, content column, right
-   "on this page" with scroll-spy, anchor links. Forward-looking mechanics
-   (secondary market, $SBX, liquidity pools) are described as roadmap. */
+   "on this page" with scroll-spy, anchor links. Grounded in SBX Prime's own
+   whitepaper (SBX Group / Superblock). Forward-looking items (secondary
+   market, liquidity pools, $SBX) are marked coming soon. */
 const SECTIONS = [
   {
-    id: "access",
-    title: "The access problem",
+    id: "summary",
+    title: "Executive summary",
     body: [
-      "The best commercial buildings in the world have only ever traded in very large pieces. A prime Central London office changes hands for tens or hundreds of millions of pounds, in a single line, between a small club of institutions: sovereign wealth funds, pension funds, insurers, and the largest private offices.",
-      "Individuals are left with proxies. Listed REITs bundle hundreds of assets and trade on equity-market sentiment rather than the underlying bricks. Private funds carry high minimums, long lock-ups, and layered fees. Crowdfunding platforms often hold the sponsor's promise rather than the asset itself.",
-      "SBX Prime removes the minimum without removing the substance. We acquire an institutional-grade building, ring-fence it in its own company, and issue that company as tokens you can own from a single square foot, with the same legal ownership an institution would hold.",
+      "SBX Prime is an institutional-grade tokenized real estate platform built on the ERC-3643 security-token standard and powered by Superblock's tokenization infrastructure. It gives investors direct fractional ownership of super-prime buildings in London, Dubai, and Singapore, from a single square foot.",
+      "It combines two decades of SBX Group's real estate expertise with on-chain compliance and AI-assisted governance, delivering institutional investment quality with the access, transparency, and liquidity of a modern digital asset.",
     ],
   },
   {
-    id: "structure",
-    title: "The structure: 1 token = 1 sq ft = 1 share",
+    id: "problem",
+    title: "The problem",
+    body: ["Traditional real estate investment locks out almost everyone:"],
+    bullets: [
+      ["High capital barriers", "Direct entry into prime assets typically starts at $500K to $10M+."],
+      ["Illiquidity", "Capital is locked for five to ten year hold periods."],
+      ["Geographic restrictions", "Foreign-ownership rules block cross-border participation."],
+      ["Opacity", "Limited reporting, manual distributions, and records you cannot audit."],
+      ["Counterparty risk", "Reliance on intermediaries whose incentives are not aligned with yours."],
+    ],
+  },
+  {
+    id: "solution",
+    title: "The solution",
+    body: ["SBX Prime removes each barrier without removing the legal substance of ownership:"],
+    bullets: [
+      ["Fractional tokenization", "Each building is issued as ERC-3643 tokens, one token per saleable square foot."],
+      ["On-chain liquidity", "Tokens are transferable on a compliant secondary marketplace (coming soon)."],
+      ["Global compliant KYC", "Identity verification across 190+ countries, under each investor's applicable regime."],
+      ["Transparent ledger", "Ownership, income, and governance recorded on the Polygon blockchain."],
+      ["AI-assisted governance", "A DAO voting system with AI analysis of every proposal."],
+    ],
+  },
+  {
+    id: "token-standard",
+    title: "ERC-3643 token standard (T-REX)",
     body: [
-      "Each asset is held in its own single-purpose company (SPV) under English law. The SPV owns the building and nothing else. We then issue the SPV's shares as security tokens on a one-to-one basis with the building's saleable area: one token represents one square foot and one share of the SPV.",
-      "This makes ownership legible. The token price is simply the independent valuation divided by the saleable area, with no premium for the wrapper. Your economic rights, income and capital, are the rights of a shareholder in the company that owns the building, not a synthetic exposure or an IOU.",
+      "SBX Prime uses ERC-3643, the T-REX (Token for Regulated EXchanges) standard built and maintained by Superblock. It is the leading compliance-first security-token standard, adopted by regulated financial institutions worldwide, and it makes compliance a property of the asset itself.",
     ],
     bullets: [
-      ["Ring-fenced", "The SPV is bankruptcy-remote from the platform. Your claim survives anything that happens to SBX Prime."],
-      ["One standard unit", "One square foot is comparable across every market we open, London, Dubai, Singapore and beyond."],
-      ["Register reconciliation", "The SPV shareholder register and the on-chain token ledger are reconciled continuously as one source of truth."],
+      ["Identity registry", "Every wallet is linked to an on-chain identity recording KYC/AML status, accreditation, and jurisdiction eligibility."],
+      ["Compliance module", "Rules are enforced at the contract level, automatically blocking non-compliant transfers before they execute."],
+      ["Transfer management", "Transfers pass real-time compliance checks; the module can pause, restrict, or force-transfer to meet legal requirements."],
     ],
   },
   {
-    id: "erc3643",
-    title: "ERC-3643 and on-chain compliance",
+    id: "superblock",
+    title: "The Superblock platform",
     body: [
-      "The tokens are issued under ERC-3643, the token standard for permissioned securities. Compliance becomes a property of the asset itself: transfers settle only between verified, eligible identities, enforced by the contract rather than by a promise.",
-      "Every holder is bound to a verified identity. Transfers that would breach eligibility, jurisdiction, or holding rules simply cannot execute. If a holder loses their keys, the property is not lost: the issuer can reissue tokens to the same verified identity after checks. Contracts are independently audited before issuance and deployed on Polygon with redundant institutional infrastructure.",
+      "The tokenization infrastructure is built on Superblock's ONCHAINID platform, a reference implementation of ERC-3643 used by regulated institutions. Superblock's smart contracts are open-source, audited by CertiK, and have processed over $2 billion in tokenized assets globally.",
+    ],
+    bullets: [
+      ["Token issuance engine", "Property SPV shares converted to ERC-3643 tokens with full legal documentation."],
+      ["Identity management", "ONCHAINID digital identity for every investor, stored on-chain (EIP-734/735)."],
+      ["Compliance automation", "Real-time transfer-compliance checking across all registered rules."],
+      ["Asset registry & audit trail", "An immutable registry linking legal titles to token contracts, with a complete on-chain event history."],
     ],
   },
   {
-    id: "underwriting",
-    title: "Underwriting and the London launch",
+    id: "onboarding",
+    title: "How assets are onboarded",
     body: [
-      "We underwrite the way an institution buys. Every asset is independently valued to RICS Red Book standard at acquisition and revalued every three to six months thereafter, with rental and capital evidence triangulated against comparable transactions rather than our own optimism.",
-      "The launch programme is a shortlist of real Central London assets: Grade-A and landmark buildings across Victoria, the City, Mayfair and Westminster. Returns are always presented as two components, a rental yield plus capital appreciation, never yield alone. Central London rental and capital-growth forecasts follow Savills and JLL. All figures are indicative and capital is at risk.",
+      "Every asset passes the same institutional pipeline before a single token is issued. The rigor is the product: we onboard the way a pension fund underwrites, then tokenize.",
+    ],
+    bullets: [
+      ["Source & screen", "Off-market and on-market sourcing of super-prime assets in target cities."],
+      ["Due diligence", "Legal, technical, and financial diligence, with title and tenancy verified."],
+      ["Independent valuation", "RICS Red Book valuation at acquisition, revalued quarterly thereafter."],
+      ["SPV & title", "The building is placed in a bankruptcy-remote SPV; legal title stays registered with the Land Department, HMLR, or URA as applicable."],
+      ["Issue & list", "Superblock mints the SPV as ERC-3643 tokens, one per square foot, and the asset is listed with its full prospectus."],
     ],
   },
   {
-    id: "distribution",
-    title: "Rental distribution mechanics",
+    id: "regulatory",
+    title: "Regulatory structure",
     body: [
-      "Net rental income, after costs, service charge, and reserves, is distributed monthly in USDC, pro-rata to token holdings. Distributions are paid on-chain and recorded against the token register, so every payment is reconcilable.",
-      "Because income is distributed in a stablecoin, holders receive predictable cash flow without needing to manage a landlord's operational burden. The managing agent handles rent collection, arrears, leasing, and maintenance; holders receive the statement and the money.",
+      "There is no single right wrapper for tokenized real estate. SBX Prime structures each offering around three variables, where the asset sits, where the issuing vehicle is formed, and where the investor resides, then selects the most efficient combination for that deal.",
+      "In practice this lets a US-accredited base and a global, largely retail, non-US audience invest in the same asset, each under the rule set built for them.",
+    ],
+    bullets: [
+      ["Delaware SPV", "A Delaware LLC or corporation holds the asset and its economic and governance rights; the tokens are that vehicle's shares."],
+      ["Reg D + Reg S", "Rule 506(c) admits verified accredited US investors; Regulation S opens the same offering to non-US investors, including retail outside the US, targeting a global audience."],
+      ["Offshore vehicles", "Tax-neutral BVI, Cayman Islands, or Jersey companies for international pooling where they are the more efficient home."],
+      ["Private fund structures", "Regulated or exempt fund vehicles where a fund, rather than a single-asset SPV, is the better fit."],
     ],
   },
   {
-    id: "liquidity",
-    title: "Secondary market, liquidity, and $SBX",
+    id: "tokenomics",
+    title: "Tokenomics & fees",
     body: [
-      "Real estate is illiquid by nature. Tokenization does not repeal that, but it can make transferring ownership far cheaper and faster than a conventional sale. SBX Prime is designed around a compliant secondary market: verified holders can list and transfer tokens to other eligible investors, with the same ERC-3643 rules enforced on every trade.",
-      "To deepen liquidity over time, the platform is designed to support permissioned liquidity pools, where eligible participants can provide two-sided liquidity against asset tokens, and a platform token, $SBX, intended to coordinate secondary-market incentives, fee flows, and governance across the SUPERBLOCK ecosystem.",
-      "These liquidity mechanics and $SBX are part of the roadmap, not a live product. They will roll out progressively, subject to regulatory approval in each jurisdiction, and nothing here is an offer of $SBX or a promise of a liquid market.",
+      "Each property issues its own ERC-3643 contract, named SBX-[PROPERTY_CODE]. Supply is fixed at issuance and equals the building's total square footage; the token price is the independent valuation divided by that area. Tokens have zero decimals, so you own whole square feet, never fractions of one.",
+    ],
+    table: {
+      head: ["Fee", "Rate", "When charged"],
+      rows: [
+        ["Platform fee", "1.0%", "At investment"],
+        ["Management fee", "8% of rental income", "Quarterly"],
+        ["Performance fee", "20% above an 8% IRR", "At exit"],
+        ["Secondary market", "0.5% per side", "On each trade"],
+      ],
+    },
+    bullets: [
+      ["Rent collected", "Gross rent is collected by the SPV's managing agent."],
+      ["Costs & fees deducted", "Operating costs, then the management fee, are deducted."],
+      ["Distributed on-chain", "A smart contract splits the remainder pro-rata and pays each registered wallet."],
+    ],
+  },
+  {
+    id: "management",
+    title: "Institutional management & reporting",
+    body: [
+      "SBX Prime runs each building for its whole life to an institutional standard, and reports on it transparently. Income flows through audited smart contracts with no manual handling, so what you are owed and what you are paid are always reconcilable on-chain.",
+      "Holders receive monthly income statements, quarterly asset reports, quarterly RICS valuations, and annually audited SPV accounts prepared by a Big Four firm. Every property carries full building and loss-of-rent insurance.",
     ],
   },
   {
     id: "governance",
-    title: "Governance",
+    title: "AI-powered DAO governance",
     body: [
-      "SBX Prime is built so the people who own the square feet make the decisions that matter. Holders vote, one token one vote, on the decisions that shape each asset: when to sell, whether to refinance, major capital works, the managing-agent mandate, distribution policy, and revaluation cadence.",
-      "Decisions move from an on-chain proposal, through a fixed voting window with quorum and majority thresholds, into a timelock so every holder can see what is about to execute, and then to execution against the SPV. Governance rolls out in phases: at launch, holders vote on disposal and distribution decisions, and the on-chain remit widens as each asset and the holder base mature.",
+      "SBX Prime introduces AI-assisted DAO governance for tokenized real estate: token holders vote, weighted by holdings, on the decisions that shape their assets, and an AI engine makes each proposal legible before the vote.",
+    ],
+    bullets: [
+      ["What holders vote on", "Major capex and refurbishment, exit timing and method, fee adjustments, new acquisitions, and emergency decisions."],
+      ["AI governance engine", "Each proposal is analysed for financial impact, market context, and risk, with a plain-English summary and a recommended vote."],
+      ["Advisory, not binding", "The AI recommendation discloses its full reasoning; investors keep complete autonomy. Voting is anonymous and holding-weighted."],
     ],
   },
   {
-    id: "risk",
-    title: "Risk factors and protections",
+    id: "secondary",
+    title: "Secondary market, liquidity & $SBX",
     body: [
-      "Property values and rents can fall as well as rise; capital is at risk and past performance is not a guide to the future. Liquidity is not guaranteed, especially in early phases. Tokens are securities offered to eligible investors only, qualified, professional, or accredited, with no US persons and no UK or EEA retail; eligibility is enforced at KYC and on-chain.",
-      "Protections are structural, not promises: bankruptcy-remote SPVs, segregated subscription funds with pre-defined release conditions, independent valuation, identity-bound tokens, key recovery, and continuous register reconciliation. Structuring and audit support come from established, independent advisers across the jurisdictions we operate in.",
+      "Real estate is illiquid by nature. Tokenization makes transferring ownership far faster and cheaper than a conventional sale. A compliant peer-to-peer secondary marketplace (coming soon) will let verified holders trade tokens, with ERC-3643 rules enforced on every trade and a 0.5%-per-side fee.",
+      "To deepen liquidity, permissioned liquidity pools are planned to provide near-instant liquidity against asset tokens, coordinated by the $SBX platform token across the Superblock ecosystem. Liquidity pools and $SBX are on the roadmap, subject to regulatory approval; nothing here is an offer of $SBX.",
+    ],
+  },
+  {
+    id: "protections",
+    title: "Investor rights & protections",
+    body: ["Protection is a foundational principle, structural rather than promised, and it operates on three levels."],
+    bullets: [
+      ["Legal", "Bankruptcy-remote SPVs, a jurisdiction-appropriate regulated framework, an independent trustee per SPV, and legal title held at the relevant land registry."],
+      ["Financial", "Multi-signature escrow until acquisition completes, annual Big Four audits, quarterly RICS valuations, and full insurance."],
+      ["Blockchain", "Immutable ownership records on Polygon and rental income routed through audited smart contracts, with no manual handling."],
+    ],
+  },
+  {
+    id: "technology",
+    title: "Technology stack",
+    body: ["The platform is engineered on institutional infrastructure across four layers."],
+    bullets: [
+      ["Blockchain", "Polygon PoS, Solidity 0.8+ audited by CertiK, IPFS document hashing, and Chainlink oracles for valuations and FX."],
+      ["Identity", "ONCHAINID (EIP-734/735) via Superblock, Jumio biometric KYC, and Chainalysis plus ComplyAdvantage AML screening."],
+      ["Application", "Next.js frontend, Node.js APIs, PostgreSQL and IPFS storage, on AWS and Azure behind Cloudflare."],
+      ["AI", "Governance analysis, an ML property-valuation model, risk scoring, and portfolio personalisation."],
+    ],
+  },
+  {
+    id: "roadmap",
+    title: "Roadmap",
+    body: ["SBX Prime is delivered in phases, from a compliant foundation to a global, liquid market."],
+    bullets: [
+      ["Foundation", "ERC-3643 deployment on Polygon, Superblock ONCHAINID integration, first offerings structured under Reg D / Reg S, first tokenizations, web platform."],
+      ["Growth", "Mobile apps, the secondary marketplace, the DAO governance module, the AI engine, and London expansion."],
+      ["Scale", "Singapore launch, an institutional tier, multi-chain deployment, DeFi integrations, and a $1B AUM milestone."],
+      ["Global", "New York, Hong Kong, and Tokyo markets, exchange-listing partnerships, and regulated fund products."],
+    ],
+  },
+  {
+    id: "team",
+    title: "Team & advisors",
+    body: [
+      "SBX Prime is built by the SBX Group team, a Dubai-based real estate group with over twenty years of institutional market experience. The advisory board spans real estate (former JLL, CBRE, and Knight Frank executives), blockchain (ERC-3643 core contributors), regulation (former SEC and FCA advisers), and finance (former Goldman Sachs and Morgan Stanley real estate bankers).",
+      "Technology partners include Superblock (tokenization infrastructure), Chainlink (oracles), Polygon (network), and AWS and Azure (cloud).",
     ],
   },
 ];
@@ -196,9 +300,11 @@ export default function Whitepaper() {
           <div className="mt-8 rounded-xl border-l-[3px] border-brand bg-mist/50 p-5">
             <p className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-brand-dark">Abstract</p>
             <p className="mt-2 text-[15px] leading-relaxed text-ink/75">
-              SBX Prime issues institutional-grade real estate as identity-bound security tokens, one token per
-              square foot of a ring-fenced English-law SPV, paying monthly USDC income, revalued independently,
-              traded on a compliant secondary market, and governed on-chain by the people who own it.
+              SBX Prime issues super-prime real estate as ERC-3643 security tokens, one token per square foot of
+              a bankruptcy-remote SPV, on Superblock's ONCHAINID infrastructure. Income flows through audited smart
+              contracts, assets are revalued quarterly by RICS surveyors, and holders govern each building through
+              an AI-assisted DAO. Each offering is wrapped in the most efficient regulatory structure for its asset,
+              vehicle, and investor jurisdictions.
             </p>
           </div>
 
@@ -212,6 +318,28 @@ export default function Whitepaper() {
                     <p key={j} className="text-[15px] leading-[1.75] text-ink/70">{p}</p>
                   ))}
                 </div>
+                {s.table && (
+                  <div className="mt-6 overflow-x-auto rounded-lg border border-hairline">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-hairline bg-mist/50 text-left">
+                          {s.table.head.map((h) => (
+                            <th key={h} className="px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.1em] text-ink/50">{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-hairline">
+                        {s.table.rows.map((r, ri) => (
+                          <tr key={ri}>
+                            {r.map((c, ci) => (
+                              <td key={ci} className={`px-4 py-2.5 ${ci === 0 ? "font-display font-bold text-ink" : "text-ink/65"}`}>{c}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
                 {s.bullets && (
                   <div className="mt-5 grid gap-3 sm:grid-cols-3">
                     {s.bullets.map(([t, b]) => (
@@ -251,11 +379,13 @@ export default function Whitepaper() {
           </div>
 
           <p className="mt-10 border-t border-hairline pt-6 text-[11px] leading-relaxed text-ink/40">
-            This document is provided for information only and is not an offer or solicitation to buy any security
-            or token, nor investment, legal, or tax advice. It is not directed at any person in any jurisdiction
-            where such an offer would be unlawful. Figures are indicative and subject to independent valuation.
-            Capital is at risk; past performance is not a guide to future returns. $SBX and the secondary-market
-            and liquidity features described are roadmap items subject to regulatory approval and may change.
+            This whitepaper is for information only and does not constitute an offer to sell or a solicitation to buy
+            any securities, nor investment, legal, or tax advice. It has not been reviewed by any regulatory authority.
+            Each offering is structured under the regime appropriate to its asset, vehicle, and investor jurisdictions,
+            for example Regulation D and Regulation S in and outside the United States. Figures are indicative and
+            subject to independent valuation. Capital is at risk and past performance is not a guide to future returns.
+            The secondary market, liquidity pools, and $SBX are roadmap items subject to regulatory approval and may
+            change. Prospective investors should read the full offering memorandum and risk disclosures before investing.
           </p>
         </article>
 
