@@ -1,0 +1,22 @@
+<svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="28.25" cy="28.17" r="28.17" fill="#0FB350"/>
+  <circle cx="28.25" cy="28.17" r="25.3" fill="#D7EDE1"/>
+  <g stroke="#0FB350" stroke-width="2" stroke-linecap="round">
+    <path d="M19.5178 39.242L14.6023 33.4126"/>
+    <path d="M42.0713 33.4126L37.1558 39.242"/>
+    <path d="M14.8914 30.958L19.5177 25.7422"/>
+    <path d="M37.1562 25.7426L41.4934 30.6516"/>
+    <path d="M29.3491 17.1519L35.1321 23.5949"/>
+    <path d="M27.6144 17.1519L21.5422 23.5949"/>
+    <path d="M29.3491 32.4922L35.4212 25.7423"/>
+    <path d="M27.3248 32.4922L21.2527 26.0491"/>
+    <ellipse cx="28.1924" cy="15.9244" rx="1.9" ry="2"/>
+    <ellipse cx="36.2884" cy="24.5152" rx="1.9" ry="2"/>
+    <ellipse cx="20.6743" cy="24.5152" rx="1.9" ry="2"/>
+    <ellipse cx="13.7351" cy="31.8785" rx="1.9" ry="2"/>
+    <ellipse cx="42.6499" cy="31.8785" rx="1.9" ry="2"/>
+    <ellipse cx="28.1919" cy="33.7193" rx="1.9" ry="2"/>
+    <ellipse cx="36.2884" cy="40.4693" rx="1.9" ry="2"/>
+    <ellipse cx="20.6743" cy="40.4693" rx="1.9" ry="2"/>
+  </g>
+</svg>

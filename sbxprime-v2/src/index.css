@@ -1,0 +1,318 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   SBX Prime v2 — design system (light · matches app mockups)
+   Syne (display) + Lora (body) + JetBrains Mono (figures)
+   Brand green #1FB462 · mint shell #F1F7F3 · ink #0F1F17
+   ------------------------------------------------------------------ */
+
+:root {
+  --brand: #1fb462;
+  --brand-dark: #0f8746;
+  --teal: #25a9e0;
+  --mint: #35dfa9;
+  --ink: #0f1f17;
+  --shell: #f1f7f3;
+  --hairline: #ddede3;
+  --line-glow: rgba(31, 180, 98, 0.2);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-mist text-ink font-body antialiased;
+    overflow-x: clip; /* decorative mockups may extend past the viewport on small screens */
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    background: rgba(31, 180, 98, 0.25);
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-display font-bold
+      text-sm transition-transform duration-200 will-change-transform;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary {
+    @apply btn bg-brand text-white px-6 py-3.5;
+    box-shadow: 0 12px 26px -12px rgba(15, 135, 70, 0.55);
+  }
+  .btn-ghost {
+    @apply btn px-6 py-3.5 text-ink bg-white;
+    border: 1px solid var(--hairline);
+    box-shadow: 0 6px 16px -10px rgba(15, 45, 32, 0.18);
+  }
+  .btn-dark {
+    @apply btn bg-ink text-white px-6 py-3.5;
+  }
+  /* white content card (name kept from v1 to avoid touching call-sites) */
+  .card-dark {
+    @apply rounded-2xl bg-white;
+    border: 1px solid var(--hairline);
+    box-shadow: 0 18px 40px -28px rgba(15, 45, 32, 0.28);
+  }
+  .eyebrow {
+    @apply font-display text-xs font-bold uppercase tracking-[0.22em] text-brand;
+  }
+  .h-section {
+    @apply font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl lg:text-[2.75rem];
+  }
+  .lede {
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-ink/65;
+  }
+  .badge-live {
+    @apply inline-flex items-center gap-1.5 rounded-full bg-brand/10 px-3 py-1 font-display text-[11px] font-bold uppercase tracking-wider text-brand-dark;
+  }
+  .badge-live::before {
+    content: "";
+    @apply h-1.5 w-1.5 rounded-full bg-brand;
+    animation: pulse-dot 1.6s ease-in-out infinite;
+  }
+  .badge-soon {
+    @apply inline-flex items-center rounded-full bg-brand-teal/10 px-3 py-1 font-display text-[11px] font-bold uppercase tracking-wider text-[#1b7cb5];
+  }
+  .badge-pipeline {
+    @apply inline-flex items-center rounded-full bg-ink/10 px-3 py-1 font-display text-[11px] font-bold uppercase tracking-wider text-ink/55;
+  }
+  .field {
+    @apply w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-sm text-ink
+      placeholder-ink/35 outline-none transition-colors;
+  }
+  .field:focus { border-color: var(--brand); }
+  .table-check { color: var(--brand-dark); font-weight: 700; }
+  .table-cross { color: #c0492f; font-weight: 700; }
+  /* mockup-style KPI stat card */
+  .kpi-card {
+    @apply card-dark p-5;
+  }
+  .kpi-card .kpi-label {
+    @apply font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-ink/45;
+  }
+  .kpi-card .kpi-value {
+    @apply mt-2 font-display text-2xl font-extrabold text-ink sm:text-[1.7rem];
+  }
+  .kpi-card .kpi-sub {
+    @apply mt-1 text-xs text-ink/55;
+  }
+  .kpi-card--grad {
+    background: linear-gradient(118deg, var(--mint) 0%, #2ecbc4 48%, var(--teal) 100%);
+    border: 0;
+  }
+  .kpi-card--grad .kpi-label { color: rgba(6, 35, 26, 0.6); }
+  .kpi-card--grad .kpi-value { color: #06231a; }
+  .kpi-card--grad .kpi-sub { color: rgba(6, 35, 26, 0.65); }
+}
+
+/* ------------------------------------------------------------------
+   Scroll-entrance system — SAFE BY DEFAULT (visible without JS).
+   ------------------------------------------------------------------ */
+.fx, .fx-scale { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html.js .fx {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 0.8, 0.3, 1);
+    transition-delay: var(--fx-delay, 0ms);
+  }
+  html.js .fx-scale {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 0.8, 0.3, 1);
+    transition-delay: var(--fx-delay, 0ms);
+  }
+  html.js .fx.is-in,
+  html.js .fx-scale.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* keyframes ---------------------------------------------------------- */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(31, 180, 98, 0.4), 0 24px 55px -28px rgba(31, 180, 98, 0.45); }
+  50% { box-shadow: 0 0 0 8px rgba(31, 180, 98, 0), 0 24px 55px -28px rgba(31, 180, 98, 0.45); }
+}
+@keyframes spin-token {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+@keyframes shimmer-sweep {
+  from { transform: translateX(-130%) skewX(-18deg); }
+  to { transform: translateX(230%) skewX(-18deg); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes notif-in {
+  from { opacity: 0; transform: translateY(-14px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .live-pulse { animation: pulse-border 3s ease-in-out infinite; }
+  .float-slow { animation: float-y 7s ease-in-out infinite; }
+  .float-slower { animation: float-y 9s ease-in-out 1.2s infinite; }
+  .notif-pop { animation: notif-in 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.2) both; animation-delay: var(--notif-delay, 400ms); }
+}
+
+/* 3D tilt cards -------------------------------------------------------- */
+.tilt-wrap { perspective: 1100px; }
+.tilt {
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+  transition: transform 0.18s ease-out, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+.tilt .sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(31, 180, 98, 0.14),
+    transparent 65%
+  );
+  opacity: var(--sheen-o, 0);
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+/* gloss sweep on hover ------------------------------------------------- */
+.gloss { position: relative; overflow: hidden; }
+.gloss::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; width: 45%;
+  background: linear-gradient(105deg, transparent, rgba(31, 180, 98, 0.10), transparent);
+  transform: translateX(-130%) skewX(-18deg);
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .gloss:hover::after { animation: shimmer-sweep 0.9s ease forwards; }
+}
+
+/* icon spin ------------------------------------------------------------ */
+.icon-spin { transition: transform 0.7s cubic-bezier(0.3, 0.7, 0.2, 1); }
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover .icon-spin { transform: rotate(360deg); }
+}
+
+/* partner marquee ------------------------------------------------------ */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 3.5rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .marquee-track { animation: marquee 40s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+}
+.partner-logo {
+  height: 1.65rem;
+  width: auto;
+  filter: grayscale(1) opacity(0.55);
+  transition: filter 0.25s ease;
+}
+.partner-logo:hover { filter: grayscale(0) opacity(1); }
+
+/* 3D token card (stays dark — it's the brand's "credit card") ---------- */
+.token-stage { perspective: 1300px; }
+.token-3d {
+  transform-style: preserve-3d;
+  transform: rotateY(var(--token-ry, 0deg));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .token-3d.autospin { animation: spin-token 14s linear infinite; }
+  .token-3d.autospin:hover { animation-play-state: paused; }
+}
+.token-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.token-back { transform: rotateY(180deg); }
+.holo {
+  background:
+    linear-gradient(120deg, transparent 30%, rgba(53, 223, 169, 0.22) 45%, rgba(37, 169, 224, 0.22) 55%, transparent 70%),
+    linear-gradient(165deg, #17351f, #0f1f17 55%, #0b1811);
+  background-size: 220% 100%, 100% 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .holo { animation: holo-move 5s ease-in-out infinite alternate; }
+}
+@keyframes holo-move {
+  from { background-position: 0% 0, 0 0; }
+  to { background-position: 100% 0, 0 0; }
+}
+
+/* SVG line draw --------------------------------------------------------- */
+.drawline path.draw {
+  stroke-dasharray: var(--path-len, 1200);
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.js .drawline path.draw {
+    stroke-dashoffset: var(--path-len, 1200);
+    transition: stroke-dashoffset 1.8s ease 0.2s;
+  }
+  html.js .drawline.is-in path.draw { stroke-dashoffset: 0; }
+}
+
+/* typed caret ------------------------------------------------------------ */
+.typed-caret {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  margin-left: 4px;
+  vertical-align: -0.12em;
+  background: var(--brand);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .typed-caret { animation: caret 0.9s step-end infinite; }
+}
+
+/* node network background -------------------------------------------------- */
+.node-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* app mockup screenshot framing ------------------------------------------- */
+.shot {
+  @apply rounded-[28px];
+  border: 1px solid var(--hairline);
+  box-shadow: 0 30px 60px -30px rgba(15, 45, 32, 0.35);
+  background: #edf7f1;
+}
+
+/* scrollbar (subtle, light) */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-thumb { background: #c8dfd0; border-radius: 8px; }
+::-webkit-scrollbar-track { background: #eef5f0; }

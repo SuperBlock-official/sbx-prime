@@ -1,0 +1,80 @@
+import { Link } from "react-router-dom";
+import logo from "../assets/images/sbx-footer-logo.png";
+import superblock from "../assets/logos/superblock.png";
+
+const FOOTER_NAV = [
+ ["Marketplace", "/invest"],
+ ["How it works", "/how-it-works"],
+ ["Technology", "/technology"],
+ ["Trust & Security", "/trust"],
+ ["FAQ", "/faq"],
+ ["About", "/about"],
+];
+
+export default function Footer() {
+ return (
+ <footer className="px-3 pb-3 pt-8 sm:px-4 sm:pb-4">
+ <div className="mx-auto max-w-shell overflow-hidden rounded-[36px] border border-hairline bg-white shadow-[0_24px_60px_-40px_rgba(15,45,32,.4)]">
+ <div className="p-7 sm:p-10 lg:p-12">
+ {/* CTA band, mint→cyan gradient card (matches the app KPI cards) */}
+ <div className="rounded-[26px] bg-gradient-to-br from-brand-mint via-[#2ecbc4] to-brand-teal px-6 py-9 text-center sm:px-10">
+ <h2 className="mx-auto max-w-2xl font-display text-2xl font-extrabold leading-tight text-[#06231a] sm:text-3xl">
+ Institutional real estate, now yours, one square foot at a time.
+ </h2>
+ <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#06231a]/75">
+ Pledge into the Central London launch: 6–7% rental yield plus 3–5% capital appreciation potential.
+ </p>
+ <Link to="/register" className="btn-dark mt-6">Pledge your allocation</Link>
+ </div>
+
+ {/* columns */}
+ <div className="mt-12 grid gap-10 md:grid-cols-[1.3fr_1fr_1.2fr_1fr]">
+ <div>
+ <img src={logo} alt="SBX Prime" className="h-16 w-auto" />
+ <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink/55">
+ Institutional-grade tokenized real estate, one token, one square foot, one SPV share.
+ </p>
+ </div>
+ <div>
+ <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-ink/40">Contact</p>
+ <ul className="mt-4 space-y-2 text-sm text-ink/70">
+ <li><a href="mailto:hello@sbxprime.com" className="hover:text-brand-dark">hello@sbxprime.com</a></li>
+ <li><a href="tel:+447777700923" className="hover:text-brand-dark">+44 77777 00923</a></li>
+ </ul>
+ </div>
+ <div>
+ <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-ink/40">Find Us</p>
+ <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink/70">
+ 85 Great Portland Street, First Floor, London W1W 7LT, United Kingdom
+ </p>
+ </div>
+ <div>
+ <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-ink/40">Powered by</p>
+ <img src={superblock} alt="SUPERBLOCK" className="mt-4 h-7 w-auto" />
+ </div>
+ </div>
+
+ {/* footer nav + copyright */}
+ <div className="mt-11 flex flex-col items-center justify-between gap-4 border-t border-hairline pt-6 sm:flex-row">
+ <nav className="flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="Footer">
+ {FOOTER_NAV.map(([label, to]) => (
+ <Link key={label} to={to} className="font-display text-[13px] font-bold text-ink/65 transition-colors hover:text-brand-dark">
+ {label}
+ </Link>
+ ))}
+ </nav>
+ <p className="text-xs text-ink/45">© {new Date().getFullYear()} SBX Prime by SUPERBLOCK. All rights reserved.</p>
+ </div>
+
+ {/* legal */}
+ <p className="mt-8 text-[11px] leading-relaxed text-ink/40">
+ Tokens are securities offered only to qualified, professional, or accredited investors and are not
+ available to US persons, UK retail investors, or EEA/EU retail investors. Rental yields are indicative
+ and not guaranteed; capital appreciation figures are third-party market forecasts (Savills, JLL), capital is at risk and property values can fall as well as rise. Nothing on this site is investment,
+ legal, or tax advice.
+ </p>
+ </div>
+ </div>
+ </footer>
+ );
+}

@@ -1,0 +1,44 @@
+<svg width="300" height="52" viewBox="0 0 300 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="symG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A855F7"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="supG" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#A78BFA"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Network diamond symbol — ~52px tall at scale 0.45 -->
+  <g transform="translate(2, -1) scale(0.435)">
+    <path d="M43.9815 63.0497L31.2207 48.7876" stroke="url(#symG)" stroke-width="3.8" stroke-linecap="round"/>
+    <path d="M102.531 48.7876L89.77 63.0497"   stroke="url(#symG)" stroke-width="3.8" stroke-linecap="round"/>
+    <path d="M31.9707 42.7823L43.9809 30.0215"  stroke="url(#symG)" stroke-width="3.8" stroke-linecap="round"/>
+    <path d="M89.7699 30.022L101.029 42.0322"   stroke="url(#symG)" stroke-width="3.8" stroke-linecap="round"/>
+    <path d="M69.5024 9.00391L84.5151 24.7673"  stroke="url(#symG)" stroke-width="3.8" stroke-linecap="round"/>
+    <path d="M64.9987 9.00391L49.2354 24.7673"  stroke="url(#symG)" stroke-width="3.8" stroke-linecap="round"/>
+    <path d="M69.5024 46.5361L85.2658 30.0222"  stroke="url(#symG)" stroke-width="3.8" stroke-linecap="round"/>
+    <path d="M64.2482 46.5361L48.4849 30.7728"  stroke="url(#symG)" stroke-width="3.8" stroke-linecap="round"/>
+    <circle cx="66.5" cy="6"    r="4.5" stroke="url(#symG)" stroke-width="3.8" fill="none"/>
+    <circle cx="87.5" cy="27"   r="4.5" stroke="url(#symG)" stroke-width="3.8" fill="none"/>
+    <circle cx="47"   cy="27"   r="4.5" stroke="url(#symG)" stroke-width="3.8" fill="none"/>
+    <circle cx="29"   cy="45"   r="4.5" stroke="url(#symG)" stroke-width="3.8" fill="none"/>
+    <circle cx="104"  cy="45"   r="4.5" stroke="url(#symG)" stroke-width="3.8" fill="none"/>
+    <circle cx="66.5" cy="49.5" r="4.5" stroke="url(#symG)" stroke-width="3.8" fill="none"/>
+    <circle cx="87.5" cy="66"   r="4.5" stroke="url(#symG)" stroke-width="3.8" fill="none"/>
+    <circle cx="47"   cy="66"   r="3"   stroke="url(#symG)" stroke-width="3.8" fill="none"/>
+  </g>
+
+  <!-- "SUPER" — periwinkle blue -->
+  <text x="64" y="37"
+    font-family="'DM Sans','Arial Black',Arial,sans-serif"
+    font-weight="800" font-size="26" letter-spacing="0.5"
+    fill="url(#supG)">SUPER</text>
+
+  <!-- "BLOCK" — deep purple -->
+  <text x="177" y="37"
+    font-family="'DM Sans','Arial Black',Arial,sans-serif"
+    font-weight="800" font-size="26" letter-spacing="0.5"
+    fill="#7C3AED">BLOCK</text>
+</svg>

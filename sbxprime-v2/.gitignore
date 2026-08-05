@@ -1,0 +1,14 @@
+# dependencies / build
+node_modules
+dist
+dist-ssr
+*.local
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# raw source brochures (large reference PDFs — not needed to build/run)
+_source-brochures/
