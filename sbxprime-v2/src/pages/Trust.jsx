@@ -27,7 +27,7 @@ const LAYERS = [
  h: "Regulatory",
  items: [
  ["Compliance-first structure", "Every property is issued as a security to eligible investors only, structured with regulatory counsel across the jurisdictions we operate in."],
- ["Eligibility gating", "Qualified, professional, and accredited investors only. No US persons, no UK/EEA retail, enforced at KYC and on-chain."],
+ ["Eligibility gating", "This launch is offered under Regulation S to investors outside the US, UK, and Europe. US, UK, and EEA/EU persons are excluded for this launch, enforced at KYC and on-chain."],
  ["Full KYC/AML", "Bank-grade identity, sanctions, and source-of-funds screening before any settlement."],
  ["Professional advisers", "Structuring and audit support from Big-Four-calibre firms across the jurisdictions we operate in."],
  ],

@@ -169,8 +169,9 @@ export default function PledgeModule({ compact = false, pool }) {
  <label className="mt-4 flex cursor-pointer items-start gap-3 rounded-xl border border-hairline bg-mist p-4">
  <input type="checkbox" checked={certified} onChange={(e) => setCertified(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[#1FB462]" required />
  <span className="text-xs leading-relaxed text-ink/65">
- I confirm I am a qualified, professional, or accredited investor in my country of residence.
- I am not a US person, a UK retail investor, or an EEA/EU retail investor.
+ I confirm I am eligible to invest under the laws of my country of residence, and that I am not a
+ resident or citizen of the United States, the United Kingdom, or Europe (EEA/EU). This launch is
+ offered under Regulation S to investors outside those regions.
  </span>
  </label>
 
