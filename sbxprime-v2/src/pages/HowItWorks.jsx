@@ -66,7 +66,63 @@ export default function HowItWorks() {
  </div>
  </section>
 
- <section className="py-14">
+ {/* ---------- management & reporting ---------- */}
+ <section className="py-14 lg:py-16">
+ <div className="shell">
+ <SectionHead
+ eyebrow="Institutional-grade"
+ title="Managed and reported like a fund."
+ lede="Owning a square foot should feel like owning a unit in an institutional fund, not a DIY landlord problem. We run the building and report on it to the standard a professional investor expects."
+ center
+ />
+ <div className="mt-14 grid gap-6 lg:grid-cols-2">
+ <Fx scale className="card-dark p-7">
+ <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-brand/25 to-brand-teal/25 text-brand-dark">
+ <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01" /></svg>
+ </span>
+ <h3 className="mt-4 font-display text-lg font-extrabold text-ink">How we manage the building</h3>
+ <ul className="mt-4 space-y-3">
+ {[
+ ["Rent collection & arrears", "Monthly collection, chasing and reconciliation, so income arrives predictably."],
+ ["Leasing & rent reviews", "New lettings, renewals and upward-only reviews handled to grow income."],
+ ["Service charge & maintenance", "Planned and reactive maintenance, budgets managed with the agent."],
+ ["Insurance & compliance", "Buildings insurance, health-and-safety and regulatory compliance kept current."],
+ ["Capital works", "Refurbishment and capex planned to protect and grow the asset's value."],
+ ].map(([t, b]) => (
+ <li key={t} className="flex gap-3">
+ <span className="mt-1.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand/15 text-brand-dark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"><path d="M5 13l4 4L19 7" /></svg></span>
+ <span><b className="font-display text-sm font-bold text-ink">{t}.</b> <span className="text-[13px] leading-relaxed text-ink/55">{b}</span></span>
+ </li>
+ ))}
+ </ul>
+ </Fx>
+
+ <Fx scale delay={100} className="card-dark p-7">
+ <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-brand/25 to-brand-teal/25 text-brand-dark">
+ <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M9 17V9m4 8V5m4 12v-4M3 21h18" /></svg>
+ </span>
+ <h3 className="mt-4 font-display text-lg font-extrabold text-ink">What you receive</h3>
+ <ul className="mt-4 space-y-3">
+ {[
+ ["Monthly rent statement", "Your pro-rata USDC distribution with a clear income breakdown."],
+ ["Quarterly asset report", "Occupancy, leasing activity, arrears and outlook for each building you own."],
+ ["Independent valuation", "RICS-standard revaluation every 3 to 6 months, published to holders."],
+ ["Annual audited accounts", "The SPV's audited financial statements, once a year."],
+ ["On-chain distribution ledger", "Every payment recorded on-chain, reconcilable against the token register."],
+ ["Tax reporting pack", "Year-end summaries to make your own reporting straightforward."],
+ ].map(([t, b]) => (
+ <li key={t} className="flex gap-3">
+ <span className="mt-1.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand/15 text-brand-dark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"><path d="M5 13l4 4L19 7" /></svg></span>
+ <span><b className="font-display text-sm font-bold text-ink">{t}.</b> <span className="text-[13px] leading-relaxed text-ink/55">{b}</span></span>
+ </li>
+ ))}
+ </ul>
+ </Fx>
+ </div>
+ </div>
+ </section>
+
+ <section className="border-t border-hairline bg-white py-14">
  <div className="shell grid items-start gap-12 lg:grid-cols-[1fr_1.3fr]">
  <div>
  <SectionHead

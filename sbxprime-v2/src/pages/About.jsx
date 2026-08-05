@@ -23,6 +23,39 @@ export default function About() {
  </div>
  </section>
 
+ {/* ---------- vision & mission ---------- */}
+ <section className="border-b border-hairline bg-white py-14 lg:py-16">
+ <div className="shell">
+ <Fx className="mx-auto max-w-4xl text-center">
+ <p className="eyebrow mx-auto">Vision</p>
+ <h2 className="mt-3 font-display text-3xl font-extrabold leading-[1.1] sm:text-4xl">
+ A sovereign wealth fund, <span className="text-brand">owned and governed by the people</span>.
+ </h2>
+ <p className="lede mx-auto">
+ The world's largest pools of real assets belong to states and institutions. We think the same
+ quality of investing, the best buildings, underwritten properly and held for the long term,
+ should belong to individuals, and be governed by the people who own it.
+ </p>
+ </Fx>
+ <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
+ <Fx scale className="card-dark p-7">
+ <p className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-brand-dark">Mission</p>
+ <p className="mt-3 text-[15px] leading-relaxed text-ink/70">
+ Give qualified investors direct, compliant, and governed ownership of the world's trophy
+ real estate, one square foot at a time, with the underwriting standards of an institution.
+ </p>
+ </Fx>
+ <Fx scale delay={100} className="card-dark p-7">
+ <p className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-brand-dark">How we get there</p>
+ <p className="mt-3 text-[15px] leading-relaxed text-ink/70">
+ One standard unit (1 token = 1 sq ft = 1 SPV share), ring-fenced legal structure, monthly
+ USDC income, and on-chain governance that hands the biggest decisions back to token holders.
+ </p>
+ </Fx>
+ </div>
+ </div>
+ </section>
+
  <section className="py-12 lg:py-16">
  <div className="shell grid gap-12 lg:grid-cols-[1fr_1.2fr]">
  <Fx scale>
