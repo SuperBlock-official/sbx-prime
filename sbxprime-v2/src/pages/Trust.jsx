@@ -34,6 +34,36 @@ const LAYERS = [
  },
 ];
 
+/* What token holders vote on — the DAO's remit over each asset. */
+const GOVERNANCE = [
+ ["Disposal & exit", "When to sell an asset, at what reserve, and how proceeds are distributed."],
+ ["Refinancing & leverage", "Whether to place, refinance, or repay debt against the building."],
+ ["Major capital works", "Large refurbishments and capex above a set threshold, with budgets."],
+ ["Managing agent", "Appointing, reviewing, or replacing the institutional managing agent."],
+ ["Distribution policy", "How much net income is distributed versus reserved for the asset."],
+ ["Revaluation cadence", "How often the independent RICS valuation is commissioned and published."],
+];
+
+/* How a governed decision moves from idea to on-chain execution. */
+const GOV_FLOW = [
+ ["Propose", "Any holder above the proposal threshold can raise an on-chain proposal with a full rationale and budget."],
+ ["Vote", "One token equals one vote. Voting runs for a fixed window; quorum and majority thresholds are set per decision type."],
+ ["Timelock", "Passed proposals enter a timelock so every holder can see what is about to execute before it does."],
+ ["Execute", "The action executes on-chain and against the SPV, with the treasury and outcome recorded transparently."],
+];
+
+/* The full institutional lifecycle SBX Prime runs for every asset. */
+const LIFECYCLE = [
+ ["Source", "Off-market and on-market sourcing of institutional-grade assets in target cities.", "SBX"],
+ ["Acquire & structure", "Due diligence, independent valuation, and transfer into a ring-fenced English-law SPV.", "SBX"],
+ ["Tokenize", "The SPV is issued as ERC-3643 tokens: one token = one square foot = one share.", "SBX"],
+ ["Operate & lease", "CBRE-calibre management: rent collection, service charge, leasing, reviews and maintenance.", "SBX"],
+ ["Report & distribute", "Monthly USDC distributions and transparent reporting, on-chain and in-app.", "SBX"],
+ ["Revalue", "Independent RICS valuation every 3 to 6 months, published to every holder.", "SBX"],
+ ["Govern", "Holders vote on disposal, refinancing, major capex, and manager appointments.", "DAO"],
+ ["Exit & return", "The asset is sold on a governed mandate and net proceeds are distributed pro-rata.", "DAO"],
+];
+
 export default function Trust() {
  return (
  <>
@@ -80,6 +110,88 @@ export default function Trust() {
  </div>
  </div>
  ))}
+ </div>
+ </section>
+
+ {/* ---------- asset lifecycle ---------- */}
+ <section className="border-t border-hairline bg-white py-14 lg:py-16">
+ <div className="shell">
+ <SectionHead
+ eyebrow="Full lifecycle"
+ title="We run each asset for its entire life."
+ lede="From sourcing to sale, SBX Prime handles the full institutional lifecycle, and hands the biggest decisions to the people who own it. You hold the token; the building is never unmanaged."
+ center
+ />
+ <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+ {LIFECYCLE.map(([t, b, who], i) => (
+ <Fx key={t} delay={(i % 4) * 80} scale>
+ <div className="card-dark h-full p-6">
+ <div className="flex items-center justify-between">
+ <span className="grid h-10 w-10 place-items-center rounded-xl border border-brand/40 bg-brand/10 font-display font-extrabold text-brand-dark">
+ {i + 1}
+ </span>
+ <span className={`rounded-full px-2.5 py-0.5 font-display text-[10px] font-bold uppercase tracking-[0.12em] ${who === "DAO" ? "bg-brand-teal/15 text-brand-teal" : "bg-brand/12 text-brand-dark"}`}>
+ {who === "DAO" ? "You govern" : "SBX runs"}
+ </span>
+ </div>
+ <h3 className="mt-4 font-display text-base font-bold text-ink">{t}</h3>
+ <p className="mt-2 text-[13px] leading-relaxed text-ink/55">{b}</p>
+ </div>
+ </Fx>
+ ))}
+ </div>
+ </div>
+ </section>
+
+ {/* ---------- governance / DAO ---------- */}
+ <section className="relative overflow-hidden border-t border-hairline py-14 lg:py-16">
+ <NodeBackground opacity={0.2} />
+ <div className="shell relative">
+ <SectionHead
+ eyebrow="Governance · DAO"
+ title="A sovereign wealth fund, owned and governed by the people."
+ lede="The world's biggest funds are owned by states and institutions. SBX Prime flips that: the people who own the square feet make the decisions that matter, on-chain and one token at a time."
+ center
+ />
+
+ <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1fr]">
+ {/* what holders decide */}
+ <div>
+ <h3 className="font-display text-lg font-extrabold text-ink">What token holders decide</h3>
+ <div className="mt-6 grid gap-4 sm:grid-cols-2">
+ {GOVERNANCE.map(([t, b], i) => (
+ <Fx key={t} delay={i * 70} scale className="card-dark p-5">
+ <h4 className="font-display text-[15px] font-bold text-ink">{t}</h4>
+ <p className="mt-1.5 text-[13px] leading-relaxed text-ink/55">{b}</p>
+ </Fx>
+ ))}
+ </div>
+ </div>
+
+ {/* how a decision is made */}
+ <div>
+ <h3 className="font-display text-lg font-extrabold text-ink">How a decision is made</h3>
+ <ol className="mt-6 space-y-4">
+ {GOV_FLOW.map(([t, b], i) => (
+ <Fx as="li" key={t} delay={i * 80} className="flex gap-4 rounded-2xl border border-hairline bg-white/70 p-5 backdrop-blur">
+ <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br from-brand to-brand-mint font-display text-sm font-extrabold text-white">
+ {i + 1}
+ </span>
+ <div>
+ <h4 className="font-display text-[15px] font-bold text-ink">{t}</h4>
+ <p className="mt-1 text-[13px] leading-relaxed text-ink/55">{b}</p>
+ </div>
+ </Fx>
+ ))}
+ </ol>
+ <Fx delay={120} className="mt-5 flex items-start gap-3 rounded-2xl border border-brand/25 bg-brand/[0.06] p-4">
+ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" className="mt-0.5 shrink-0 text-brand-dark"><path d="M12 8v5M12 16h.01" /><circle cx="12" cy="12" r="9" /></svg>
+ <p className="text-[13px] leading-relaxed text-ink/70">
+ <b className="text-ink">Governance rolls out in phases.</b> At launch, holders vote on disposal and distribution decisions; the full on-chain remit widens as each asset and the token holder base mature.
+ </p>
+ </Fx>
+ </div>
+ </div>
  </div>
  </section>
 
