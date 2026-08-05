@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Invest from "./pages/Invest";
 import London from "./pages/London";
 import LondonPledge from "./pages/LondonPledge";
+import LondonFund from "./pages/LondonFund";
 import Prospectus from "./pages/Prospectus";
 import Dashboard from "./pages/Dashboard";
 import City from "./pages/City";
@@ -43,6 +44,7 @@ export default function App() {
  <Route path="/invest/london" element={<London />} />
  <Route path="/invest/:slug/prospectus" element={<Prospectus />} />
  <Route path="/invest/london-pledge" element={<LondonPledge />} />
+ <Route path="/invest/london-fund" element={<LondonFund />} />
  <Route path="/dashboard" element={<Dashboard />} />
  <Route path="/invest/:slug" element={<City />} />
  <Route path="/how-it-works" element={<HowItWorks />} />

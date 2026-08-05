@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Seo from "../lib/Seo";
 import { CITIES, GLOBAL_DEMAND } from "../data/cities";
-import { ASSETS } from "../data/asset";
+import { ASSETS, LONDON_FUND } from "../data/asset";
 import { RAISE } from "../lib/api";
 import { CityCard, TiltCard } from "../components/cards";
 import InterestModal from "../components/InterestModal";
@@ -68,6 +68,31 @@ export default function Invest() {
  />
  <Link to="/invest/london-pledge" className="btn-ghost shrink-0">Pledge into the pool</Link>
  </div>
+
+ {/* London Fund banner */}
+ <Fx scale className="mt-10">
+ <Link to="/invest/london-fund" className="group block overflow-hidden rounded-3xl border border-brand/25 bg-gradient-to-br from-brand-mint/15 via-white to-brand-teal/10 p-6 transition hover:border-brand/40 sm:p-8">
+ <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+ <div className="max-w-xl">
+ <span className="badge-live">New · Diversified</span>
+ <h3 className="mt-3 font-display text-2xl font-extrabold text-ink">The SBX London Fund</h3>
+ <p className="mt-2 text-sm leading-relaxed text-ink/60">
+ One commitment, a share of every London asset. Skip picking a single building and own a slice of
+ the whole {LONDON_FUND.assetCount}-asset Central London portfolio, {LONDON_FUND.cur}{(LONDON_FUND.valuation / 1e6).toFixed(1)}M gross,
+ with blended monthly income and one governance stake.
+ </p>
+ </div>
+ <div className="flex shrink-0 items-center gap-6">
+ <div>
+ <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink/45">Blended return</p>
+ <p className="font-display text-2xl font-extrabold text-brand-dark">{LONDON_FUND.totalPa} <span className="text-sm font-bold text-ink/50">p.a.</span></p>
+ </div>
+ <span className="btn-primary whitespace-nowrap">Invest in the fund</span>
+ </div>
+ </div>
+ </Link>
+ </Fx>
+
  <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
  {ASSETS.map((a, i) => (
  <Fx key={a.slug} delay={(i % 3) * 80} scale>

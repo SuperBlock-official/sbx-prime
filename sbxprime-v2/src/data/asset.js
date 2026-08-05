@@ -472,6 +472,31 @@ export function poolFor(a) {
 export const PROJECTION = DEFAULT_PROJECTION;
 export { DOCUMENTS, REFERENCES };
 
+/* The London Fund — one commitment, a share of every SBX London asset. */
+const FUND_SIZE = ASSETS.reduce((s, a) => s + a.size, 0);
+const FUND_VAL = ASSETS.reduce((s, a) => s + a.valuation, 0);
+export const LONDON_FUND = {
+  slug: "london-fund",
+  name: "SBX London Fund",
+  cur: "£",
+  status: "Launching soon",
+  assetCount: ASSETS.length,
+  size: FUND_SIZE, // 93,689 sq ft across the portfolio
+  valuation: FUND_VAL, // ~£77.5M gross asset value
+  pricePerSqft: Math.round(FUND_VAL / FUND_SIZE),
+  yieldPa: "6–7%",
+  appreciationPa: "3–5%",
+  totalPa: "9–11%",
+  holdings: ASSETS.map((a) => ({
+    slug: a.slug,
+    name: a.name,
+    area: a.area,
+    image: a.images.hero,
+    weight: Math.round((a.valuation / FUND_VAL) * 100),
+    stat: a.cardStat,
+  })),
+};
+
 /* Pledge-pool shortlist (the three targeted acquisitions) */
 export const SHORTLIST = ASSETS.slice(0, 3).map((a) => ({
   slug: a.slug,
