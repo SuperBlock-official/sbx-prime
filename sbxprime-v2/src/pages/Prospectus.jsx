@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Seo from "../lib/Seo";
 import PledgeModule from "../components/PledgeModule";
@@ -77,7 +76,6 @@ function GrowthChart({ projection }) {
 export default function Prospectus() {
   const { slug } = useParams();
   const a = ASSET_BY_SLUG[slug] || ASSET;
-  const [docOpen, setDocOpen] = useState(false);
   const projection = getProjection(a);
   const rentRows = [
     ["Current passing rent", a.rent.current, "current"],
@@ -379,14 +377,9 @@ export default function Prospectus() {
               Create your account and complete verification to view and download every document.
               Verification is handled by our team, usually within one business day.
             </p>
-            <Link to="/register" className="btn-primary mt-1" onClick={() => setDocOpen(true)}>
+            <Link to="/verify" className="btn-primary mt-1">
               Verify to access documents
             </Link>
-            {docOpen && (
-              <p className="mt-1 text-[13px] text-brand-dark">
-                Redirecting you to create an account and start verification.
-              </p>
-            )}
           </Fx>
         </div>
       </section>

@@ -17,6 +17,7 @@ import About from "./pages/About";
 import Whitepaper from "./pages/Whitepaper";
 import Faq from "./pages/Faq";
 import Register from "./pages/Register";
+import Verify from "./pages/Verify";
 
 function ScrollToTop() {
  const { pathname } = useLocation();
@@ -51,6 +52,7 @@ export default function App() {
  <Route path="/whitepaper" element={<Whitepaper />} />
  <Route path="/faq" element={<Faq />} />
  <Route path="/register" element={<Register />} />
+ <Route path="/verify" element={<Verify />} />
  <Route path="*" element={<Home />} />
  </Routes>
  </main>

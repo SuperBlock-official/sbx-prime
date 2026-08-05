@@ -33,6 +33,27 @@ export async function registerInterest(interest) {
 
 /* TODO(backend): launching soon data should come from the chain / API.
  Static snapshot used across the site until then. */
+export async function createAccount({ name, email }) {
+ console.log("[SBX Prime] create account", JSON.stringify({ name, email, at: new Date().toISOString() }));
+ await new Promise((r) => setTimeout(r, 700));
+ // TODO(backend): returns { userId, twoFactorSecret, otpauthUri } for TOTP enrolment
+ return { ok: true, otpauthUri: `otpauth://totp/SBX%20Prime:${encodeURIComponent(email)}?issuer=SBX%20Prime` };
+}
+
+export async function verifyTwoFactor({ code }) {
+ console.log("[SBX Prime] verify 2FA", JSON.stringify({ codeLength: String(code || "").length }));
+ await new Promise((r) => setTimeout(r, 600));
+ // TODO(backend): validate TOTP against the enrolled secret
+ return { ok: true };
+}
+
+export async function submitKyc({ email, documents }) {
+ console.log("[SBX Prime] submit KYC", JSON.stringify({ email, documents: documents.map((d) => d.label) }));
+ await new Promise((r) => setTimeout(r, 900));
+ // TODO(backend): multipart upload to superblock.ai; status stays "in_review"
+ return { ok: true, status: "in_review" };
+}
+
 export const RAISE = {
  targetUsd: 13_700_000,
  raisedUsd: 7_124_000,
