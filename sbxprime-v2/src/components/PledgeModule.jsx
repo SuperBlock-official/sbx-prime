@@ -43,11 +43,13 @@ export default function PledgeModule({ compact = false, pool }) {
 
  const price = cfg.price;
  const cur = cfg.cur || "$";
+ // pledges settle in USDC (USD-pegged); convert from GBP when the asset is priced in £
+ const usdcFx = cur === "£" ? 1.27 : 1;
  const calc = useMemo(() => {
  const ft = tab === "usd" ? Math.max(1, Math.floor((usd || 0) / price)) : Math.max(1, Math.floor(sqft || 0));
  const amount = ft * price;
- return { ft, amount, rentLow: amount * 0.06, rentHigh: amount * 0.07, apprLow: amount * 0.03, apprHigh: amount * 0.05 };
- }, [tab, usd, sqft, price]);
+ return { ft, amount, usdc: Math.round(amount * usdcFx), rentLow: amount * 0.06, rentHigh: amount * 0.07, apprLow: amount * 0.03, apprHigh: amount * 0.05 };
+ }, [tab, usd, sqft, price, usdcFx]);
 
  const pct = (cfg.raisedUsd / cfg.targetUsd) * 100;
  const investorNo = cfg.investors + 1;
@@ -142,6 +144,12 @@ export default function PledgeModule({ compact = false, pool }) {
  <dt className="text-ink/60">You would own</dt>
  <dd className="font-display font-bold text-ink">{calc.ft.toLocaleString()} sq ft · {cur}{fmtUsd(calc.amount)}</dd>
  </div>
+ {cur !== "$" && (
+ <div className="flex justify-between">
+ <dt className="text-ink/60">Settles in</dt>
+ <dd className="font-display font-bold text-ink">≈ ${fmtUsd(calc.usdc)} USDC</dd>
+ </div>
+ )}
  <div className="flex justify-between">
  <dt className="text-ink/60">Est. rental income (6–7% p.a.)</dt>
  <dd className="font-display font-bold text-brand-dark">{cur}{fmtUsd(calc.rentLow)}–{fmtUsd(calc.rentHigh)} / yr</dd>
