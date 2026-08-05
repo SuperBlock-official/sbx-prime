@@ -173,6 +173,25 @@ export default function Prospectus() {
               </p>
               {a.source && <p className="text-[13px] text-ink/45">Listing reference: {a.source}.</p>}
             </div>
+
+            {a.whyInvest && (
+              <Fx delay={80} className="mt-8 rounded-2xl border border-brand/20 bg-brand/[0.05] p-6">
+                <h3 className="flex items-center gap-2 font-display text-base font-extrabold text-ink">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-brand-dark"><path d="M13 2L4.09 12.11a1 1 0 0 0 .76 1.64H11l-1 8 8.91-10.11a1 1 0 0 0-.76-1.64H12z" /></svg>
+                  Why this is a good investment
+                </h3>
+                <ul className="mt-4 space-y-3">
+                  {a.whyInvest.map((p) => (
+                    <li key={p} className="flex gap-3">
+                      <span className="mt-1.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand/20 text-brand-dark">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"><path d="M5 13l4 4L19 7" /></svg>
+                      </span>
+                      <span className="text-[14px] leading-relaxed text-ink/70">{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Fx>
+            )}
           </div>
           <Fx scale delay={100}>
             <div className="card-dark overflow-hidden">

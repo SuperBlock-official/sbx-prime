@@ -89,6 +89,12 @@ export const ASSETS = [
     images: { hero: grosvenorHero, gallery: [grosvenor1, grosvenor2, grosvenor3] },
     overview:
       "A Grade II listed period building in Victoria & Belgravia, bought below replacement cost, part-let to established occupiers with leases to 2034 and clear reversionary headroom as the upper floors are brought to market rent.",
+    whyInvest: [
+      "Bought at £582 per sq ft, below Victoria investment comparables of £498 to £681.",
+      "Income today from established occupiers, with vacant upper floors to let at £82 to £97.50 per sq ft.",
+      "A trophy Victoria & Belgravia address, 300m from Victoria Station in a supply-constrained submarket.",
+      "125-year leasehold with clear asset-management upside: refurbishment, a roof terrace, and nearby medical demand.",
+    ],
     locationTitle: "Victoria & Belgravia, SW1",
     location: [
       ["Transport", "Victoria Station 300m away; Hyde Park Corner and St James's Park within a short walk."],
@@ -138,6 +144,12 @@ export const ASSETS = [
     images: { hero: threadHero, gallery: [thread1, thread2, thread3] },
     overview:
       "A highly attractive City core asset with a classic Portland stone façade, comprehensively refurbished in 2016 and single-let to a serviced-office operator on a lease to 2034 — a rare long-income opportunity in the heart of the City.",
+    whyInvest: [
+      "6.47% net initial yield, a rare long-income City core asset.",
+      "Single-let to a serviced-office operator to 2034, with an 8.7-year WAULT.",
+      "Comprehensively refurbished in 2016 to EPC B, with a costed path to a rare EPC A.",
+      "Steps from the Bank of England, within a 10-minute walk of eight transport hubs.",
+    ],
     locationTitle: "The heart of the City, EC2",
     location: [
       ["Transport", "Within a 10-minute walk of 8 transport hubs — Bank, Liverpool Street, Moorgate and Cannon Street."],
@@ -187,6 +199,12 @@ export const ASSETS = [
     images: { hero: chiswellHero, gallery: [chiswell1, chiswell2, chiswell3] },
     overview:
       "A corner City freehold on the border of the City and Shoreditch, 300m from Moorgate. Multi-let to six tenants with roughly £1.5m of recent capital expenditure delivering fully fitted Cat A+ floors, an extensive roof terrace and clear reversionary potential.",
+    whyInvest: [
+      "7.0% topped-up net initial yield on a corner City freehold.",
+      "Diversified income from six tenants, with low passing rent and clear reversion.",
+      "About £1.5m of recent capital expenditure delivering Cat A+ floors and a communal roof terrace.",
+      "On the border of the City and Shoreditch, 300m from Moorgate.",
+    ],
     locationTitle: "City / Shoreditch border, EC1",
     location: [
       ["Transport", "300m from Moorgate; Liverpool Street, Barbican and Old Street within a 10-minute walk."],
@@ -236,6 +254,12 @@ export const ASSETS = [
     images: { hero: vauxhallHero, gallery: [vauxhall1, vauxhall2, vauxhall3] },
     overview:
       "A rare vacant former warehouse in Westminster with prominent frontage on Vauxhall Bridge Road, bought at a low £390 per sq ft. Refurbished, the office ERV is around £925,000 pa; alternatively, positive pre-application feedback supports a 53-unit co-living scheme.",
+    whyInvest: [
+      "A low £390 per sq ft entry on a freehold with vacant possession.",
+      "A refurbished office ERV of around £925,000 per annum.",
+      "Optionality: an office refurbishment or a 53-unit co-living scheme, with positive pre-application feedback.",
+      "A two-minute walk from Pimlico, in the heart of Westminster.",
+    ],
     locationTitle: "Westminster · Pimlico, SW1V",
     location: [
       ["Transport", "Two-minute walk from Pimlico Station; Victoria 0.7 miles."],
@@ -285,6 +309,12 @@ export const ASSETS = [
     images: { hero: doverHero, gallery: [dover1, dover2, dover3] },
     overview:
       "An attractive corner freehold on Dover Street in the heart of Mayfair, single-let to luxury Italian mosaic house Sicis, who have occupied since 2015. A reversionary lease runs to September 2028 with RPI-linked reviews collared and capped at 2–5%.",
+    whyInvest: [
+      "A rare corner freehold in Mayfair, one of the world's most exclusive submarkets.",
+      "Single-let to Sicis, a global luxury brand, in occupation since 2015.",
+      "RPI-linked rent reviews collared and capped at 2 to 5%, so income grows with inflation.",
+      "Green Park within a four-minute walk, between Bond Street and Albemarle Street.",
+    ],
     locationTitle: "Mayfair, W1",
     location: [
       ["Transport", "Green Park Underground within a four-minute walk."],
@@ -334,6 +364,12 @@ export const ASSETS = [
     images: { hero: conduitHero, gallery: [conduit1, conduit2] },
     overview:
       "A freehold retail building on Conduit Street, one of the West End's most established thoroughfares linking Regent Street with Bond Street. Single-let with a net operating income of £1,394,000 and a rare late-night licence permitting operation until 2am.",
+    whyInvest: [
+      "6.8% gross yield on a prime Mayfair retail freehold, with £1.394m of net operating income.",
+      "A rare late-night licence permitting operation until 2am.",
+      "A prime Conduit Street position, linking Regent Street with Bond Street.",
+      "Mayfair, one of the world's most renowned luxury destinations.",
+    ],
     locationTitle: "Mayfair, W1S",
     location: [
       ["Setting", "Prime Conduit Street position, linking Regent Street with Bond Street."],
@@ -384,6 +420,12 @@ export const ASSETS = [
     images: { hero: bakerHero, gallery: [baker1, baker2] },
     overview:
       "A highly prominent mixed-use freehold opposite Baker Street Underground, benefiting from over 21.5 million annual passenger movements. Fully let across four units to strong national covenants including Bill's Restaurants and Robert Dyas, with a 9.1-year WAULT.",
+    whyInvest: [
+      "6.1% net initial yield, 100% let, with a 9.1-year WAULT.",
+      "Secured to strong national covenants including Bill's Restaurants and Robert Dyas.",
+      "90% of income secured beyond seven years.",
+      "Opposite Baker Street Underground, with over 21.5 million annual passenger movements.",
+    ],
     locationTitle: "Marylebone, W1U",
     location: [
       ["Transport", "Opposite Baker Street Underground — Metropolitan, Jubilee, Circle, District and Bakerloo lines."],
