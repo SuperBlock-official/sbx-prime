@@ -293,6 +293,14 @@ export default function Prospectus() {
                     </tr>
                   ))}
                 </tbody>
+                <tfoot>
+                  <tr className="border-t-2 border-brand/30 bg-brand/[0.06]">
+                    <td className="px-6 py-3 font-display text-[13px] font-extrabold uppercase tracking-wider text-ink">5-yr total ROI</td>
+                    <td className="px-3 py-3 text-right font-display font-bold text-brand-dark">{projection.reduce((s, [, y]) => s + y, 0).toFixed(1)}%</td>
+                    <td className="px-3 py-3 text-right font-display font-bold text-ink">{projection.reduce((s, [, , ap]) => s + ap, 0).toFixed(1)}%</td>
+                    <td className="px-6 py-3 text-right font-display text-base font-extrabold text-brand-dark">+{projection.reduce((s, [, y, ap]) => s + y + ap, 0).toFixed(1)}%</td>
+                  </tr>
+                </tfoot>
               </table>
             </Fx>
           </div>
