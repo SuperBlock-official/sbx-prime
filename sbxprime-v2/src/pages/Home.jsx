@@ -36,7 +36,7 @@ export default function Home() {
  {/* ============ HERO ============ */}
  <section className="relative overflow-hidden">
  <NodeBackground opacity={0.4} />
- <div className="shell relative grid items-center gap-14 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-24">
+ <div className="shell relative grid items-center gap-10 py-14 lg:grid-cols-[1.05fr_1fr] lg:py-20">
  <div>
  <Fx>
  <span className="badge-live">Launching soon in Central London</span>
@@ -285,7 +285,7 @@ export default function Home() {
  </section>
 
  {/* ============ FINAL CTA ============ */}
- <section className="relative overflow-hidden py-14 lg:py-28">
+ <section className="relative overflow-hidden py-16 lg:py-20">
  <NodeBackground opacity={0.3} />
  <div className="shell relative text-center">
  <Fx>

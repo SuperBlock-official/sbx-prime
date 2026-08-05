@@ -45,9 +45,12 @@
   }
   .btn:hover { transform: translateY(-2px); }
   .btn-primary {
-    @apply btn bg-brand text-white px-6 py-3.5;
-    box-shadow: 0 12px 26px -12px rgba(15, 135, 70, 0.55);
+    @apply btn px-6 py-3.5;
+    background: linear-gradient(118deg, var(--mint) 0%, #2ecbc4 46%, var(--teal) 100%);
+    color: #06231a;
+    box-shadow: 0 14px 30px -12px rgba(37, 169, 224, 0.5);
   }
+  .btn-primary:hover { box-shadow: 0 18px 36px -12px rgba(37, 169, 224, 0.6); }
   .btn-ghost {
     @apply btn px-6 py-3.5 text-ink bg-white;
     border: 1px solid var(--hairline);
