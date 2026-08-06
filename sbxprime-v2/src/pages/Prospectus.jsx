@@ -157,7 +157,7 @@ export default function Prospectus() {
       </section>
 
       {/* ---------- overview + facts ---------- */}
-      <section className="py-14 lg:py-16">
+      <section className="py-12 lg:py-14">
         <div className="shell grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div>
             <SectionHead
@@ -223,7 +223,7 @@ export default function Prospectus() {
       </section>
 
       {/* ---------- location / map ---------- */}
-      <section className="border-t border-hairline bg-white py-14 lg:py-16">
+      <section className="border-t border-hairline bg-white py-12 lg:py-14">
         <div className="shell">
           <SectionHead eyebrow="Location" title={`${a.locationTitle} — the address that defends value.`} />
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
@@ -247,7 +247,7 @@ export default function Prospectus() {
       </section>
 
       {/* ---------- investment breakdown ---------- */}
-      <section className="py-14 lg:py-16">
+      <section className="py-12 lg:py-14">
         <div className="shell">
           <SectionHead
             eyebrow="Investment breakdown"
@@ -327,7 +327,7 @@ export default function Prospectus() {
       </section>
 
       {/* ---------- tenancy ---------- */}
-      <section className="border-t border-hairline bg-white py-14 lg:py-16">
+      <section className="border-t border-hairline bg-white py-12 lg:py-14">
         <div className="shell">
           <SectionHead
             eyebrow="Tenancy"
@@ -347,7 +347,7 @@ export default function Prospectus() {
       </section>
 
       {/* ---------- management & lifecycle ---------- */}
-      <section className="py-14 lg:py-16">
+      <section className="py-12 lg:py-14">
         <div className="shell">
           <SectionHead
             eyebrow="Management & lifecycle"
@@ -372,7 +372,7 @@ export default function Prospectus() {
       </section>
 
       {/* ---------- gated document bank ---------- */}
-      <section className="border-t border-hairline bg-white py-14 lg:py-16">
+      <section className="border-t border-hairline bg-white py-12 lg:py-14">
         <div className="shell">
           <SectionHead
             eyebrow="Document bank"
@@ -412,7 +412,7 @@ export default function Prospectus() {
       </section>
 
       {/* ---------- references ---------- */}
-      <section className="py-14 lg:py-16">
+      <section className="py-12 lg:py-14">
         <div className="shell">
           <SectionHead
             eyebrow="References & advisors"

@@ -17,7 +17,7 @@ export default function HowItWorks() {
  />
  <section className="relative overflow-hidden border-b border-hairline">
  <NodeBackground opacity={0.3} />
- <div className="shell relative py-12 lg:py-16">
+ <div className="shell relative py-12 lg:py-14">
  <SectionHead
  eyebrow="How it works"
  title="Five steps from browsing to a rent payment."
@@ -67,7 +67,7 @@ export default function HowItWorks() {
  </section>
 
  {/* ---------- management & reporting ---------- */}
- <section className="py-14 lg:py-16">
+ <section className="py-12 lg:py-14">
  <div className="shell">
  <SectionHead
  eyebrow="Institutional-grade"

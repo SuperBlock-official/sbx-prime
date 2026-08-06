@@ -66,7 +66,7 @@
     box-shadow: 0 18px 40px -28px rgba(15, 45, 32, 0.28);
   }
   .eyebrow {
-    @apply font-display text-xs font-bold uppercase tracking-[0.22em] text-brand;
+    @apply inline-flex items-center rounded-full border border-brand/20 bg-brand/[0.08] px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-brand-dark;
   }
   .h-section {
     @apply font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl lg:text-[2.75rem];

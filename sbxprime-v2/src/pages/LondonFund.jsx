@@ -80,7 +80,7 @@ export default function LondonFund() {
       </section>
 
       {/* ---------- how the fund works ---------- */}
-      <section className="py-14 lg:py-16">
+      <section className="py-12 lg:py-14">
         <div className="shell">
           <SectionHead
             eyebrow="How the fund works"
@@ -101,7 +101,7 @@ export default function LondonFund() {
       </section>
 
       {/* ---------- holdings ---------- */}
-      <section className="border-t border-hairline bg-white py-14 lg:py-16">
+      <section className="border-t border-hairline bg-white py-12 lg:py-14">
         <div className="shell">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHead
@@ -135,7 +135,7 @@ export default function LondonFund() {
       </section>
 
       {/* ---------- proof / cta ---------- */}
-      <section className="py-14 lg:py-16">
+      <section className="py-12 lg:py-14">
         <div className="shell grid items-center gap-10 lg:grid-cols-2">
           <SectionHead
             eyebrow="Diversified income"

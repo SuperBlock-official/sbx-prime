@@ -14,7 +14,7 @@ export default function About() {
  />
  <section className="relative overflow-hidden border-b border-hairline">
  <NodeBackground opacity={0.3} />
- <div className="shell relative py-12 lg:py-16">
+ <div className="shell relative py-12 lg:py-14">
  <SectionHead
  eyebrow="About"
  title="Institutional real estate, without the institution-sized ticket."
@@ -24,7 +24,7 @@ export default function About() {
  </section>
 
  {/* ---------- vision & mission ---------- */}
- <section className="border-b border-hairline bg-white py-14 lg:py-16">
+ <section className="border-b border-hairline bg-white py-12 lg:py-14">
  <div className="shell">
  <Fx className="mx-auto max-w-4xl text-center">
  <p className="eyebrow mx-auto">Vision</p>
@@ -56,7 +56,7 @@ export default function About() {
  </div>
  </section>
 
- <section className="py-12 lg:py-16">
+ <section className="py-12 lg:py-14">
  <div className="shell grid gap-12 lg:grid-cols-[1fr_1.2fr]">
  <Fx scale>
  <div className="card-dark gloss p-7">

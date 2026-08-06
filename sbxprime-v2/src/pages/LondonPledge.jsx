@@ -196,7 +196,7 @@ export default function LondonPledge() {
       </section>
 
       {/* ---------- reassurance / proof ---------- */}
-      <section className="py-12 lg:py-16">
+      <section className="py-12 lg:py-14">
         <div className="shell grid items-center gap-10 lg:grid-cols-2">
           <SectionHead
             eyebrow="No surprises"

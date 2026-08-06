@@ -74,7 +74,7 @@ export default function Trust() {
  />
  <section className="relative overflow-hidden border-b border-hairline">
  <NodeBackground opacity={0.3} />
- <div className="shell relative py-12 lg:py-16">
+ <div className="shell relative py-12 lg:py-14">
  <SectionHead
  eyebrow="Trust & security"
  title="Engineered so you never have to trust us."
@@ -87,7 +87,7 @@ export default function Trust() {
  </div>
  </section>
 
- <section className="py-12 lg:py-16">
+ <section className="py-12 lg:py-14">
  <div className="shell space-y-16">
  {LAYERS.map((layer, li) => (
  <div key={layer.h}>
@@ -114,7 +114,7 @@ export default function Trust() {
  </section>
 
  {/* ---------- asset lifecycle ---------- */}
- <section className="border-t border-hairline bg-white py-14 lg:py-16">
+ <section className="border-t border-hairline bg-white py-12 lg:py-14">
  <div className="shell">
  <SectionHead
  eyebrow="Full lifecycle"
@@ -144,7 +144,7 @@ export default function Trust() {
  </section>
 
  {/* ---------- governance / DAO ---------- */}
- <section className="relative overflow-hidden border-t border-hairline py-14 lg:py-16">
+ <section className="relative overflow-hidden border-t border-hairline py-12 lg:py-14">
  <NodeBackground opacity={0.2} />
  <div className="shell relative">
  <SectionHead

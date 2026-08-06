@@ -58,7 +58,7 @@ export default function Invest() {
  </section>
 
  {/* ---------- Central London launch assets ---------- */}
- <section className="border-b border-hairline bg-white py-14 lg:py-16">
+ <section className="border-b border-hairline bg-white py-12 lg:py-14">
  <div className="shell">
  <div className="flex flex-wrap items-end justify-between gap-4">
  <SectionHead
@@ -124,7 +124,7 @@ export default function Invest() {
  </div>
  </section>
 
- <section className="py-12 lg:py-16">
+ <section className="py-12 lg:py-14">
  <div className="shell">
  <SectionHead eyebrow="Global pipeline" title="The world's trophy markets, next." lede="London is live. These markets open as demand routes our pipeline." />
  {/* filter tabs */}
