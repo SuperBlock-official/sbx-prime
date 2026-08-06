@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { ASSETS } from "../data/asset";
 import appicon from "../assets/images/sbx-appicon.svg";
 
-/* Shows once per full page load (not on client-side route changes). */
+/* Shows once per browser session: a session cookie (cleared on browser close)
+   survives full page reloads, while the module flag covers SPA route changes. */
 let alreadyShown = false;
+const SEEN = "sbx_popup_seen";
+const hasSeen = () => typeof document !== "undefined" && document.cookie.includes(`${SEEN}=1`);
 
 // a spread across Central London: Victoria, the City, Mayfair
 const PICKS = ["grosvenor-gardens", "threadneedle-street", "dover-street"]
@@ -15,9 +18,10 @@ export default function LaunchPopup() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (alreadyShown) return;
+    if (alreadyShown || hasSeen()) return;
     const t = setTimeout(() => {
       alreadyShown = true;
+      document.cookie = `${SEEN}=1; path=/; samesite=lax`; // session cookie
       setOpen(true);
     }, 1300);
     return () => clearTimeout(t);

@@ -4,7 +4,7 @@ export const FAQ_CATEGORIES = [
  items: [
  {
  q: "What is SBX Prime?",
- a: "SBX Prime is an institutional-grade real estate tokenization platform by SUPERBLOCK. Qualified investors globally own fractional shares of trophy commercial real estate through ERC-3643 security tokens, where one token represents one square foot and one share in the property-owning SPV.",
+ a: "SBX Prime is an institutional-grade real estate tokenization platform by SUPERBLOCK. Investors outside the US, UK, and Europe own fractional shares of trophy commercial real estate through ERC-3643 security tokens, where one token represents one square foot and one share in the property-owning SPV.",
  },
  {
  q: "What does 1 token actually represent?",
@@ -25,7 +25,7 @@ export const FAQ_CATEGORIES = [
  items: [
  {
  q: "Who can invest?",
- a: "SBX Prime is available to qualified, professional, and accredited investors globally, subject to the laws of your country of residence. The platform is not available to US persons, UK retail investors, or EEA/EU retail investors. Eligibility is self-certified at pledge and verified during onboarding KYC.",
+ a: "The current launch is offered under Regulation S to investors outside the US, UK, and Europe, subject to the laws of your country of residence. It is not available to persons in the United States, the United Kingdom, or Europe (EEA/EU). Eligibility is self-certified at pledge and verified during onboarding KYC.",
  },
  {
  q: "Why ERC-3643 and not a normal token?",

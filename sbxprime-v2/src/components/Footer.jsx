@@ -68,8 +68,8 @@ export default function Footer() {
 
  {/* legal */}
  <p className="mt-8 text-[11px] leading-relaxed text-ink/40">
- Tokens are securities offered only to qualified, professional, or accredited investors and are not
- available to US persons, UK retail investors, or EEA/EU retail investors. Rental yields are indicative
+ Tokens are securities. This launch is offered under Regulation S to investors outside the US, UK, and
+ Europe, and is not available to persons in the United States, the United Kingdom, or Europe. Rental yields are indicative
  and not guaranteed; capital appreciation figures are third-party market forecasts (Savills, JLL), capital is at risk and property values can fall as well as rise. Nothing on this site is investment,
  legal, or tax advice.
  </p>

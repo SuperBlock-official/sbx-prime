@@ -84,12 +84,12 @@ const SECTIONS = [
     title: "Regulatory structure",
     body: [
       "There is no single right wrapper for tokenized real estate. SBX Prime structures each offering around three variables, where the asset sits, where the issuing vehicle is formed, and where the investor resides, then selects the most efficient combination for that deal.",
-      "In practice this lets a US-accredited base and a global, largely retail, non-US audience invest in the same asset, each under the rule set built for them.",
+      "In practice this lets a US-accredited base and a broad global audience outside the US invest in the same asset, each under the rule set built for them.",
       "For the current Central London launch, tokens are offered under Regulation S only, to investors outside the United States, the United Kingdom, and Europe.",
     ],
     bullets: [
       ["Delaware SPV", "A Delaware LLC or corporation holds the asset and its economic and governance rights; the tokens are that vehicle's shares."],
-      ["Reg D + Reg S", "Rule 506(c) admits verified accredited US investors; Regulation S opens the same offering to non-US investors, including retail outside the US, targeting a global audience."],
+      ["Reg D + Reg S", "Rule 506(c) admits verified accredited US investors; Regulation S opens the same offering to investors outside the US, targeting a broad global audience."],
       ["Offshore vehicles", "Tax-neutral BVI, Cayman Islands, or Jersey companies for international pooling where they are the more efficient home."],
       ["Private fund structures", "Regulated or exempt fund vehicles where a fund, rather than a single-asset SPV, is the better fit."],
     ],
