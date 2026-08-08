@@ -57,7 +57,7 @@ export default function Footer() {
  {/* footer nav + copyright */}
  <div className="mt-11 flex flex-col items-center justify-between gap-4 border-t border-hairline pt-6 sm:flex-row">
  <nav className="flex flex-wrap items-center gap-x-6 gap-y-2" aria-label="Footer">
- {FOOTER_NAV.map(([label, to]) => (
+ {[...FOOTER_NAV, ["Privacy", "/privacy"], ["Terms", "/terms"]].map(([label, to]) => (
  <Link key={label} to={to} className="font-display text-[13px] font-bold text-ink/65 transition-colors hover:text-brand-dark">
  {label}
  </Link>

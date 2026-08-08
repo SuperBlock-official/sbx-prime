@@ -28,7 +28,7 @@ export function Counter({ value, prefix = "", suffix = "", decimals = 0, classNa
  ? val.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
  : Math.round(val).toLocaleString("en-US");
  return (
- <span ref={ref} className={className}>
+ <span ref={ref} className={`tnum ${className}`}>
  {prefix}{fmt}{suffix}
  </span>
  );

@@ -20,6 +20,8 @@ import Whitepaper from "./pages/Whitepaper";
 import Faq from "./pages/Faq";
 import Register from "./pages/Register";
 import Verify from "./pages/Verify";
+import Legal from "./pages/Legal";
+import NotFound from "./pages/NotFound";
 
 function ScrollToTop() {
  const { pathname } = useLocation();
@@ -37,8 +39,11 @@ export default function App() {
  return (
  <BrowserRouter>
  <ScrollToTop />
+ <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:font-display focus:text-sm focus:font-bold focus:text-white">
+ Skip to content
+ </a>
  <Nav />
- <main>
+ <main id="main">
  <Routes>
  <Route path="/" element={<Home />} />
  <Route path="/invest" element={<Invest />} />
@@ -56,7 +61,9 @@ export default function App() {
  <Route path="/faq" element={<Faq />} />
  <Route path="/register" element={<Register />} />
  <Route path="/verify" element={<Verify />} />
- <Route path="*" element={<Home />} />
+ <Route path="/privacy" element={<Legal />} />
+ <Route path="/terms" element={<Legal />} />
+ <Route path="*" element={<NotFound />} />
  </Routes>
  </main>
  <Footer />

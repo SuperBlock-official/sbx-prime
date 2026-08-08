@@ -29,6 +29,30 @@
   }
   h1, h2, h3, h4 {
     @apply font-display;
+    text-wrap: balance; /* no orphan words on headings */
+  }
+  p, li {
+    text-wrap: pretty;
+  }
+  /* tabular figures everywhere numbers matter (stats, prices, tables, counters) */
+  .tnum,
+  table,
+  .kpi-value,
+  .badge-live,
+  time {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+  /* visible keyboard focus (accessibility + polish) */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+    border-radius: 6px;
   }
   ::selection {
     background: rgba(31, 180, 98, 0.25);
