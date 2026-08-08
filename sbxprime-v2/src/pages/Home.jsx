@@ -130,7 +130,7 @@ export default function Home() {
 
  {/* ============ WHY LONDON ============ */}
  <section className="relative overflow-hidden py-14 lg:py-14">
- <div className="shell grid items-center gap-12 lg:grid-cols-2">
+ <div className="shell grid items-center gap-10 lg:grid-cols-2">
  <div>
  <SectionHead
  eyebrow="Why London first"
@@ -178,10 +178,10 @@ export default function Home() {
  lede="Institutional process, consumer-grade experience. Pledge first, verification only happens when the raise closes."
  center
  />
- <div className="mt-14">
+ <div className="mt-10">
  <StepsFlow />
  </div>
- <Fx className="mt-12 text-center">
+ <Fx className="mt-9 text-center">
  <Link to="/how-it-works" className="btn-ghost">See the full journey</Link>
  </Fx>
  </div>
@@ -198,7 +198,7 @@ export default function Home() {
  />
  <Fx><Link to="/invest" className="btn-ghost shrink-0">All markets →</Link></Fx>
  </div>
- <div className="mt-12 grid gap-6 md:grid-cols-3">
+ <div className="mt-9 grid gap-6 md:grid-cols-3">
  {CITIES.slice(0, 3).map((c, i) => (
  <CityCard key={c.slug} city={c} raise={RAISE} delay={i * 110} onRegister={(city) => setModal(city.slug)} />
  ))}
@@ -209,7 +209,7 @@ export default function Home() {
  {/* ============ TOKEN CARD + ERC3643 ============ */}
  <section className="relative overflow-hidden border-y border-hairline bg-white py-14 lg:py-14">
  <NodeBackground opacity={0.22} />
- <div className="shell relative grid items-center gap-14 lg:grid-cols-[1fr_1.15fr]">
+ <div className="shell relative grid items-center gap-10 lg:grid-cols-[1fr_1.15fr]">
  <div>
  <SectionHead
  eyebrow="The token"
@@ -236,7 +236,7 @@ export default function Home() {
  lede="Browse, invest, collect rent, resell, and ask the AI, the SBX Prime app puts an institutional back office on your phone."
  center
  />
- <Fx delay={120} className="mt-14"><AppShowcase /></Fx>
+ <Fx delay={120} className="mt-10"><AppShowcase /></Fx>
  </div>
  </section>
 
@@ -249,10 +249,10 @@ export default function Home() {
  lede="Track value and rent, vote on asset decisions, and resell on the secondary marketplace, from one dashboard."
  center
  />
- <Fx scale delay={120} className="mx-auto mt-12 max-w-5xl">
+ <Fx scale delay={120} className="mx-auto mt-9 max-w-5xl">
  <DashboardMockup />
  </Fx>
- <div className="mx-auto mt-12 grid max-w-4xl gap-5 sm:grid-cols-3">
+ <div className="mx-auto mt-9 grid max-w-4xl gap-5 sm:grid-cols-3">
  {[
  ["“Finally a structure I could explain to my compliance officer in one sentence.”", "Family office principal, Dubai"],
  ["“The 1 sq ft standard makes cross-market comparison trivial. That's the unlock.”", "Private banker, Singapore"],
@@ -271,7 +271,7 @@ export default function Home() {
 
  {/* ============ FAQ ============ */}
  <section className="border-t border-hairline bg-white py-14">
- <div className="shell grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+ <div className="shell grid gap-10 lg:grid-cols-[1fr_1.4fr]">
  <SectionHead
  eyebrow="Questions"
  title="Answered like a bank would."

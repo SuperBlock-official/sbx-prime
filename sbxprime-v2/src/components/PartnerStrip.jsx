@@ -13,7 +13,7 @@ export default function PartnerStrip() {
  );
  return (
  <div className="marquee overflow-hidden py-2" aria-label="Real estate, advisory and infrastructure partners">
- <div className="flex w-max gap-14">{[row("a"), row("b")]}</div>
+ <div className="flex w-max gap-10">{[row("a"), row("b")]}</div>
  </div>
  );
 }

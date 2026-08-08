@@ -178,7 +178,7 @@ export default function Technology() {
  {/* hero */}
  <section className="relative overflow-hidden border-b border-hairline">
  <NodeBackground opacity={0.4} />
- <div className="shell relative grid items-center gap-12 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-14">
+ <div className="shell relative grid items-center gap-10 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-14">
  <div>
  <Fx>
  <span className="eyebrow">Technology</span>
@@ -221,13 +221,13 @@ export default function Technology() {
  lede="Tokenization here isn't a wrapper on a wrapper. It's a direct chain of ownership from the building to your wallet."
  center
  />
- <div className="mt-14"><TokenizationFlow /></div>
+ <div className="mt-10"><TokenizationFlow /></div>
  </div>
  </section>
 
  {/* architecture stack */}
  <section className="border-y border-hairline bg-white py-14 lg:py-14">
- <div className="shell grid items-start gap-12 lg:grid-cols-[1fr_1.15fr]">
+ <div className="shell grid items-start gap-10 lg:grid-cols-[1fr_1.15fr]">
  <SectionHead
  eyebrow="Architecture"
  title="Five layers, one source of truth."
@@ -239,7 +239,7 @@ export default function Technology() {
 
  {/* ERC-3643 */}
  <section className="py-14 lg:py-14">
- <div className="shell grid items-start gap-12 lg:grid-cols-[1fr_1.3fr]">
+ <div className="shell grid items-start gap-10 lg:grid-cols-[1fr_1.3fr]">
  <div>
  <SectionHead
  eyebrow="The token standard"
@@ -299,7 +299,7 @@ export default function Technology() {
  lede="The same on-chain machinery, delivered as a consumer-grade app."
  center
  />
- <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+ <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
  {[[appAi, "Prime AI"], [appDao, "DAO voting"]].map(([img, label], i) => (
  <Fx key={label} scale delay={i * 120}>
  <figure className="text-center">
@@ -321,7 +321,7 @@ export default function Technology() {
  lede="No invoices, no waiting. A smart contract splits net rent by ownership and streams it to your wallet in USDC, every month."
  center
  />
- <div className="mx-auto mt-12 max-w-4xl"><RentFlow /></div>
+ <div className="mx-auto mt-9 max-w-4xl"><RentFlow /></div>
  </div>
  </section>
 

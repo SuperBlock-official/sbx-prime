@@ -99,7 +99,7 @@ export default function Prospectus() {
       {/* ---------- hero ---------- */}
       <section className="relative overflow-hidden border-b border-hairline">
         <NodeBackground opacity={0.25} />
-        <div className="shell relative grid gap-12 py-14 lg:grid-cols-[1.25fr_1fr] lg:py-14">
+        <div className="shell relative grid gap-10 py-14 lg:grid-cols-[1.25fr_1fr] lg:py-14">
           <div>
             <Fx>
               <div className="flex flex-wrap items-center gap-3">
@@ -158,7 +158,7 @@ export default function Prospectus() {
 
       {/* ---------- overview + facts ---------- */}
       <section className="py-12 lg:py-14">
-        <div className="shell grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+        <div className="shell grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div>
             <SectionHead
               eyebrow="Overview"
@@ -255,7 +255,7 @@ export default function Prospectus() {
             lede="Every figure below is triangulated against independent comparable evidence, not our own optimism. Current, market-comparable and forecast are shown side by side so you can see the headroom."
           />
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-2">
+          <div className="mt-9 grid gap-8 lg:grid-cols-2">
             <Fx scale className="card-dark p-6">
               <div className="flex items-baseline justify-between">
                 <h3 className="font-display text-lg font-bold text-ink">Rent · per sq ft / yr</h3>
@@ -354,7 +354,7 @@ export default function Prospectus() {
             title="We run the building for its whole life — so you never have to."
             lede="From acquisition to eventual sale, SUPERBLOCK manages the full institutional lifecycle of the asset. You hold the token; we handle everything a landlord does."
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               ["Acquire & structure", "Due diligence, independent valuation, and transfer into a ring-fenced SPV."],
               ["Operate & lease", "CBRE-calibre management: rent collection, service charge, leasing and reviews."],

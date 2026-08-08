@@ -28,7 +28,7 @@ export default function Footer() {
  </div>
 
  {/* columns */}
- <div className="mt-12 grid gap-10 md:grid-cols-[1.3fr_1fr_1.2fr_1fr]">
+ <div className="mt-9 grid gap-10 md:grid-cols-[1.3fr_1fr_1.2fr_1fr]">
  <div>
  <img src={logo} alt="SBX Prime" className="h-16 w-auto" />
  <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink/55">

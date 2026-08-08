@@ -30,7 +30,7 @@ export default function LondonFund() {
       {/* ---------- hero ---------- */}
       <section className="relative overflow-hidden border-b border-hairline">
         <NodeBackground opacity={0.28} />
-        <div className="shell relative grid gap-12 py-14 lg:grid-cols-[1.15fr_1fr] lg:py-16">
+        <div className="shell relative grid gap-10 py-14 lg:grid-cols-[1.15fr_1fr] lg:py-16">
           <div>
             <Fx>
               <span className="badge-live">Diversified · Central London</span>
@@ -88,7 +88,7 @@ export default function LondonFund() {
             lede="The SBX London Fund is a single vehicle that owns a stake in each London SPV. Your fund shares give you proportional economic and governance rights across the entire portfolio."
             center
           />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {HOW.map(([t, b], i) => (
               <Fx key={t} delay={i * 80} scale className="card-dark h-full p-6">
                 <span className="grid h-10 w-10 place-items-center rounded-xl border border-brand/40 bg-brand/10 font-display font-extrabold text-brand-dark">{i + 1}</span>
@@ -111,7 +111,7 @@ export default function LondonFund() {
             />
             <Fx><Link to="/invest" className="btn-ghost shrink-0">Browse individually →</Link></Fx>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {f.holdings.map((h, i) => (
               <Fx key={h.slug} delay={(i % 4) * 70} scale>
                 <Link to={`/invest/${h.slug}/prospectus`} className="group block h-full">

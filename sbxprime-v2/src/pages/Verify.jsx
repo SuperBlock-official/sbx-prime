@@ -83,7 +83,7 @@ export default function Verify() {
 
       <section className="relative overflow-hidden">
         <NodeBackground opacity={0.28} />
-        <div className="shell relative grid gap-12 py-14 lg:grid-cols-[0.95fr_1.1fr] lg:py-16">
+        <div className="shell relative grid gap-10 py-14 lg:grid-cols-[0.95fr_1.1fr] lg:py-16">
           {/* ---------- left rail ---------- */}
           <div>
             <Fx>

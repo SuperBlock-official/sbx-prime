@@ -34,7 +34,7 @@ export default function London() {
 
  <section className="relative overflow-hidden border-b border-hairline">
  <NodeBackground opacity={0.25} />
- <div className="shell relative grid gap-12 py-14 lg:grid-cols-[1.25fr_1fr] lg:py-14">
+ <div className="shell relative grid gap-10 py-14 lg:grid-cols-[1.25fr_1fr] lg:py-14">
  {/* ---------- asset detail ---------- */}
  <div>
  <Fx>
@@ -63,7 +63,7 @@ export default function London() {
  </div>
  </Fx>
 
- <div className="mt-14 grid gap-x-10 gap-y-4 sm:grid-cols-2">
+ <div className="mt-10 grid gap-x-10 gap-y-4 sm:grid-cols-2">
  {FACTS.map(([k, v], i) => (
  <Fx key={k} delay={i * 50} className="flex items-baseline justify-between gap-6 border-b border-ink/10 pb-3">
  <span className="text-xs uppercase tracking-wider text-ink/45">{k}</span>
@@ -72,7 +72,7 @@ export default function London() {
  ))}
  </div>
 
- <Fx delay={120} className="mt-12">
+ <Fx delay={120} className="mt-9">
  <SectionHead
  eyebrow="The numbers"
  title="Underwritten like an institution buys."
@@ -95,7 +95,7 @@ export default function London() {
  </div>
  </Fx>
 
- <div className="relative mt-12">
+ <div className="relative mt-9">
  <Fx scale>
  <img src={officeImg} alt="Office floor detail" className="h-64 w-full rounded-3xl border border-hairline object-cover sm:h-72" />
  </Fx>

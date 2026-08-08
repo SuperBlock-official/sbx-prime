@@ -310,7 +310,7 @@ export default function Whitepaper() {
           </div>
 
           {/* sections */}
-          <div className="mt-12 space-y-12">
+          <div className="mt-9 space-y-12">
             {SECTIONS.map((s, i) => (
               <section key={s.id}>
                 <AnchorHeading id={s.id} n={String(i + 1).padStart(2, "0")}>{s.title}</AnchorHeading>
@@ -356,7 +356,7 @@ export default function Whitepaper() {
           </div>
 
           {/* download */}
-          <div id="get-pdf" className="mt-14 scroll-mt-28 rounded-xl border border-hairline bg-mist/40 p-6">
+          <div id="get-pdf" className="mt-10 scroll-mt-28 rounded-xl border border-hairline bg-mist/40 p-6">
             {state === "done" ? (
               <div className="flex items-center gap-3">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand/15 font-display text-lg text-brand">✓</span>

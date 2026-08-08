@@ -13,7 +13,7 @@ export default function Register() {
  />
  <section className="relative overflow-hidden">
  <NodeBackground opacity={0.3} />
- <div className="shell relative grid gap-12 py-16 lg:grid-cols-[1fr_1.1fr] lg:py-14">
+ <div className="shell relative grid gap-10 py-16 lg:grid-cols-[1fr_1.1fr] lg:py-14">
  <div>
  <SectionHead
  eyebrow="Pledge"

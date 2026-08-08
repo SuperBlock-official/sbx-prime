@@ -26,7 +26,7 @@ export default function HowItWorks() {
  />
 
  {/* explainer video (same as the original site) */}
- <Fx scale delay={120} className="mx-auto mt-12 max-w-3xl">
+ <Fx scale delay={120} className="mx-auto mt-9 max-w-3xl">
  <div className="shot overflow-hidden bg-ink" style={{ aspectRatio: "16 / 9" }}>
  <iframe
  className="h-full w-full"
@@ -39,7 +39,7 @@ export default function HowItWorks() {
  </div>
  </Fx>
 
- <div className="mt-16"><StepsFlow /></div>
+ <div className="mt-10"><StepsFlow /></div>
  </div>
  </section>
 
@@ -51,7 +51,7 @@ export default function HowItWorks() {
  lede="The same three moments, on your phone. Browse standardised listings, complete verification once, and build a portfolio square foot by square foot."
  center
  />
- <Fx scale delay={140} className="mt-12"><PhoneFan /></Fx>
+ <Fx scale delay={140} className="mt-9"><PhoneFan /></Fx>
  </div>
  </section>
 
@@ -75,7 +75,7 @@ export default function HowItWorks() {
  lede="Owning a square foot should feel like owning a unit in an institutional fund, not a DIY landlord problem. We run the building and report on it to the standard a professional investor expects."
  center
  />
- <div className="mt-14 grid gap-6 lg:grid-cols-2">
+ <div className="mt-10 grid gap-6 lg:grid-cols-2">
  <Fx scale className="card-dark p-7">
  <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-brand/25 to-brand-teal/25 text-brand-dark">
  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01" /></svg>
@@ -123,7 +123,7 @@ export default function HowItWorks() {
  </section>
 
  <section className="border-t border-hairline bg-white py-14">
- <div className="shell grid items-start gap-12 lg:grid-cols-[1fr_1.3fr]">
+ <div className="shell grid items-start gap-10 lg:grid-cols-[1fr_1.3fr]">
  <div>
  <SectionHead
  eyebrow="Under the hood"

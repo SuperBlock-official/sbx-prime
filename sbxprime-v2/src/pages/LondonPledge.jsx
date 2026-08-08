@@ -49,7 +49,7 @@ export default function LondonPledge() {
       {/* ---------- hero + pool status ---------- */}
       <section className="relative overflow-hidden border-b border-hairline">
         <NodeBackground opacity={0.3} />
-        <div className="shell relative grid gap-12 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-14">
+        <div className="shell relative grid gap-10 py-14 lg:grid-cols-[1.1fr_1fr] lg:py-14">
           <div>
             <Fx>
               <span className="badge-live">Pledge pool now open</span>
@@ -111,7 +111,7 @@ export default function LondonPledge() {
             lede="Because the asset is acquired with your pledges, you commit to the London pool rather than to a single building. Here is exactly what happens."
             center
           />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map(([t, b], i) => (
               <Fx key={t} delay={i * 90} scale>
                 <div className="card-dark h-full p-6">
@@ -152,7 +152,7 @@ export default function LondonPledge() {
               lede="These are live buildings currently in the market. One will be acquired with the pool; the final selection is independently valued and confirmed at acquisition."
             />
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SHORTLIST.map((a, i) => (
               <Fx key={a.slug} delay={i * 80} scale>
                 <Link to={`/invest/${a.slug}/prospectus`} className="group block">

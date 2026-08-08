@@ -25,7 +25,7 @@ export default function City() {
  />
  <section className="relative overflow-hidden">
  <NodeBackground opacity={0.3} />
- <div className="shell relative grid items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
+ <div className="shell relative grid items-center gap-10 py-16 lg:grid-cols-2 lg:py-24">
  <div>
  <Fx>
  {city.status === "soon" ? <span className="badge-soon">Coming soon</span> : <span className="badge-pipeline">Pipeline</span>}

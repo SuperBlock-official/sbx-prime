@@ -3,6 +3,7 @@ import NodeBackground from "../components/NodeBackground";
 import PartnerStrip from "../components/PartnerStrip";
 import { Fx, SectionHead } from "../components/ui";
 import mark from "../assets/images/sbx-mark-round.svg";
+import peopleImg from "../assets/assets/people-office.jpg";
 
 export default function About() {
  return (
@@ -37,7 +38,7 @@ export default function About() {
  should belong to individuals, and be governed by the people who own it.
  </p>
  </Fx>
- <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
+ <div className="mx-auto mt-9 grid max-w-4xl gap-6 sm:grid-cols-2">
  <Fx scale className="card-dark p-7">
  <p className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-brand-dark">Mission</p>
  <p className="mt-3 text-[15px] leading-relaxed text-ink/70">
@@ -57,7 +58,7 @@ export default function About() {
  </section>
 
  <section className="py-12 lg:py-14">
- <div className="shell grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+ <div className="shell grid gap-10 lg:grid-cols-[1fr_1.2fr]">
  <Fx scale>
  <div className="card-dark gloss p-7">
  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-brand/30 to-brand-teal/30 font-display text-2xl font-extrabold text-brand">
@@ -108,6 +109,30 @@ export default function About() {
  ))}
  </div>
  </div>
+ </div>
+ </section>
+
+ {/* people band */}
+ <section className="border-t border-hairline py-12 lg:py-14">
+ <div className="shell">
+ <Fx scale className="relative overflow-hidden rounded-[28px] border border-hairline">
+ <img
+ src={peopleImg}
+ alt="The SBX Prime community, investors and the team behind the platform"
+ className="h-[280px] w-full object-cover object-center sm:h-[420px]"
+ />
+ <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent" />
+ <div className="absolute inset-x-0 bottom-0 p-6 sm:p-10">
+ <p className="font-display text-[11px] font-bold uppercase tracking-[0.18em] text-brand-mint">Who this is for</p>
+ <h2 className="mt-2 max-w-2xl font-display text-2xl font-extrabold text-white sm:text-3xl">
+ For the people who've been priced out of the world's best buildings.
+ </h2>
+ <p className="mt-2 max-w-xl text-sm leading-relaxed text-white/75">
+ Owning prime real estate used to mean writing an eight-figure cheque. We built SBX Prime so it can
+ start at a single square foot, for a global community, not just institutions.
+ </p>
+ </div>
+ </Fx>
  </div>
  </section>
 
