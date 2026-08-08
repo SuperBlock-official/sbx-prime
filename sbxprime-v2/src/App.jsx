@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import LaunchPopup from "./components/LaunchPopup";
+import CookieConsent from "./components/CookieConsent";
 import Home from "./pages/Home";
 import Invest from "./pages/Invest";
 import London from "./pages/London";
@@ -60,6 +61,7 @@ export default function App() {
  </main>
  <Footer />
  <LaunchPopup />
+ <CookieConsent />
  </BrowserRouter>
  );
 }
