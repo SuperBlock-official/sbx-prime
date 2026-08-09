@@ -1,6 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/images/sbx-footer-logo.png";
 import superblock from "../assets/logos/superblock.png";
+import ctaDefault from "../assets/assets/about-hero-london.jpg";
+import ctaHow from "../assets/assets/howitworks-hero.jpg";
+import ctaTrust from "../assets/assets/dover-hero.jpg";
+import ctaAbout from "../assets/assets/people-office.jpg";
+import ctaTech from "../assets/images/office-interior.jpg";
+import ctaInvest from "../assets/assets/grosvenor-hero.jpg";
 
 const FOOTER_NAV = [
  ["Marketplace", "/invest"],
@@ -11,20 +17,41 @@ const FOOTER_NAV = [
  ["About", "/about"],
 ];
 
+/* CTA imagery varies by page — a different Central London face for each area. */
+const CTA_IMG = [
+ ["/how-it-works", ctaHow],
+ ["/technology", ctaTech],
+ ["/trust", ctaTrust],
+ ["/about", ctaAbout],
+ ["/invest", ctaInvest],
+];
+function ctaImageFor(path) {
+ const m = CTA_IMG.find(([p]) => path === p || path.startsWith(p + "/"));
+ return m ? m[1] : ctaDefault;
+}
+
 export default function Footer() {
+ const { pathname } = useLocation();
+ const ctaImg = ctaImageFor(pathname);
  return (
  <footer className="px-3 pb-3 pt-8 sm:px-4 sm:pb-4">
  <div className="mx-auto max-w-shell overflow-hidden rounded-[36px] border border-hairline bg-white shadow-[0_24px_60px_-40px_rgba(15,45,32,.4)]">
  <div className="p-7 sm:p-10 lg:p-12">
- {/* CTA band, mint→cyan gradient card (matches the app KPI cards) */}
- <div className="rounded-[26px] bg-gradient-to-br from-brand-mint via-[#2ecbc4] to-brand-teal px-6 py-9 text-center sm:px-10">
- <h2 className="mx-auto max-w-2xl font-display text-2xl font-extrabold leading-tight text-[#06231a] sm:text-3xl">
+ {/* CTA band, mint→cyan gradient card with page-specific imagery */}
+ <div className="grid overflow-hidden rounded-[26px] bg-gradient-to-br from-brand-mint via-[#2ecbc4] to-brand-teal lg:grid-cols-[1.15fr_1fr]">
+ <div className="px-6 py-9 sm:px-10 lg:py-12">
+ <h2 className="max-w-xl font-display text-2xl font-extrabold leading-tight text-[#06231a] sm:text-3xl">
  Institutional real estate, now yours, one square foot at a time.
  </h2>
- <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#06231a]/75">
+ <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#06231a]/75">
  Pledge into the Central London launch: 6–7% rental yield plus 3–5% capital appreciation potential.
  </p>
  <Link to="/register" className="btn-dark mt-6">Pledge your allocation</Link>
+ </div>
+ <div className="relative min-h-[220px] lg:min-h-0">
+ <img src={ctaImg} alt="" className="absolute inset-0 h-full w-full object-cover" />
+ <div className="absolute inset-0 bg-gradient-to-r from-brand-mint/40 to-transparent lg:from-brand-mint/25" />
+ </div>
  </div>
 
  {/* columns */}

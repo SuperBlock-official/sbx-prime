@@ -75,20 +75,23 @@ export default function Trust() {
  path="/trust"
  />
  <section className="relative overflow-hidden border-b border-hairline">
- <NodeBackground opacity={0.3} />
- <div className="shell relative grid items-center gap-10 py-12 lg:grid-cols-[1.05fr_1fr] lg:py-14">
- <div>
- <SectionHead
- eyebrow="Trust & security"
- title="Engineered so you never have to trust us."
- lede="Your ownership doesn't depend on SBX Prime existing. It's structured in three independent layers, asset, platform, and regulatory."
- />
+ {/* full-bleed hero image with the message overlaid */}
+ <img src={trustHero} alt="A grand institutional building conveying security and permanence" className="absolute inset-0 h-full w-full object-cover" />
+ <div className="absolute inset-0 bg-gradient-to-r from-ink/92 via-ink/75 to-ink/35" />
+ <div className="shell relative py-20 lg:py-28">
+ <Fx className="max-w-2xl">
+ <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur">
+ Trust & security
+ </span>
+ <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl">
+ Engineered so you never have to trust us.
+ </h1>
+ <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
+ Your ownership doesn't depend on SBX Prime existing. It's structured in three independent layers, asset, platform, and regulatory.
+ </p>
+ </Fx>
  <Fx delay={160} className="mt-8 max-w-sm">
  <PushNotification body="Annual RICS valuation published, Central London asset +4.2% YoY." time="1d" delay={600} />
- </Fx>
- </div>
- <Fx scale delay={100} className="relative">
- <img src={trustHero} alt="A grand institutional building conveying security and permanence" className="h-[300px] w-full rounded-3xl border border-hairline object-cover shadow-[0_45px_90px_-40px_rgba(15,45,32,.4)] sm:h-[400px]" />
  </Fx>
  </div>
  </section>

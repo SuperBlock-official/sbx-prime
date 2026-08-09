@@ -7,7 +7,6 @@ import NodeBackground from "../components/NodeBackground";
 import { PhoneFan, WebShowcase } from "../components/mockups";
 import { Fx, SectionHead } from "../components/ui";
 import { Icon } from "../components/icons";
-import howItWorksHero from "../assets/assets/howitworks-hero.jpg";
 
 export default function HowItWorks() {
  return (
@@ -20,16 +19,12 @@ export default function HowItWorks() {
  <section className="relative overflow-hidden border-b border-hairline">
  <NodeBackground opacity={0.3} />
  <div className="shell relative py-12 lg:py-14">
- <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
  <SectionHead
  eyebrow="How it works"
  title="Five steps from browsing to a rent payment."
  lede="The full investor journey, built so that nothing irreversible happens until you've verified and the raise has closed."
+ center
  />
- <Fx scale delay={100} className="relative">
- <img src={howItWorksHero} alt="An investor using the SBX Prime app" className="h-[280px] w-full rounded-3xl border border-hairline object-cover shadow-[0_45px_90px_-40px_rgba(15,45,32,.4)] sm:h-[360px]" />
- </Fx>
- </div>
 
  {/* explainer video (same as the original site) */}
  <Fx scale delay={120} className="mx-auto mt-10 max-w-3xl">
