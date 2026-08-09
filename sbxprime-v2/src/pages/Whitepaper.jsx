@@ -98,21 +98,23 @@ const SECTIONS = [
     id: "tokenomics",
     title: "Tokenomics & fees",
     body: [
-      "Each property issues its own ERC-3643 contract, named SBX-[PROPERTY_CODE]. Supply is fixed at issuance and equals the building's total square footage; the token price is the independent valuation divided by that area. Tokens have zero decimals, so you own whole square feet, never fractions of one.",
+      "Each property issues its own ERC-3643 contract, named SBX-[PROPERTY_CODE]. Supply is fixed at issuance and equals the building's total square footage. The token price is the total cost of acquiring the asset, the purchase price plus acquisition costs and the issuance fee, divided by that area, so every cost is reflected in the price you pay. Tokens have zero decimals, so you own whole square feet, never fractions of one.",
+      "We are transparent about every fee. Platform fees are fixed and shown below. The management fee is not fixed by the platform: it is set per asset and paid to that asset's manager, who can differ from building to building, and is disclosed in full on each asset's prospectus.",
     ],
     table: {
       head: ["Fee", "Rate", "When charged"],
       rows: [
-        ["Platform fee", "1.0%", "At investment"],
-        ["Management fee", "8% of rental income", "Quarterly"],
-        ["Performance fee", "20% above an 8% IRR", "At exit"],
-        ["Secondary market", "0.5% per side", "On each trade"],
+        ["Issuance fee", "2.5%", "At issuance (in the token price)"],
+        ["Transaction fee", "0.25%", "Per transaction"],
+        ["Secondary marketplace", "1.5%", "Per trade on the marketplace"],
+        ["Instant liquidity pool", "4.0%", "On instant-liquidity withdrawals"],
+        ["Management fee", "Varies by asset", "Paid to the asset's manager, see prospectus"],
       ],
     },
     bullets: [
       ["Rent collected", "Gross rent is collected by the SPV's managing agent."],
-      ["Costs & fees deducted", "Operating costs, then the management fee, are deducted."],
-      ["Distributed on-chain", "A smart contract splits the remainder pro-rata and pays each registered wallet."],
+      ["Costs & fees deducted", "Operating expenses, then the per-asset management fee, are deducted."],
+      ["Distributed on-chain", "A smart contract splits the net remainder pro-rata and pays each registered wallet."],
     ],
   },
   {

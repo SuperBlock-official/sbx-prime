@@ -6,7 +6,7 @@ import PushNotification from "../components/PushNotification";
 import { TiltCard } from "../components/cards";
 import { Fx, SectionHead, Counter, ReturnSplit } from "../components/ui";
 import ApproxMap from "../components/ApproxMap";
-import { ASSET_BY_SLUG, ASSET, getProjection, poolFor, DOCUMENTS, REFERENCES } from "../data/asset";
+import { ASSET_BY_SLUG, ASSET, getProjection, poolFor, costModel, PLATFORM_FEES, DOCUMENTS, REFERENCES } from "../data/asset";
 
 /* Simple, dependency-free comparison bar (current / comparable / forecast). */
 function CompareBars({ rows, prefix = "£", suffix = "" }) {
@@ -77,6 +77,8 @@ export default function Prospectus() {
   const { slug } = useParams();
   const a = ASSET_BY_SLUG[slug] || ASSET;
   const projection = getProjection(a);
+  const cm = costModel(a);
+  const money = (n) => a.cur + Math.round(n).toLocaleString("en-US");
   const rentRows = [
     ["Current passing rent", a.rent.current, "current"],
     ["Market comparable", a.rent.comparable, "comparable"],
@@ -206,7 +208,7 @@ export default function Prospectus() {
                   ["Built / refurbished", a.refurbished],
                   ["EPC rating", a.epc],
                   ["WAULT", a.wault],
-                  ["Managing agent", a.managingAgent],
+                  ["Asset manager", cm.manager],
                   ["Independent valuer", a.valuer],
                   ["Token standard", "ERC-3643 · 1 token = 1 sq ft"],
                   ["Distributions", a.distribution],
@@ -323,6 +325,95 @@ export default function Prospectus() {
               </table>
             </Fx>
           </div>
+        </div>
+      </section>
+
+      {/* ---------- transparent costs & income ---------- */}
+      <section className="border-t border-hairline bg-white py-12 lg:py-14">
+        <div className="shell">
+          <SectionHead
+            eyebrow="Costs & income · full transparency"
+            title="Every cost, in the open."
+            lede="We show exactly how the token price is built and how income reaches you: total cost to acquire ÷ square feet sets the price, and gross rent minus expenses and the asset's management fee sets what you earn."
+          />
+
+          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+            {/* cost to acquire → price per token */}
+            <Fx scale className="card-dark overflow-hidden p-0">
+              <div className="border-b border-hairline bg-brand/[0.04] px-6 py-4">
+                <h3 className="font-display text-base font-bold text-ink">What builds the token price</h3>
+              </div>
+              <dl className="divide-y divide-hairline px-6">
+                {[
+                  ["Purchase price", money(cm.purchase)],
+                  [`Acquisition costs (${cm.acqCostsPct}%)`, money(cm.acqCosts), "SDLT, legal, diligence, agent"],
+                  [`Issuance fee (${cm.issuanceFeePct}%)`, money(cm.issuance)],
+                ].map(([k, v, note]) => (
+                  <div key={k} className="flex items-baseline justify-between gap-4 py-3">
+                    <dt className="text-sm text-ink/60">{k}{note && <span className="block text-[11px] text-ink/40">{note}</span>}</dt>
+                    <dd className="font-display text-sm font-bold text-ink tnum">{v}</dd>
+                  </div>
+                ))}
+                <div className="flex items-baseline justify-between gap-4 border-t-2 border-brand/25 py-3">
+                  <dt className="font-display text-sm font-extrabold text-ink">Total cost to acquire</dt>
+                  <dd className="font-display text-base font-extrabold text-ink tnum">{money(cm.totalCost)}</dd>
+                </div>
+              </dl>
+              <div className="flex items-baseline justify-between gap-4 bg-brand/[0.06] px-6 py-4">
+                <span className="text-sm text-ink/70">÷ {a.size.toLocaleString()} sq ft (tokens)</span>
+                <span className="font-display text-lg font-extrabold text-brand-dark tnum">{a.cur}{cm.pricePerToken.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / token</span>
+              </div>
+            </Fx>
+
+            {/* income → per-token income */}
+            <Fx scale delay={100} className="card-dark overflow-hidden p-0">
+              <div className="flex items-center justify-between border-b border-hairline bg-brand/[0.04] px-6 py-4">
+                <h3 className="font-display text-base font-bold text-ink">What reaches you, per year</h3>
+                <span className="text-[11px] text-ink/45">{cm.incomeBasis}</span>
+              </div>
+              <dl className="divide-y divide-hairline px-6">
+                {[
+                  ["Gross rent", money(cm.gross)],
+                  [`Operating expenses (${cm.opexPct}%)`, "− " + money(cm.opex), "service charge, insurance, voids"],
+                  [`Management fee (${cm.mgmtFeePct}%)`, "− " + money(cm.mgmt), `paid to ${cm.manager}`],
+                ].map(([k, v, note]) => (
+                  <div key={k} className="flex items-baseline justify-between gap-4 py-3">
+                    <dt className="text-sm text-ink/60">{k}{note && <span className="block text-[11px] text-ink/40">{note}</span>}</dt>
+                    <dd className="font-display text-sm font-bold text-ink tnum">{v}</dd>
+                  </div>
+                ))}
+                <div className="flex items-baseline justify-between gap-4 border-t-2 border-brand/25 py-3">
+                  <dt className="font-display text-sm font-extrabold text-ink">Net income</dt>
+                  <dd className="font-display text-base font-extrabold text-brand-dark tnum">{money(cm.net)}</dd>
+                </div>
+              </dl>
+              <div className="flex items-baseline justify-between gap-4 bg-brand/[0.06] px-6 py-4">
+                <span className="text-sm text-ink/70">{a.cur}{cm.incomePerToken.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / token · net</span>
+                <span className="font-display text-lg font-extrabold text-brand-dark tnum">{cm.netYield}% net yield</span>
+              </div>
+            </Fx>
+          </div>
+
+          {/* platform fees */}
+          <Fx delay={140} className="mt-6 rounded-2xl border border-hairline bg-mist/40 p-6">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 className="font-display text-base font-bold text-ink">Platform fees</h3>
+              <span className="text-[12px] text-ink/50">Management fee is per-asset ({cm.mgmtFeePct}% here, to {cm.manager})</span>
+            </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {PLATFORM_FEES.map(([label, rate, when]) => (
+                <div key={label} className="rounded-xl border border-hairline bg-white p-4">
+                  <p className="font-display text-xl font-extrabold text-brand-dark tnum">{rate}</p>
+                  <p className="mt-1 font-display text-[13px] font-bold text-ink">{label}</p>
+                  <p className="mt-0.5 text-[11px] leading-relaxed text-ink/50">{when}</p>
+                </div>
+              ))}
+            </div>
+          </Fx>
+          <p className="mt-4 text-[11px] leading-relaxed text-ink/40">
+            Figures indicative and rounded. Income basis noted per asset; net yield is net income ÷ total cost to acquire.
+            Capital is at risk and returns are not guaranteed.
+          </p>
         </div>
       </section>
 

@@ -472,6 +472,52 @@ export function poolFor(a) {
 export const PROJECTION = DEFAULT_PROJECTION;
 export { DOCUMENTS, REFERENCES };
 
+/* ---------------- transparent cost & income model ----------------
+   Token price = total cost of acquiring the asset (purchase + acquisition
+   costs + issuance fee) ÷ saleable area. Income = gross rent − operating
+   expenses − the per-asset management fee (paid to that asset's manager). */
+export const ACQ_COSTS_PCT = 6.8; // SDLT, legal, diligence, agent (purchaser's costs)
+export const ISSUANCE_FEE_PCT = 2.5; // SBX issuance fee, reflected in the token price
+
+export const PLATFORM_FEES = [
+  ["Issuance fee", "2.5%", "Included in the token price at issuance"],
+  ["Transaction fee", "0.25%", "Per transaction"],
+  ["Secondary marketplace", "1.5%", "Per trade on the marketplace"],
+  ["Instant liquidity pool", "4.0%", "On instant-liquidity withdrawals"],
+];
+
+/* Per-asset economics. The management fee varies per asset and is paid to that
+   asset's manager (who can differ per building). Figures indicative. */
+const ECONOMICS = {
+  "grosvenor-gardens": { manager: "Savills", mgmtFeePct: 8, grossRent: 970_000, opexPct: 15, incomeBasis: "stabilised target" },
+  "threadneedle-street": { manager: "CBRE", mgmtFeePct: 6, grossRent: 676_620, opexPct: 5, incomeBasis: "passing rent" },
+  "chiswell-street": { manager: "Cushman & Wakefield", mgmtFeePct: 9, grossRent: 811_290, opexPct: 12, incomeBasis: "topped-up rent" },
+  "vauxhall-bridge-road": { manager: "JLL", mgmtFeePct: 10, grossRent: 925_000, opexPct: 14, incomeBasis: "ERV on refurbishment" },
+  "dover-street": { manager: "Knight Frank", mgmtFeePct: 5, grossRent: 595_000, opexPct: 4, incomeBasis: "passing rent" },
+  "conduit-street": { manager: "Savills", mgmtFeePct: 5, grossRent: 1_394_000, opexPct: 4, incomeBasis: "net operating income" },
+  "baker-street": { manager: "CBRE", mgmtFeePct: 7, grossRent: 491_000, opexPct: 5, incomeBasis: "passing rent" },
+};
+
+export function costModel(a) {
+  const e = ECONOMICS[a.slug] || {};
+  const purchase = a.valuation;
+  const acqCosts = Math.round((purchase * ACQ_COSTS_PCT) / 100);
+  const issuance = Math.round((purchase * ISSUANCE_FEE_PCT) / 100);
+  const totalCost = purchase + acqCosts + issuance;
+  const pricePerToken = Math.round((totalCost / a.size) * 100) / 100;
+  const gross = e.grossRent || 0;
+  const opex = Math.round((gross * (e.opexPct || 0)) / 100);
+  const mgmt = Math.round((gross * (e.mgmtFeePct || 0)) / 100);
+  const net = gross - opex - mgmt;
+  const incomePerToken = Math.round((net / a.size) * 100) / 100;
+  const netYield = totalCost ? Math.round((net / totalCost) * 1000) / 10 : 0;
+  return {
+    cur: a.cur, purchase, acqCosts, acqCostsPct: ACQ_COSTS_PCT, issuance, issuanceFeePct: ISSUANCE_FEE_PCT,
+    totalCost, pricePerToken, gross, opex, opexPct: e.opexPct || 0, mgmt, mgmtFeePct: e.mgmtFeePct || 0,
+    manager: e.manager || "Institutional managing agent", net, incomePerToken, netYield, incomeBasis: e.incomeBasis || "indicative",
+  };
+}
+
 /* The London Fund — one commitment, a share of every SBX London asset. */
 const FUND_SIZE = ASSETS.reduce((s, a) => s + a.size, 0);
 const FUND_VAL = ASSETS.reduce((s, a) => s + a.valuation, 0);
