@@ -11,7 +11,7 @@ export default function About() {
  <>
  <Seo
  title="About, SBX Prime by SUPERBLOCK"
- description="SBX Prime is built by SUPERBLOCK and founded by Umair Ahmad (ex-MSCI, ex-JLL) to give qualified investors direct, compliant ownership of trophy commercial real estate."
+ description="SBX Prime is built by SUPERBLOCK and a team of specialists across finance, real estate, technology, transformation, accounting and audit, working with the world's best builders, to give investors direct, compliant ownership of trophy commercial real estate."
  path="/about"
  />
  <section className="relative overflow-hidden border-b border-hairline">
@@ -68,58 +68,47 @@ export default function About() {
  </div>
  </section>
 
+ {/* ---------- team & partners ---------- */}
  <section className="py-12 lg:py-14">
- <div className="shell grid gap-10 lg:grid-cols-[1fr_1.2fr]">
- <Fx scale>
- <div className="card-dark gloss p-7">
- <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-brand/30 to-brand-teal/30 font-display text-2xl font-extrabold text-brand">
- UA
- </div>
- <h2 className="mt-5 font-display text-2xl font-extrabold">Umair Ahmad</h2>
- <p className="font-display text-sm font-bold text-brand">Founder & CEO</p>
- <p className="mt-4 text-sm leading-relaxed text-ink/60">
- Umair spent his career on the institutional side of the table, real estate indices and risk
- analytics at <b className="text-ink">MSCI</b>, then capital markets and investor advisory at{" "}
- <b className="text-ink">JLL</b>. SBX Prime is the product he kept waiting for someone else to
- build: the underwriting standards of an institution, delivered at the ticket size of an individual.
- </p>
- <p className="mt-4 text-sm italic leading-relaxed text-ink/50">
- “Tokenization doesn't need more tokens. It needs better buildings, cleaner structures, and
- paperwork a regulator can love.”
- </p>
- </div>
- </Fx>
-
- <div className="space-y-6">
- <Fx delay={100}>
- <div className="card-dark p-7">
- <div className="flex items-center gap-4">
- <img src={mark} alt="" className="h-12 w-12" />
- <h2 className="font-display text-xl font-extrabold">Built by SUPERBLOCK</h2>
- </div>
- <p className="mt-4 text-sm leading-relaxed text-ink/60">
- SUPERBLOCK is the technology company behind SBX Prime: the tokenization engine, the ERC-3643
- identity layer, the on-chain register reconciliation, and the distribution rails that pay rent
- in USDC every month. The platform runs on Polygon with AWS and Azure infrastructure.
- </p>
- </div>
- </Fx>
- <div className="grid gap-5 sm:grid-cols-3">
+ <div className="shell">
+ <SectionHead
+ eyebrow="The team"
+ title="A team effort, not a solo act."
+ lede="SBX Prime isn't one person. It's a team of specialists and partners brought together across every discipline a serious real-estate platform needs, working with some of the world's best builders."
+ />
+ <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
  {[
- ["Ex-MSCI · Ex-JLL", "Founding team from index, risk, and capital-markets desks."],
- ["Compliance-first", "Securities issued to eligible investors only; eligibility enforced on-chain."],
- ["1 sq ft standard", "One comparable unit across every market we open."],
- ].map(([t, b], i) => (
- <Fx key={t} delay={i * 90} scale>
- <div className="group card-dark gloss h-full p-5">
- <span className="icon-spin grid h-9 w-9 place-items-center rounded-lg bg-brand/15 text-brand">◆</span>
- <p className="mt-3 font-display text-sm font-bold text-ink">{t}</p>
- <p className="mt-1.5 text-xs leading-relaxed text-ink/55">{b}</p>
- </div>
+ ["M3 3v18h18M7 15l3-3 3 2 5-6", "Finance & capital markets", "Underwriting, structuring, and investor advisory from institutional-grade desks."],
+ ["M4 21V7l7-4 7 4v14M2 21h20M9 21v-4h6v4", "Real estate", "Sourcing, RICS valuation, and asset management of prime commercial buildings."],
+ ["M6 6h12v12H6zM9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3", "Technology & blockchain", "The tokenization engine, ERC-3643 identity, and on-chain settlement."],
+ ["M4 4v6h6M20 20v-6h-6M20 9a8 8 0 00-14-4M4 15a8 8 0 0014 4", "Transformation", "Turning a traditional asset class into a digital, accessible product."],
+ ["M8 3h8l4 4v14H4V3zM9 13l2 2 4-4", "Accounting & audit", "Ring-fenced SPV accounts and independent audits by established firms."],
+ ["M3 18h18M5 18v-3a7 7 0 0114 0v3M9 8.5V6h6v2.5", "The world's best builders", "Working with world-class developers, agents, and construction partners."],
+ ].map(([d, t, b], i) => (
+ <Fx key={t} delay={(i % 3) * 80} scale className="card-dark h-full p-6">
+ <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-brand/25 to-brand-teal/25 text-brand-dark">
+ <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d={d} /></svg>
+ </span>
+ <h3 className="mt-4 font-display text-base font-bold text-ink">{t}</h3>
+ <p className="mt-2 text-sm leading-relaxed text-ink/60">{b}</p>
  </Fx>
  ))}
  </div>
+
+ {/* built by SUPERBLOCK */}
+ <Fx delay={120} className="mt-6">
+ <div className="card-dark flex flex-col gap-4 p-7 sm:flex-row sm:items-center">
+ <div className="flex shrink-0 items-center gap-4">
+ <img src={mark} alt="" className="h-12 w-12" />
+ <h3 className="font-display text-xl font-extrabold">Built by SUPERBLOCK</h3>
  </div>
+ <p className="text-sm leading-relaxed text-ink/60 sm:border-l sm:border-hairline sm:pl-6">
+ SUPERBLOCK is the technology company behind SBX Prime: the tokenization engine, the ERC-3643
+ identity layer, on-chain register reconciliation, and the distribution rails that pay rent in
+ USDC every month, on Polygon with AWS and Azure infrastructure.
+ </p>
+ </div>
+ </Fx>
  </div>
  </section>
 
