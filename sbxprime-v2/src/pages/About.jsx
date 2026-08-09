@@ -2,6 +2,7 @@ import Seo from "../lib/Seo";
 import NodeBackground from "../components/NodeBackground";
 import PartnerStrip from "../components/PartnerStrip";
 import { Fx, SectionHead } from "../components/ui";
+import { Icon } from "../components/icons";
 import mark from "../assets/images/sbx-mark-round.svg";
 import peopleImg from "../assets/assets/people-office.jpg";
 import aboutHero from "../assets/assets/about-hero-london.jpg";
@@ -78,16 +79,16 @@ export default function About() {
  />
  <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
  {[
- ["M3 3v18h18M7 15l3-3 3 2 5-6", "Finance & capital markets", "Underwriting, structuring, and investor advisory from institutional-grade desks."],
- ["M4 21V7l7-4 7 4v14M2 21h20M9 21v-4h6v4", "Real estate", "Sourcing, RICS valuation, and asset management of prime commercial buildings."],
- ["M6 6h12v12H6zM9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3", "Technology & blockchain", "The tokenization engine, ERC-3643 identity, and on-chain settlement."],
- ["M4 4v6h6M20 20v-6h-6M20 9a8 8 0 00-14-4M4 15a8 8 0 0014 4", "Transformation", "Turning a traditional asset class into a digital, accessible product."],
- ["M8 3h8l4 4v14H4V3zM9 13l2 2 4-4", "Accounting & audit", "Ring-fenced SPV accounts and independent audits by established firms."],
- ["M3 18h18M5 18v-3a7 7 0 0114 0v3M9 8.5V6h6v2.5", "The world's best builders", "Working with world-class developers, agents, and construction partners."],
- ].map(([d, t, b], i) => (
+ ["chart", "Finance & capital markets", "Underwriting, structuring, and investor advisory from institutional-grade desks."],
+ ["building", "Real estate", "Sourcing, RICS valuation, and asset management of prime commercial buildings."],
+ ["node", "Technology & blockchain", "The tokenization engine, ERC-3643 identity, and on-chain settlement."],
+ ["refresh", "Transformation", "Turning a traditional asset class into a digital, accessible product."],
+ ["doc", "Accounting & audit", "Ring-fenced SPV accounts and independent audits by established firms."],
+ ["layers", "The world's best builders", "Working with world-class developers, agents, and construction partners."],
+ ].map(([ic, t, b], i) => (
  <Fx key={t} delay={(i % 3) * 80} scale className="card-dark h-full p-6">
  <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-brand/25 to-brand-teal/25 text-brand-dark">
- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d={d} /></svg>
+ <Icon name={ic} className="h-5 w-5" />
  </span>
  <h3 className="mt-4 font-display text-base font-bold text-ink">{t}</h3>
  <p className="mt-2 text-sm leading-relaxed text-ink/60">{b}</p>

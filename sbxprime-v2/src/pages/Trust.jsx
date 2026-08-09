@@ -3,6 +3,7 @@ import NodeBackground from "../components/NodeBackground";
 import PartnerStrip from "../components/PartnerStrip";
 import PushNotification from "../components/PushNotification";
 import { Fx, SectionHead } from "../components/ui";
+import trustHero from "../assets/assets/trust-hero.jpg";
 
 const LAYERS = [
  {
@@ -74,15 +75,19 @@ export default function Trust() {
  />
  <section className="relative overflow-hidden border-b border-hairline">
  <NodeBackground opacity={0.3} />
- <div className="shell relative py-12 lg:py-14">
+ <div className="shell relative grid items-center gap-10 py-12 lg:grid-cols-[1.05fr_1fr] lg:py-14">
+ <div>
  <SectionHead
  eyebrow="Trust & security"
  title="Engineered so you never have to trust us."
  lede="Your ownership doesn't depend on SBX Prime existing. It's structured in three independent layers, asset, platform, and regulatory."
- center
  />
- <Fx delay={160} className="mx-auto mt-8 max-w-sm">
+ <Fx delay={160} className="mt-8 max-w-sm">
  <PushNotification body="Annual RICS valuation published, Central London asset +4.2% YoY." time="1d" delay={600} />
+ </Fx>
+ </div>
+ <Fx scale delay={100} className="relative">
+ <img src={trustHero} alt="A grand institutional building conveying security and permanence" className="h-[300px] w-full rounded-3xl border border-hairline object-cover shadow-[0_45px_90px_-40px_rgba(15,45,32,.4)] sm:h-[400px]" />
  </Fx>
  </div>
  </section>
