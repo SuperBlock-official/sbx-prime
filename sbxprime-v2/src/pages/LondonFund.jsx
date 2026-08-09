@@ -5,6 +5,7 @@ import NodeBackground from "../components/NodeBackground";
 import PushNotification from "../components/PushNotification";
 import { TiltCard } from "../components/cards";
 import { Fx, SectionHead, Counter, ReturnSplit } from "../components/ui";
+import { Icon } from "../components/icons";
 import { LONDON_FUND, poolFor } from "../data/asset";
 
 const HOW = [
@@ -63,7 +64,7 @@ export default function LondonFund() {
             {/* fund vs single asset */}
             <Fx delay={140} className="mt-8 flex items-start gap-4 rounded-2xl border border-brand/25 bg-brand/[0.06] p-5">
               <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-brand/15 text-brand-dark">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M3 3v18h18M7 15l4-4 3 3 5-6" /></svg>
+                <Icon name="chart" className="h-[18px] w-[18px]" strokeWidth={1.8} />
               </span>
               <p className="text-[13px] leading-relaxed text-ink/70">
                 <b className="text-ink">Fund or single asset, your choice.</b> Prefer to back one building? Every asset also

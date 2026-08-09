@@ -7,6 +7,7 @@ import NodeBackground from "../components/NodeBackground";
 import { Fx, SectionHead, ReturnSplit, Counter } from "../components/ui";
 import { TiltCard } from "../components/cards";
 import { PhoneFloat } from "../components/mockups";
+import { Icon } from "../components/icons";
 import londonImg from "../assets/images/london-office.png";
 import officeImg from "../assets/images/office-interior.jpg";
 
@@ -50,7 +51,7 @@ export default function London() {
  <p className="mt-1.5 text-[11px] text-ink/40">Appreciation per Savills / JLL Central London forecasts. Capital at risk.</p>
  <Link to="/invest/grosvenor-gardens/prospectus" className="mt-5 inline-flex items-center gap-2 rounded-full border border-brand/40 bg-brand/[0.06] px-5 py-2 font-display text-sm font-bold text-brand-dark transition hover:bg-brand/12">
  View full prospectus
- <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+ <Icon name="arrowRight" className="h-4 w-4" strokeWidth={2} />
  </Link>
  </Fx>
 

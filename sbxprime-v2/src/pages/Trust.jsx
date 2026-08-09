@@ -3,34 +3,35 @@ import NodeBackground from "../components/NodeBackground";
 import PartnerStrip from "../components/PartnerStrip";
 import PushNotification from "../components/PushNotification";
 import { Fx, SectionHead } from "../components/ui";
+import { Icon } from "../components/icons";
 import trustHero from "../assets/assets/trust-hero.jpg";
 
 const LAYERS = [
  {
  h: "Asset level",
  items: [
- ["Single-asset SPV", "Each property is ring-fenced in its own English-law SPV. Tokens are shares in that vehicle, your claim survives anything that happens to the platform."],
- ["Institutional management", "Buildings run under mandate with CBRE-calibre agents: leasing, insurance, service charge, planned maintenance."],
- ["Independent valuation", "RICS-standard valuations at acquisition and every 3 to 6 months thereafter, depending on the asset, published to token holders."],
- ["Segregated funds", "Subscriptions settle through client-money accounts / on-chain escrow with pre-defined release conditions."],
+ ["shield", "Single-asset SPV", "Each property is ring-fenced in its own English-law SPV. Tokens are shares in that vehicle, your claim survives anything that happens to the platform."],
+ ["building", "Institutional management", "Buildings run under mandate with CBRE-calibre agents: leasing, insurance, service charge, planned maintenance."],
+ ["scale", "Independent valuation", "RICS-standard valuations at acquisition and every 3 to 6 months thereafter, depending on the asset, published to token holders."],
+ ["lock", "Segregated funds", "Subscriptions settle through client-money accounts / on-chain escrow with pre-defined release conditions."],
  ],
  },
  {
  h: "Platform level",
  items: [
- ["ERC-3643 tokens", "Identity-bound security tokens. Transfers settle only between verified investors, enforced by the contract."],
- ["Key recovery", "Lost keys don't mean lost property. The issuer can reissue tokens to your verified identity after checks."],
- ["Institutional infrastructure", "Deployed on Polygon with AWS and Azure redundancy; smart contracts independently audited before issuance."],
- ["On-chain register mirror", "The SPV shareholder register and the token ledger are reconciled continuously, one source of truth."],
+ ["token", "ERC-3643 tokens", "Identity-bound security tokens. Transfers settle only between verified investors, enforced by the contract."],
+ ["key", "Key recovery", "Lost keys don't mean lost property. The issuer can reissue tokens to your verified identity after checks."],
+ ["node", "Institutional infrastructure", "Deployed on Polygon with AWS and Azure redundancy; smart contracts independently audited before issuance."],
+ ["refresh", "On-chain register mirror", "The SPV shareholder register and the token ledger are reconciled continuously, one source of truth."],
  ],
  },
  {
  h: "Regulatory",
  items: [
- ["Compliance-first structure", "Every property is issued as a security to eligible investors only, structured with regulatory counsel across the jurisdictions we operate in."],
- ["Eligibility gating", "This launch is offered under Regulation S to investors outside the US, UK, and Europe. US, UK, and EEA/EU persons are excluded for this launch, enforced at KYC and on-chain."],
- ["Full KYC/AML", "Bank-grade identity, sanctions, and source-of-funds screening before any settlement."],
- ["Professional advisers", "Structuring and audit support from Big-Four-calibre firms across the jurisdictions we operate in."],
+ ["doc", "Compliance-first structure", "Every property is issued as a security to eligible investors only, structured with regulatory counsel across the jurisdictions we operate in."],
+ ["globe", "Eligibility gating", "This launch is offered under Regulation S to investors outside the US, UK, and Europe. US, UK, and EEA/EU persons are excluded for this launch, enforced at KYC and on-chain."],
+ ["idcard", "Full KYC/AML", "Bank-grade identity, sanctions, and source-of-funds screening before any settlement."],
+ ["users", "Professional advisers", "Structuring and audit support from Big-Four-calibre firms across the jurisdictions we operate in."],
  ],
  },
 ];
@@ -101,11 +102,11 @@ export default function Trust() {
  <h2 className="mt-2 font-display text-2xl font-extrabold">{layer.h}</h2>
  </Fx>
  <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
- {layer.items.map(([t, b], i) => (
+ {layer.items.map(([ic, t, b], i) => (
  <Fx key={t} delay={i * 90} scale>
  <div className="group card-dark gloss h-full p-5">
- <span className="icon-spin grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-brand/25 to-brand-teal/25 font-display text-sm font-extrabold text-brand">
- {"✓"}
+ <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-brand/25 to-brand-teal/25 text-brand-dark">
+ <Icon name={ic} className="h-5 w-5" />
  </span>
  <h3 className="mt-4 font-display text-[15px] font-bold text-ink">{t}</h3>
  <p className="mt-2 text-[13px] leading-relaxed text-ink/55">{b}</p>

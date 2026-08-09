@@ -6,6 +6,7 @@ import PushNotification from "../components/PushNotification";
 import NodeBackground from "../components/NodeBackground";
 import { PhoneFan, WebShowcase } from "../components/mockups";
 import { Fx, SectionHead } from "../components/ui";
+import { Icon } from "../components/icons";
 import howItWorksHero from "../assets/assets/howitworks-hero.jpg";
 
 export default function HowItWorks() {
@@ -83,7 +84,7 @@ export default function HowItWorks() {
  <div className="mt-10 grid gap-6 lg:grid-cols-2">
  <Fx scale className="card-dark p-7">
  <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-brand/25 to-brand-teal/25 text-brand-dark">
- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01" /></svg>
+ <Icon name="building" className="h-5 w-5" />
  </span>
  <h3 className="mt-4 font-display text-lg font-extrabold text-ink">How we manage the building</h3>
  <ul className="mt-4 space-y-3">
@@ -95,7 +96,7 @@ export default function HowItWorks() {
  ["Capital works", "Refurbishment and capex planned to protect and grow the asset's value."],
  ].map(([t, b]) => (
  <li key={t} className="flex gap-3">
- <span className="mt-1.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand/15 text-brand-dark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"><path d="M5 13l4 4L19 7" /></svg></span>
+ <span className="mt-1.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand/15 text-brand-dark"><Icon name="check" className="h-2.5 w-2.5" strokeWidth={3.5} /></span>
  <span><b className="font-display text-sm font-bold text-ink">{t}.</b> <span className="text-[13px] leading-relaxed text-ink/55">{b}</span></span>
  </li>
  ))}
@@ -104,7 +105,7 @@ export default function HowItWorks() {
 
  <Fx scale delay={100} className="card-dark p-7">
  <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-brand/25 to-brand-teal/25 text-brand-dark">
- <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M9 17V9m4 8V5m4 12v-4M3 21h18" /></svg>
+ <Icon name="chart" className="h-5 w-5" />
  </span>
  <h3 className="mt-4 font-display text-lg font-extrabold text-ink">What you receive</h3>
  <ul className="mt-4 space-y-3">
@@ -117,7 +118,7 @@ export default function HowItWorks() {
  ["Tax reporting pack", "Year-end summaries to make your own reporting straightforward."],
  ].map(([t, b]) => (
  <li key={t} className="flex gap-3">
- <span className="mt-1.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand/15 text-brand-dark"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"><path d="M5 13l4 4L19 7" /></svg></span>
+ <span className="mt-1.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand/15 text-brand-dark"><Icon name="check" className="h-2.5 w-2.5" strokeWidth={3.5} /></span>
  <span><b className="font-display text-sm font-bold text-ink">{t}.</b> <span className="text-[13px] leading-relaxed text-ink/55">{b}</span></span>
  </li>
  ))}

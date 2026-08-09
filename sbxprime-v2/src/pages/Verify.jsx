@@ -4,6 +4,7 @@ import Seo from "../lib/Seo";
 import NodeBackground from "../components/NodeBackground";
 import PushNotification from "../components/PushNotification";
 import { Fx } from "../components/ui";
+import { Icon } from "../components/icons";
 import { createAccount, verifyTwoFactor, submitKyc } from "../lib/api";
 
 const STEPS = ["Account", "Two-factor", "Identity", "Review"];
@@ -111,7 +112,7 @@ export default function Verify() {
                     }`}
                   >
                     {i < step ? (
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round"><path d="M5 13l4 4L19 7" /></svg>
+                      <Icon name="check" className="h-4 w-4" strokeWidth={3} />
                     ) : (
                       i + 1
                     )}
@@ -216,7 +217,7 @@ export default function Verify() {
                 {step === 3 && (
                   <div className="space-y-5 text-center">
                     <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-brand/12 text-brand-dark">
-                      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="M5 13l4 4L19 7" /></svg>
+                      <Icon name="check" className="h-[30px] w-[30px]" strokeWidth={2.2} />
                     </span>
                     <div>
                       <h2 className="font-display text-2xl font-extrabold text-ink">You're all set</h2>
@@ -256,7 +257,7 @@ function Upload({ label, hint, file, onFile }) {
       >
         <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand/10 text-brand-dark">
           {file ? (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="M5 13l4 4L19 7" /></svg>
+            <Icon name="check" className="h-[18px] w-[18px]" strokeWidth={2.2} />
           ) : (
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16" /></svg>
           )}

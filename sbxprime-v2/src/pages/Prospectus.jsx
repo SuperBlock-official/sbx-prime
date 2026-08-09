@@ -6,6 +6,7 @@ import PushNotification from "../components/PushNotification";
 import { TiltCard } from "../components/cards";
 import { Fx, SectionHead, Counter, ReturnSplit } from "../components/ui";
 import ApproxMap from "../components/ApproxMap";
+import { Icon } from "../components/icons";
 import { ASSET_BY_SLUG, ASSET, getProjection, poolFor, costModel, PLATFORM_FEES, DOCUMENTS, REFERENCES } from "../data/asset";
 
 /* Simple, dependency-free comparison bar (current / comparable / forecast). */
@@ -186,7 +187,7 @@ export default function Prospectus() {
                   {a.whyInvest.map((p) => (
                     <li key={p} className="flex gap-3">
                       <span className="mt-1.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-brand/20 text-brand-dark">
-                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"><path d="M5 13l4 4L19 7" /></svg>
+                        <Icon name="check" className="h-2.5 w-2.5" strokeWidth={3.5} />
                       </span>
                       <span className="text-[14px] leading-relaxed text-ink/70">{p}</span>
                     </li>
@@ -232,7 +233,7 @@ export default function Prospectus() {
             <Fx scale className="relative overflow-hidden rounded-3xl border border-hairline">
               <ApproxMap marker={a.mapMarker} className="h-[360px] w-full" />
               <div className="pointer-events-none absolute bottom-3 left-3 right-3 flex items-center gap-2 rounded-xl border border-white/60 bg-white/80 px-3 py-2 backdrop-blur-md">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="shrink-0 text-brand-dark"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+                <Icon name="lock" className="h-[15px] w-[15px] shrink-0 text-brand-dark" strokeWidth={1.8} />
                 <p className="text-[11px] leading-tight text-ink/60">Approximate area shown for privacy. The exact address is shared with verified investors.</p>
               </div>
             </Fx>
@@ -475,7 +476,7 @@ export default function Prospectus() {
               <Fx key={name} delay={i * 60} className="flex items-center justify-between gap-4 rounded-2xl border border-hairline bg-mist/60 px-5 py-4">
                 <div className="flex items-center gap-3">
                   <span className="grid h-10 w-10 place-items-center rounded-lg bg-brand/10 text-brand-dark">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /></svg>
+                    <Icon name="doc" className="h-[18px] w-[18px]" />
                   </span>
                   <div>
                     <p className="font-display text-sm font-bold text-ink">{name}</p>
@@ -483,7 +484,7 @@ export default function Prospectus() {
                   </div>
                 </div>
                 <span className="flex items-center gap-1.5 text-xs font-semibold text-ink/40">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+                  <Icon name="lock" className="h-[14px] w-[14px]" strokeWidth={1.8} />
                   Locked
                 </span>
               </Fx>
