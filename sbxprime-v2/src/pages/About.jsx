@@ -4,6 +4,7 @@ import PartnerStrip from "../components/PartnerStrip";
 import { Fx, SectionHead } from "../components/ui";
 import mark from "../assets/images/sbx-mark-round.svg";
 import peopleImg from "../assets/assets/people-office.jpg";
+import aboutHero from "../assets/assets/about-hero-london.jpg";
 
 export default function About() {
  return (
@@ -15,12 +16,22 @@ export default function About() {
  />
  <section className="relative overflow-hidden border-b border-hairline">
  <NodeBackground opacity={0.3} />
- <div className="shell relative py-12 lg:py-14">
+ <div className="shell relative grid items-center gap-10 py-12 lg:grid-cols-[1.05fr_1fr] lg:py-16">
  <SectionHead
  eyebrow="About"
  title="Institutional real estate, without the institution-sized ticket."
  lede="SBX Prime exists because the best buildings in the world were only ever available in $50M pieces. We cut them into square feet, without cutting the legal substance."
  />
+ <Fx scale delay={120} className="relative">
+ <img
+ src={aboutHero}
+ alt="Prime Central London period architecture and skyline at golden hour"
+ className="h-[280px] w-full rounded-3xl border border-hairline object-cover shadow-[0_45px_90px_-40px_rgba(15,45,32,.4)] sm:h-[360px]"
+ />
+ <div className="absolute bottom-4 left-4 rounded-xl border border-white/50 bg-white/80 px-3 py-1.5 backdrop-blur-md">
+ <p className="font-display text-[11px] font-bold uppercase tracking-[0.14em] text-brand-dark">Central London</p>
+ </div>
+ </Fx>
  </div>
  </section>
 
