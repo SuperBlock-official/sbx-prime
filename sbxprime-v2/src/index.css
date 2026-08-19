@@ -89,8 +89,21 @@
     border: 1px solid var(--hairline);
     box-shadow: 0 18px 40px -28px rgba(15, 45, 32, 0.28);
   }
+  /* Editorial kicker — a thin accent rule + a sentence-case label. No chip,
+     no all-caps, no wide tracking: hierarchy comes from weight and the rule. */
   .eyebrow {
-    @apply inline-flex items-center rounded-full border border-brand/20 bg-brand/[0.08] px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-brand-dark;
+    @apply inline-flex items-center gap-2.5 font-display text-[13px] font-semibold text-brand-dark;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-7 shrink-0 bg-brand/50;
+  }
+  /* Centred heads: stack the rule above the label, both centred. */
+  .text-center .eyebrow {
+    @apply flex-col gap-2;
+  }
+  .text-center .eyebrow::before {
+    @apply w-9;
   }
   .h-section {
     @apply font-display text-3xl font-extrabold leading-tight text-ink sm:text-4xl lg:text-[2.75rem];

@@ -55,8 +55,8 @@ export default function LaunchPopup() {
 
         {/* header */}
         <div className="px-7 pt-8 text-center sm:px-10">
-          <span className="inline-flex items-center gap-2 rounded-full border border-brand/25 bg-brand/[0.07] px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-brand-dark">
-            <img src={appicon} alt="" className="h-4 w-4" />
+          <span className="inline-flex items-center gap-2 font-display text-[13px] font-semibold text-brand-dark">
+            <img src={appicon} alt="" className="h-[18px] w-[18px]" />
             Now open · Central London
           </span>
           <h2 className="mt-4 font-display text-3xl font-extrabold leading-[1.08] text-ink sm:text-[2.1rem]">

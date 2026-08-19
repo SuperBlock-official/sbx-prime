@@ -80,7 +80,8 @@ export default function Trust() {
  <div className="absolute inset-0 bg-gradient-to-r from-ink/92 via-ink/75 to-ink/35" />
  <div className="shell relative py-20 lg:py-28">
  <Fx className="max-w-2xl">
- <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 font-display text-[11px] font-bold uppercase tracking-[0.16em] text-white backdrop-blur">
+ <span className="inline-flex items-center gap-2.5 font-display text-[13px] font-semibold text-white">
+ <span className="h-px w-7 bg-white/60" />
  Trust & security
  </span>
  <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl">
