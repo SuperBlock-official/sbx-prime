@@ -6,12 +6,9 @@ const {
   DATABASE_URL = "",
   PGSSLMODE = "disable",
   INVESTOR_NUMBER_START = "121",
-  SMTP_HOST = "",
-  SMTP_PORT = "587",
-  SMTP_SECURE = "false",
-  SMTP_USER = "",
-  SMTP_PASS = "",
-  MAIL_FROM = "SBX Prime <hello@sbxprime.com>",
+  RESEND_API_KEY = "",
+  MAIL_FROM = "SBX Prime <no-reply@mail.sbxprime.com>",
+  MAIL_REPLY_TO = "",
   MAIL_TEAM = "",
 } = process.env;
 
@@ -25,15 +22,11 @@ export const config = {
     ssl: PGSSLMODE === "require" ? { rejectUnauthorized: false } : false,
   },
   investorNumberStart: Number(INVESTOR_NUMBER_START) || 121,
-  smtp: {
-    host: SMTP_HOST,
-    port: Number(SMTP_PORT),
-    secure: SMTP_SECURE === "true",
-    user: SMTP_USER,
-    pass: SMTP_PASS,
-    configured: Boolean(SMTP_HOST),
+  resend: {
+    key: RESEND_API_KEY,
+    configured: Boolean(RESEND_API_KEY),
   },
-  mail: { from: MAIL_FROM, team: MAIL_TEAM },
+  mail: { from: MAIL_FROM, replyTo: MAIL_REPLY_TO, team: MAIL_TEAM },
 };
 
 if (config.isProd && !config.db.url) {

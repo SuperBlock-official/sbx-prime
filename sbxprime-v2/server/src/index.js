@@ -8,7 +8,7 @@ const server = app.listen(config.port, async () => {
   const db = await healthy();
   console.log(`SBX Prime API on http://localhost:${config.port} (${config.env})`);
   console.log(`  db:   ${db ? "connected" : "NOT connected — set DATABASE_URL and run `npm run migrate`"}`);
-  console.log(`  mail: ${config.smtp.configured ? "SMTP configured" : "console (dev) — set SMTP_* to send real email"}`);
+  console.log(`  mail: ${config.resend.configured ? `Resend (${config.mail.from})` : "console (dev) — set RESEND_API_KEY to send real email"}`);
 });
 
 for (const sig of ["SIGINT", "SIGTERM"]) {

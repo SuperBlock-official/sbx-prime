@@ -20,8 +20,15 @@ npm run migrate               # creates tables + seeds the investor-number seque
 npm run dev                   # http://localhost:4000
 ```
 
-Without `SMTP_HOST` set, emails are printed to the console instead of sent — so
-the whole flow works locally with zero mail credentials.
+Email sends via the **Resend** HTTP API (server-side only — the key never
+reaches the browser, and sends fire off the request path, after the HTTP
+response). Without `RESEND_API_KEY` set, emails are printed to the console
+instead of sent, so the whole flow works locally with zero credentials.
+
+Sender domain must be verified in Resend (Domains → Add `sbxprime.com` or a
+send-only subdomain like `mail.sbxprime.com`, add the SPF/DKIM/DMARC DNS
+records, wait for "Verified"). Until then you may send from the already-verified
+`SUPERBLOCK <no-reply@mail.superblock.ai>`.
 
 ## Endpoints
 

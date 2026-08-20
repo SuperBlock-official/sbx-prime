@@ -24,7 +24,10 @@ router.post("/", async (req, res, next) => {
 
     const rec = { ...d, id: rows[0].id, investorNumber: Number(rows[0].investor_number) };
 
-    // Emails are best-effort — a mail hiccup must never fail a captured pledge.
+    // Respond first, then fire the emails off the request path — a slow or
+    // failed send must never slow or fail a captured pledge.
+    res.status(201).json({ ok: true, id: rec.id, investorNumber: rec.investorNumber });
+
     Promise.allSettled([
       sendMail({ to: rec.email, ...pledgeConfirmation(rec) }),
       config.mail.team
@@ -35,8 +38,6 @@ router.post("/", async (req, res, next) => {
         .filter((r) => r.status === "rejected")
         .forEach((r) => console.error("[email] pledge:", r.reason?.message))
     );
-
-    res.status(201).json({ ok: true, id: rec.id, investorNumber: rec.investorNumber });
   } catch (err) {
     next(err);
   }

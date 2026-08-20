@@ -19,11 +19,12 @@ router.post("/", async (req, res, next) => {
       [d.email, d.name || null, d.source || null, d.meta || {}]
     );
 
+    // Respond first, then send off the request path.
+    res.status(201).json({ ok: true, id: rows[0].id });
+
     sendMail({ to: d.email, ...leadConfirmation(d) }).catch((e) =>
       console.error("[email] lead:", e?.message)
     );
-
-    res.status(201).json({ ok: true, id: rows[0].id });
   } catch (err) {
     next(err);
   }
