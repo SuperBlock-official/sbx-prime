@@ -23,6 +23,7 @@ import Register from "./pages/Register";
 import Verify from "./pages/Verify";
 import Legal from "./pages/Legal";
 import NotFound from "./pages/NotFound";
+import AdminApp from "./admin/AdminApp";
 
 function ScrollToTop() {
  const { pathname } = useLocation();
@@ -36,10 +37,9 @@ function ScrollToTop() {
  return null;
 }
 
-export default function App() {
+function PublicSite() {
  return (
- <BrowserRouter>
- <ScrollToTop />
+ <>
  <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:font-display focus:text-sm focus:font-bold focus:text-white">
  Skip to content
  </a>
@@ -71,6 +71,19 @@ export default function App() {
  <StickyCTA />
  <LaunchPopup />
  <CookieConsent />
+ </>
+ );
+}
+
+export default function App() {
+ return (
+ <BrowserRouter>
+ <ScrollToTop />
+ <Routes>
+ {/* Admin gets its own chrome-free shell */}
+ <Route path="/admin/*" element={<AdminApp />} />
+ <Route path="/*" element={<PublicSite />} />
+ </Routes>
  </BrowserRouter>
  );
 }
