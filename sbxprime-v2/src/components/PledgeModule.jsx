@@ -34,8 +34,8 @@ export default function PledgeModule({ compact = false, pool }) {
  tokensRemaining: RAISE.tokensRemaining,
  unit: "investor",
  };
- const [tab, setTab] = useState("usd");
- const [usd, setUsd] = useState(25_000);
+ const [tab, setTab] = useState("usdc");
+ const [usd, setUsd] = useState(25_000); // USDC amount
  const [sqft, setSqft] = useState(24);
  const [form, setForm] = useState({ name: "", email: "", country: "" });
  const [certified, setCertified] = useState(false);
@@ -44,13 +44,18 @@ export default function PledgeModule({ compact = false, pool }) {
 
  const price = cfg.price;
  const cur = cfg.cur || "$";
- // pledges settle in USDC (USD-pegged); convert from GBP when the asset is priced in £
+ // pledges are made in USDC (USD-pegged); the asset is priced in its local currency
  const usdcFx = cur === "£" ? 1.27 : 1;
+ const priceUsdc = price * usdcFx; // stablecoin price per sq ft
  const calc = useMemo(() => {
- const ft = tab === "usd" ? Math.max(1, Math.floor((usd || 0) / price)) : Math.max(1, Math.floor(sqft || 0));
- const amount = ft * price;
- return { ft, amount, usdc: Math.round(amount * usdcFx), rentLow: amount * 0.06, rentHigh: amount * 0.07, apprLow: amount * 0.03, apprHigh: amount * 0.05 };
- }, [tab, usd, sqft, price, usdcFx]);
+ // "usdc" tab: derive whole sq ft from the USDC amount pledged; "sqft" tab: from sq ft
+ const ft = tab === "usdc"
+ ? Math.max(1, Math.floor((usd || 0) / priceUsdc))
+ : Math.max(1, Math.floor(sqft || 0));
+ const amount = ft * price; // value in the asset's local currency
+ const usdc = Math.round(ft * priceUsdc); // pledged / settled in USDC
+ return { ft, amount, usdc, rentLow: amount * 0.06, rentHigh: amount * 0.07, apprLow: amount * 0.03, apprHigh: amount * 0.05 };
+ }, [tab, usd, sqft, price, priceUsdc]);
 
  const pct = (cfg.raisedUsd / cfg.targetUsd) * 100;
  const investorNo = cfg.investors + 1;
@@ -61,7 +66,7 @@ export default function PledgeModule({ compact = false, pool }) {
  if (!canSubmit) return;
  setState("sending");
  try {
- const res = await submitPledge({ ...form, usdcAmount: calc.amount, sqft: calc.ft, eligibilitySelfCertified: true });
+ const res = await submitPledge({ ...form, usdcAmount: calc.usdc, sqft: calc.ft, eligibilitySelfCertified: true });
  setAssignedNo(res?.investorNumber ?? investorNo);
  setState("done");
  } catch {
@@ -75,7 +80,7 @@ export default function PledgeModule({ compact = false, pool }) {
  <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-brand/12 font-display text-2xl text-brand-dark">✓</span>
  <h3 className="mt-4 font-display text-xl font-bold text-ink">Pledge received</h3>
  <p className="mt-2 text-sm leading-relaxed text-ink/65">
- You've reserved <b className="text-brand-dark">{calc.ft.toLocaleString()} sq ft</b> (~{cur}{fmtUsd(calc.amount)}, settled in USDC)
+ You've reserved <b className="text-brand-dark">{calc.ft.toLocaleString()} sq ft</b> (≈ ${fmtUsd(calc.usdc)} USDC{cur !== "$" && `, ${cur}${fmtUsd(calc.amount)}`})
  as investor <b className="text-ink">#{assignedNo ?? investorNo}</b>. We've emailed next steps, verification opens
  before closing, and no funds move until then.
  </p>
@@ -106,7 +111,7 @@ export default function PledgeModule({ compact = false, pool }) {
  <div className={compact ? "p-5" : "p-6"}>
  {/* tabs */}
  <div className="grid grid-cols-2 rounded-xl bg-ink/5 p-1" role="tablist" aria-label="Pledge mode">
- {[["usd", `Pledge by ${cur} amount`], ["sqft", "Pledge by sq ft"]].map(([k, label]) => (
+ {[["usdc", "Pledge by USDC amount"], ["sqft", "Pledge by sq ft"]].map(([k, label]) => (
  <button key={k} type="button" role="tab" aria-selected={tab === k} onClick={() => setTab(k)}
  className={`rounded-lg px-3 py-2.5 font-display text-[12.5px] font-bold transition-colors ${
  tab === k ? "bg-brand text-white shadow-sm" : "text-ink/55 hover:text-ink"
@@ -118,14 +123,14 @@ export default function PledgeModule({ compact = false, pool }) {
 
  {/* input */}
  <div className="mt-4">
- {tab === "usd" ? (
+ {tab === "usdc" ? (
  <label className="block">
- <span className="text-xs font-semibold uppercase tracking-wider text-ink/50">Amount</span>
+ <span className="text-xs font-semibold uppercase tracking-wider text-ink/50">Amount in USDC</span>
  <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-ink/15 bg-white px-4 focus-within:border-brand">
- <span className="font-display font-bold text-brand-dark">{cur}</span>
- <input type="number" min={price} step="500" value={usd} onChange={(e) => setUsd(+e.target.value)}
- className="w-full bg-transparent py-3 font-display text-lg font-bold text-ink outline-none" aria-label="Pledge amount" />
- <span className="text-xs text-ink/45">→ USDC</span>
+ <span className="font-display font-bold text-brand-dark">$</span>
+ <input type="number" min={Math.ceil(priceUsdc)} step="500" value={usd} onChange={(e) => setUsd(+e.target.value)}
+ className="w-full bg-transparent py-3 font-display text-lg font-bold text-ink outline-none" aria-label="Pledge amount in USDC" />
+ <span className="text-xs text-ink/45">USDC{cur !== "$" && ` ≈ ${cur}${fmtUsd(calc.amount)}`}</span>
  </div>
  </label>
  ) : (
@@ -144,12 +149,16 @@ export default function PledgeModule({ compact = false, pool }) {
  <dl className="mt-4 space-y-2 rounded-xl bg-mist p-4 text-sm">
  <div className="flex justify-between">
  <dt className="text-ink/60">You would own</dt>
- <dd className="font-display font-bold text-ink">{calc.ft.toLocaleString()} sq ft · {cur}{fmtUsd(calc.amount)}</dd>
+ <dd className="font-display font-bold text-ink">{calc.ft.toLocaleString()} sq ft</dd>
+ </div>
+ <div className="flex justify-between">
+ <dt className="text-ink/60">You pledge</dt>
+ <dd className="font-display font-bold text-ink">≈ ${fmtUsd(calc.usdc)} USDC</dd>
  </div>
  {cur !== "$" && (
  <div className="flex justify-between">
- <dt className="text-ink/60">Settles in</dt>
- <dd className="font-display font-bold text-ink">≈ ${fmtUsd(calc.usdc)} USDC</dd>
+ <dt className="text-ink/60">Local value</dt>
+ <dd className="font-display font-bold text-ink/70">≈ {cur}{fmtUsd(calc.amount)}</dd>
  </div>
  )}
  <div className="flex justify-between">
