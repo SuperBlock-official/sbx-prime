@@ -3,6 +3,7 @@ import NodeBackground from "../components/NodeBackground";
 import PartnerStrip from "../components/PartnerStrip";
 import { Fx, SectionHead } from "../components/ui";
 import { Icon } from "../components/icons";
+import SpotlightGrid from "../components/SpotlightGrid";
 import mark from "../assets/images/sbx-mark-round.svg";
 import peopleImg from "../assets/assets/people-office.jpg";
 import aboutHero from "../assets/assets/about-hero-london.jpg";
@@ -77,7 +78,7 @@ export default function About() {
  title="A team effort, not a solo act."
  lede="SBX Prime isn't one person. It's a team of specialists and partners brought together across every discipline a serious real-estate platform needs, working with some of the world's best builders."
  />
- <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+ <SpotlightGrid className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
  {[
  ["chart", "Finance & capital markets", "Underwriting, structuring, and investor advisory from institutional-grade desks."],
  ["building", "Real estate", "Sourcing, RICS valuation, and asset management of prime commercial buildings."],
@@ -94,7 +95,7 @@ export default function About() {
  <p className="mt-2 text-sm leading-relaxed text-ink/60">{b}</p>
  </Fx>
  ))}
- </div>
+ </SpotlightGrid>
 
  {/* built by SUPERBLOCK */}
  <Fx delay={120} className="mt-6">

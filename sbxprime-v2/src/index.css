@@ -243,6 +243,25 @@
   z-index: 2;
 }
 
+/* spotlight grid — a soft brand wash follows the cursor across the cells --- */
+.spotgrid .card-dark { position: relative; }
+.spotgrid .card-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(230px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(31, 180, 98, 0.10), transparent 60%),
+    radial-gradient(230px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(37, 169, 224, 0.06), transparent 62%);
+  opacity: var(--spot-o, 0);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+/* keep real card content above the wash */
+.spotgrid .card-dark > * { position: relative; z-index: 1; }
+@media (hover: none) { .spotgrid .card-dark::before { display: none; } }
+
 /* gloss sweep on hover ------------------------------------------------- */
 .gloss { position: relative; overflow: hidden; }
 .gloss::after {

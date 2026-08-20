@@ -4,6 +4,7 @@ import PartnerStrip from "../components/PartnerStrip";
 import PushNotification from "../components/PushNotification";
 import { Fx, SectionHead } from "../components/ui";
 import { Icon } from "../components/icons";
+import SpotlightGrid from "../components/SpotlightGrid";
 import trustHero from "../assets/assets/trust-hero.jpg";
 
 const LAYERS = [
@@ -105,7 +106,7 @@ export default function Trust() {
  <p className="eyebrow">{`0${li + 1}`}</p>
  <h2 className="mt-2 font-display text-2xl font-extrabold">{layer.h}</h2>
  </Fx>
- <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+ <SpotlightGrid className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
  {layer.items.map(([ic, t, b], i) => (
  <Fx key={t} delay={i * 90} scale>
  <div className="group card-dark gloss h-full p-5">
@@ -117,7 +118,7 @@ export default function Trust() {
  </div>
  </Fx>
  ))}
- </div>
+ </SpotlightGrid>
  </div>
  ))}
  </div>
@@ -132,7 +133,7 @@ export default function Trust() {
  lede="From sourcing to sale, SBX Prime handles the full institutional lifecycle, and hands the biggest decisions to the people who own it. You hold the token; the building is never unmanaged."
  center
  />
- <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+ <SpotlightGrid className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
  {LIFECYCLE.map(([t, b, who], i) => (
  <Fx key={t} delay={(i % 4) * 80} scale>
  <div className="card-dark h-full p-6">
@@ -149,7 +150,7 @@ export default function Trust() {
  </div>
  </Fx>
  ))}
- </div>
+ </SpotlightGrid>
  </div>
  </section>
 

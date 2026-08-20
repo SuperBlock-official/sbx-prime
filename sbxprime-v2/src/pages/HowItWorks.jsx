@@ -7,6 +7,7 @@ import NodeBackground from "../components/NodeBackground";
 import { PhoneFan, WebShowcase } from "../components/mockups";
 import { Fx, SectionHead } from "../components/ui";
 import { Icon } from "../components/icons";
+import SpotlightGrid from "../components/SpotlightGrid";
 
 export default function HowItWorks() {
  return (
@@ -76,7 +77,7 @@ export default function HowItWorks() {
  lede="Owning a square foot should feel like owning a unit in an institutional fund, not a DIY landlord problem. We run the building and report on it to the standard a professional investor expects."
  center
  />
- <div className="mt-10 grid gap-6 lg:grid-cols-2">
+ <SpotlightGrid className="mt-10 grid gap-6 lg:grid-cols-2">
  <Fx scale className="card-dark p-7">
  <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-brand/25 to-brand-teal/25 text-brand-dark">
  <Icon name="building" className="h-5 w-5" />
@@ -119,7 +120,7 @@ export default function HowItWorks() {
  ))}
  </ul>
  </Fx>
- </div>
+ </SpotlightGrid>
  </div>
  </section>
 
