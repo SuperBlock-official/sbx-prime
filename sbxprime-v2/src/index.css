@@ -17,11 +17,21 @@
   --shell: #f1f7f3;
   --hairline: #ddede3;
   --line-glow: rgba(31, 180, 98, 0.2);
+  --divider: rgba(15, 31, 23, 0.12); /* section boundary — clearly readable on white and mist */
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+  }
+  /* One consistent, visible cut between every top-level page section, so the
+     next section is always easy to spot. Overrides the faint per-section
+     hairline borders and prevents doubled lines. */
+  #main > section {
+    border-bottom-width: 0;
+  }
+  #main > section + section {
+    border-top: 1px solid var(--divider);
   }
   body {
     @apply bg-mist text-ink font-body antialiased;
