@@ -40,6 +40,7 @@ export default function PledgeModule({ compact = false, pool }) {
  const [form, setForm] = useState({ name: "", email: "", country: "" });
  const [certified, setCertified] = useState(false);
  const [state, setState] = useState("idle");
+ const [assignedNo, setAssignedNo] = useState(null); // authoritative # from the server
 
  const price = cfg.price;
  const cur = cfg.cur || "$";
@@ -60,7 +61,8 @@ export default function PledgeModule({ compact = false, pool }) {
  if (!canSubmit) return;
  setState("sending");
  try {
- await submitPledge({ ...form, usdcAmount: calc.amount, sqft: calc.ft, investorNumber: investorNo, eligibilitySelfCertified: true });
+ const res = await submitPledge({ ...form, usdcAmount: calc.amount, sqft: calc.ft, eligibilitySelfCertified: true });
+ setAssignedNo(res?.investorNumber ?? investorNo);
  setState("done");
  } catch {
  setState("error");
@@ -74,7 +76,7 @@ export default function PledgeModule({ compact = false, pool }) {
  <h3 className="mt-4 font-display text-xl font-bold text-ink">Pledge received</h3>
  <p className="mt-2 text-sm leading-relaxed text-ink/65">
  You've reserved <b className="text-brand-dark">{calc.ft.toLocaleString()} sq ft</b> (~{cur}{fmtUsd(calc.amount)}, settled in USDC)
- as investor <b className="text-ink">#{investorNo}</b>. We've emailed next steps, verification opens
+ as investor <b className="text-ink">#{assignedNo ?? investorNo}</b>. We've emailed next steps, verification opens
  before closing, and no funds move until then.
  </p>
  </div>

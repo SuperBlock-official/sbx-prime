@@ -1,34 +1,49 @@
 /* ------------------------------------------------------------------
- Form submission stubs.
- TODO(backend): replace both functions with real API calls
- (e.g. POST https://api.sbxprime.com/v1/pledges and /v1/interest).
- Submissions are currently logged to the console as structured JSON.
+ Backend API client.
+ Base URL comes from VITE_API_URL (defaults to /api, which Vite proxies
+ to the Node server in dev). See server/ for the implementation.
  ------------------------------------------------------------------ */
 
+const API_BASE = (import.meta.env.VITE_API_URL || "/api").replace(/\/$/, "");
+
+/** POST JSON and throw a helpful Error (with .fields for 422) on failure. */
+async function apiPost(path, body) {
+ const res = await fetch(`${API_BASE}${path}`, {
+ method: "POST",
+ headers: { "Content-Type": "application/json" },
+ body: JSON.stringify(body),
+ });
+ let data = {};
+ try { data = await res.json(); } catch { /* non-JSON error */ }
+ if (!res.ok) {
+ const err = new Error(data.error || `Request failed (${res.status})`);
+ if (data.errors) err.fields = data.errors;
+ throw err;
+ }
+ return data;
+}
+
 export async function submitPledge(pledge) {
- const payload = {
- kind: "pledge",
- asset: "central-london-grade-a-office",
- submittedAt: new Date().toISOString(),
- ...pledge,
- };
- // TODO(backend): POST payload, includes name, email, country,
- // usdcAmount, sqft, eligibilitySelfCertified: true
- console.log("[SBX Prime] pledge submission", JSON.stringify(payload, null, 2));
- await new Promise((r) => setTimeout(r, 600)); // simulate network
- return { ok: true, investorNumber: payload.investorNumber };
+ // Server assigns the authoritative investor number and returns it.
+ return apiPost("/pledges", {
+ name: pledge.name,
+ email: pledge.email,
+ country: pledge.country,
+ assetSlug: pledge.assetSlug ?? null,
+ usdcAmount: pledge.usdcAmount ?? 0,
+ sqft: pledge.sqft ?? 0,
+ eligibilitySelfCertified: pledge.eligibilitySelfCertified === true,
+ });
 }
 
 export async function registerInterest(interest) {
- const payload = {
- kind: "register-interest",
- submittedAt: new Date().toISOString(),
- ...interest,
- };
- // TODO(backend): POST payload, includes email, cities[], indicativeAmount
- console.log("[SBX Prime] interest registration", JSON.stringify(payload, null, 2));
- await new Promise((r) => setTimeout(r, 500));
- return { ok: true };
+ const { email, name, source, ...rest } = interest;
+ return apiPost("/leads", {
+ email,
+ name: name ?? null,
+ source: source ?? "register-interest",
+ meta: rest,
+ });
 }
 
 /* TODO(backend): launching soon data should come from the chain / API.

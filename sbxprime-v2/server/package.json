@@ -1,0 +1,23 @@
+{
+  "name": "sbxprime-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "SBX Prime backend — pledge & lead capture, confirmation emails (Node + Express + Postgres).",
+  "engines": { "node": ">=18.11" },
+  "scripts": {
+    "dev": "node --watch --env-file=.env src/index.js",
+    "start": "node src/index.js",
+    "migrate": "node --env-file=.env scripts/migrate.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.4.1",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.16",
+    "pg": "^8.13.1",
+    "zod": "^3.24.1"
+  }
+}
