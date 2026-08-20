@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Seo from "../lib/Seo";
 import { CITIES, GLOBAL_DEMAND } from "../data/cities";
-import { ASSETS, LONDON_FUND } from "../data/asset";
+import { LONDON_FUND } from "../data/asset";
+import { useAssets } from "../lib/assetsStore";
 import { RAISE } from "../lib/api";
 import { CityCard, TiltCard } from "../components/cards";
 import InterestModal from "../components/InterestModal";
@@ -17,6 +18,7 @@ const TABS = [
 ];
 
 export default function Invest() {
+ const { assets } = useAssets();
  const [tab, setTab] = useState("all");
  const [modal, setModal] = useState(null);
  const list = CITIES.filter((c) => tab === "all" || c.status === tab);
@@ -94,7 +96,7 @@ export default function Invest() {
  </Fx>
 
  <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
- {ASSETS.map((a, i) => (
+ {assets.map((a, i) => (
  <Fx key={a.slug} delay={(i % 3) * 80} scale>
  <Link to={`/invest/${a.slug}/prospectus`} className="group block h-full">
  <TiltCard className="card-dark flex h-full flex-col overflow-hidden">

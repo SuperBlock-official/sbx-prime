@@ -499,7 +499,8 @@ const ECONOMICS = {
 };
 
 export function costModel(a) {
-  const e = ECONOMICS[a.slug] || {};
+  // Prefer economics supplied on the asset (from the admin/DB) over the static map.
+  const e = a.economics || ECONOMICS[a.slug] || {};
   const purchase = a.valuation;
   const acqCosts = Math.round((purchase * ACQ_COSTS_PCT) / 100);
   const issuance = Math.round((purchase * ISSUANCE_FEE_PCT) / 100);

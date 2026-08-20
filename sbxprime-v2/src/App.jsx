@@ -24,6 +24,7 @@ import Verify from "./pages/Verify";
 import Legal from "./pages/Legal";
 import NotFound from "./pages/NotFound";
 import AdminApp from "./admin/AdminApp";
+import { AssetsProvider } from "./lib/assetsStore";
 
 function ScrollToTop() {
  const { pathname } = useLocation();
@@ -39,7 +40,7 @@ function ScrollToTop() {
 
 function PublicSite() {
  return (
- <>
+ <AssetsProvider>
  <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:font-display focus:text-sm focus:font-bold focus:text-white">
  Skip to content
  </a>
@@ -71,7 +72,7 @@ function PublicSite() {
  <StickyCTA />
  <LaunchPopup />
  <CookieConsent />
- </>
+ </AssetsProvider>
  );
 }
 

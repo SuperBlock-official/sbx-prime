@@ -7,7 +7,8 @@ import { TiltCard } from "../components/cards";
 import { Fx, SectionHead, Counter, ReturnSplit } from "../components/ui";
 import ApproxMap from "../components/ApproxMap";
 import { Icon } from "../components/icons";
-import { ASSET_BY_SLUG, ASSET, getProjection, poolFor, costModel, PLATFORM_FEES, DOCUMENTS, REFERENCES } from "../data/asset";
+import { ASSET, getProjection, poolFor, costModel, PLATFORM_FEES, DOCUMENTS, REFERENCES } from "../data/asset";
+import { useAsset } from "../lib/assetsStore";
 
 /* Simple, dependency-free comparison bar (current / comparable / forecast). */
 function CompareBars({ rows, prefix = "£", suffix = "" }) {
@@ -76,7 +77,7 @@ function GrowthChart({ projection }) {
 
 export default function Prospectus() {
   const { slug } = useParams();
-  const a = ASSET_BY_SLUG[slug] || ASSET;
+  const a = useAsset(slug) || ASSET;
   const projection = getProjection(a);
   const cm = costModel(a);
   const money = (n) => a.cur + Math.round(n).toLocaleString("en-US");
