@@ -6,6 +6,10 @@ const {
   DATABASE_URL = "",
   PGSSLMODE = "disable",
   INVESTOR_NUMBER_START = "121",
+  JWT_SECRET = "",
+  ADMIN_COOKIE = "sbx_admin",
+  UPLOAD_DIR = "uploads",
+  PUBLIC_URL = "",
   RESEND_API_KEY = "",
   MAIL_FROM = "SBX Prime <no-reply@mail.sbxprime.com>",
   MAIL_REPLY_TO = "",
@@ -22,6 +26,15 @@ export const config = {
     ssl: PGSSLMODE === "require" ? { rejectUnauthorized: false } : false,
   },
   investorNumberStart: Number(INVESTOR_NUMBER_START) || 121,
+  auth: {
+    jwtSecret: JWT_SECRET || "dev-insecure-secret-change-me",
+    cookie: ADMIN_COOKIE,
+  },
+  uploads: {
+    dir: UPLOAD_DIR,
+    // Absolute base for image URLs; falls back to relative /uploads paths.
+    publicUrl: PUBLIC_URL,
+  },
   resend: {
     key: RESEND_API_KEY,
     configured: Boolean(RESEND_API_KEY),
@@ -31,4 +44,7 @@ export const config = {
 
 if (config.isProd && !config.db.url) {
   throw new Error("DATABASE_URL is required in production.");
+}
+if (config.isProd && !JWT_SECRET) {
+  throw new Error("JWT_SECRET is required in production.");
 }

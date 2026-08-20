@@ -24,6 +24,27 @@ export const leadSchema = z.object({
   meta: z.record(z.any()).optional().default({}),
 });
 
+export const loginSchema = z.object({
+  email,
+  password: z.string().min(1).max(200),
+});
+
+export const assetCreateSchema = z.object({
+  slug: z.string().trim().toLowerCase().min(1).max(80)
+    .regex(/^[a-z0-9-]+$/, "Use lowercase letters, numbers and hyphens only."),
+  name: z.string().trim().min(1).max(160),
+  published: z.coerce.boolean().optional().default(true),
+  sort: z.coerce.number().int().optional().default(0),
+  data: z.record(z.any()).optional().default({}),
+});
+
+export const assetUpdateSchema = z.object({
+  name: z.string().trim().min(1).max(160).optional(),
+  published: z.coerce.boolean().optional(),
+  sort: z.coerce.number().int().optional(),
+  data: z.record(z.any()).optional(),
+});
+
 // Turns a ZodError into a compact { field: message } map for the client.
 export function fieldErrors(err) {
   const out = {};

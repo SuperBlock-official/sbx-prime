@@ -35,3 +35,28 @@ create table if not exists leads (
 );
 create index if not exists leads_email_idx on leads (email);
 create index if not exists leads_created_idx on leads (created_at desc);
+
+-- Admin users (email + bcrypt hash). 2FA columns are reserved for a later milestone.
+create table if not exists admin_users (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  email text not null unique,
+  password_hash text not null,
+  name text,
+  totp_secret text,
+  totp_enabled boolean not null default false
+);
+
+-- Assets. The full prospectus object lives in `data` (jsonb) so the model can
+-- evolve without migrations; a few fields are promoted to columns for listing,
+-- ordering, and search.
+create table if not exists assets (
+  slug text primary key,
+  name text not null,
+  published boolean not null default true,
+  sort integer not null default 0,
+  data jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+create index if not exists assets_published_idx on assets (published, sort);
