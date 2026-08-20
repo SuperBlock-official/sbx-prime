@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 /** Lightweight SPA SEO: title, description, OG + Twitter cards, optional JSON-LD. */
-export default function Seo({ title, description, path = "/", jsonLd = null }) {
+export default function Seo({ title, description, path = "/", image = "https://www.sbxprime.com/og.jpg", jsonLd = null }) {
  useEffect(() => {
  document.title = title;
  const ensure = (attr, key, content) => {
@@ -20,9 +20,11 @@ export default function Seo({ title, description, path = "/", jsonLd = null }) {
  ensure("property", "og:type", "website");
  ensure("property", "og:url", url);
  ensure("property", "og:site_name", "SBX Prime");
+ ensure("property", "og:image", image);
  ensure("name", "twitter:card", "summary_large_image");
  ensure("name", "twitter:title", title);
  ensure("name", "twitter:description", description);
+ ensure("name", "twitter:image", image);
 
  let ld;
  if (jsonLd) {
@@ -33,6 +35,6 @@ export default function Seo({ title, description, path = "/", jsonLd = null }) {
  document.head.appendChild(ld);
  }
  return () => ld?.remove();
- }, [title, description, path]);
+ }, [title, description, path, image]);
  return null;
 }

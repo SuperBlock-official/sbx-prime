@@ -35,6 +35,7 @@ export default function CookieConsent() {
     setConsent(all ? "all" : "necessary");
     applyConsent(all);
     setOpen(false);
+    window.dispatchEvent(new Event("sbx:consent")); // let the mobile CTA appear
   };
 
   return (

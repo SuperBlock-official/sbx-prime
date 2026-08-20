@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import LaunchPopup from "./components/LaunchPopup";
 import CookieConsent from "./components/CookieConsent";
+import StickyCTA from "./components/StickyCTA";
 import Home from "./pages/Home";
 import Invest from "./pages/Invest";
 import London from "./pages/London";
@@ -67,6 +68,7 @@ export default function App() {
  </Routes>
  </main>
  <Footer />
+ <StickyCTA />
  <LaunchPopup />
  <CookieConsent />
  </BrowserRouter>

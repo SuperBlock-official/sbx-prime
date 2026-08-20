@@ -12,3 +12,6 @@ dist-ssr
 
 # raw source brochures (large reference PDFs — not needed to build/run)
 _source-brochures/
+
+# graphify knowledge graph (generated, rebuilds via hooks)
+graphify-out/
