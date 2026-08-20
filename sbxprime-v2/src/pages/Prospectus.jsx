@@ -98,6 +98,7 @@ export default function Prospectus() {
         title={`${a.name}, ${a.neighbourhood} — Prospectus | SBX Prime`}
         description={`Investment prospectus for ${a.name} in ${a.neighbourhood}: ${a.size.toLocaleString()} sq ft. Financials, tenancy, valuation and gated document bank.`}
         path={`/invest/${a.slug}/prospectus`}
+        image={`/og/${a.slug}.jpg`}
       />
 
       {/* ---------- hero ---------- */}
