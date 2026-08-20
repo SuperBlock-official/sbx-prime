@@ -63,8 +63,8 @@ export default function LaunchPopup() {
             Pledges for <span className="text-brand">London</span> have begun.
           </h2>
           <p className="mx-auto mt-3 max-w-md text-[14px] leading-relaxed text-ink/60">
-            Reserve your square feet in the Central London launch from{" "}
-            <b className="text-ink">$900 a square foot</b>. Ninety seconds, no KYC, and no funds move today.
+            Reserve your square feet in the Central London launch, from{" "}
+            <b className="text-ink">a single square foot</b>. Ninety seconds, no KYC, and no funds move today.
             Early pledges get first allocation.
           </p>
         </div>
@@ -106,7 +106,7 @@ export default function LaunchPopup() {
             <Link to="/invest" onClick={close} className="btn-ghost flex-1 justify-center whitespace-nowrap sm:flex-none">
               Browse all
             </Link>
-            <Link to="/invest/london-pledge" onClick={close} className="btn-primary flex-1 justify-center whitespace-nowrap sm:flex-none">
+            <Link to="/register" onClick={close} className="btn-primary flex-1 justify-center whitespace-nowrap sm:flex-none">
               Make your pledge
             </Link>
           </div>

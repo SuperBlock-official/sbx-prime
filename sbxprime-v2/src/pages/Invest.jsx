@@ -65,9 +65,9 @@ export default function Invest() {
  <SectionHead
  eyebrow="Central London · live"
  title="The London launch assets."
- lede="Seven real Central London buildings currently in the market. Each has a full prospectus; the pledge pool acquires one as the launch asset."
+ lede="Seven real Central London buildings currently in the market. Each has its own full prospectus, own it directly from a single square foot."
  />
- <Link to="/invest/london-pledge" className="btn-ghost shrink-0">Pledge into the pool</Link>
+ <Link to="/register" className="btn-ghost shrink-0">Pledge your allocation</Link>
  </div>
 
  <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

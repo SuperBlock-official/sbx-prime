@@ -39,7 +39,7 @@ export default function StickyCTA() {
       <div className="mx-3 mb-3 flex items-center gap-3 rounded-2xl border border-hairline bg-white/85 p-2.5 pl-4 shadow-[0_18px_44px_-16px_rgba(15,45,32,.45)] backdrop-blur-md">
         <div className="min-w-0 flex-1">
           <p className="font-display text-[13px] font-bold leading-tight text-ink">Central London launch is open</p>
-          <p className="mt-0.5 text-[11px] leading-tight text-ink/55">From $900 / sq ft · no funds move today</p>
+          <p className="mt-0.5 text-[11px] leading-tight text-ink/55">Own from a single square foot · no funds move today</p>
         </div>
         <Link
           to="/register"
