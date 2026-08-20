@@ -60,6 +60,10 @@ export const FAQ_CATEGORIES = [
  q: "Can I sell my tokens?",
  a: "Yes. After the primary raise, tokens are listed on the SBX Prime secondary marketplace, where verified investors can list holdings and accept offers per square foot. Because tokens are ERC-3643, transfers settle only between verified investors, liquidity without compliance risk.",
  },
+ {
+ q: "What is the instant-liquidity pool, and how does $SBX staking work?",
+ a: "If you want to exit immediately rather than wait for a secondary buyer, an instant-liquidity pool can take your tokens on the spot for a 4% fee. Those pools are funded by $SBX stakers: holders of the $SBX platform token stake into a market's liquidity pool and, in return for providing the liquidity, earn a pro-rata share of that 4% fee whenever someone uses the pool. The people who provide liquidity earn from the people who use it. Liquidity pools and $SBX are on the roadmap, subject to regulatory approval.",
+ },
  ],
  },
  {

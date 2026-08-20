@@ -107,7 +107,7 @@ const SECTIONS = [
         ["Issuance fee", "2.5%", "At issuance (in the token price)"],
         ["Transaction fee", "0.25%", "Per transaction"],
         ["Secondary marketplace", "1.5%", "Per trade on the marketplace"],
-        ["Instant liquidity pool", "4.0%", "On instant-liquidity withdrawals"],
+        ["Instant liquidity pool", "4.0%", "On instant exits, paid to $SBX stakers"],
         ["Management fee", "Varies by asset", "Paid to the asset's manager, see prospectus"],
       ],
     },
@@ -141,8 +141,14 @@ const SECTIONS = [
     id: "secondary",
     title: "Secondary market, liquidity & $SBX",
     body: [
-      "Real estate is illiquid by nature. Tokenization makes transferring ownership far faster and cheaper than a conventional sale. A compliant peer-to-peer secondary marketplace (coming soon) will let verified holders trade tokens, with ERC-3643 rules enforced on every trade and a 0.5%-per-side fee.",
-      "To deepen liquidity, permissioned liquidity pools are planned to provide near-instant liquidity against asset tokens, coordinated by the $SBX platform token across the Superblock ecosystem. Liquidity pools and $SBX are on the roadmap, subject to regulatory approval; nothing here is an offer of $SBX.",
+      "Real estate is illiquid by nature. Tokenization makes transferring ownership far faster and cheaper than a conventional sale. A compliant peer-to-peer secondary marketplace (coming soon) will let verified holders trade tokens, with ERC-3643 rules enforced on every trade and a 1.5% marketplace fee.",
+      "For holders who want to exit immediately rather than wait for a buyer, an instant-liquidity pool provides near-instant liquidity against asset tokens. The pool is funded by $SBX stakers: holders of the $SBX platform token stake $SBX into a property's, or a whole market's, liquidity pool. When an investor takes instant liquidity, they pay a 4% fee to withdraw against their tokens, and that fee is distributed pro-rata to the $SBX stakers who supplied the pool, so the people who provide liquidity earn from the people who use it. Pools are permissioned and coordinated by $SBX across the Superblock ecosystem.",
+      "Liquidity pools and $SBX are on the roadmap, subject to regulatory approval; nothing here is an offer of $SBX.",
+    ],
+    bullets: [
+      ["Stake $SBX", "Holders stake the $SBX platform token into a London, or any other, liquidity pool."],
+      ["Provide instant liquidity", "The pool lets any investor exit their square feet immediately, without waiting for a secondary buyer."],
+      ["Earn the fee", "The 4% instant-liquidity fee is shared pro-rata among the $SBX stakers who funded that pool."],
     ],
   },
   {

@@ -483,7 +483,7 @@ export const PLATFORM_FEES = [
   ["Issuance fee", "2.5%", "Included in the token price at issuance"],
   ["Transaction fee", "0.25%", "Per transaction"],
   ["Secondary marketplace", "1.5%", "Per trade on the marketplace"],
-  ["Instant liquidity pool", "4.0%", "On instant-liquidity withdrawals"],
+  ["Instant liquidity pool", "4.0%", "On instant exits, paid to $SBX stakers"],
 ];
 
 /* Per-asset economics. The management fee varies per asset and is paid to that
