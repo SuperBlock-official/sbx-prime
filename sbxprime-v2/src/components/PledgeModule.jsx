@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { RAISE, submitPledge } from "../lib/api";
-import { Counter } from "./ui";
+import { Counter, Honeypot } from "./ui";
 
 const fmtUsd = (n) => n.toLocaleString("en-US", { maximumFractionDigits: 0 });
 
@@ -38,6 +38,7 @@ export default function PledgeModule({ compact = false, pool }) {
  const [usd, setUsd] = useState(25_000); // USDC amount
  const [sqft, setSqft] = useState(24);
  const [form, setForm] = useState({ name: "", email: "", country: "" });
+ const [company, setCompany] = useState(""); // honeypot
  const [certified, setCertified] = useState(false);
  const [state, setState] = useState("idle");
  const [assignedNo, setAssignedNo] = useState(null); // authoritative # from the server
@@ -66,7 +67,7 @@ export default function PledgeModule({ compact = false, pool }) {
  if (!canSubmit) return;
  setState("sending");
  try {
- const res = await submitPledge({ ...form, usdcAmount: calc.usdc, sqft: calc.ft, eligibilitySelfCertified: true });
+ const res = await submitPledge({ ...form, company, usdcAmount: calc.usdc, sqft: calc.ft, eligibilitySelfCertified: true });
  setAssignedNo(res?.investorNumber ?? investorNo);
  setState("done");
  } catch {
@@ -193,6 +194,8 @@ export default function PledgeModule({ compact = false, pool }) {
  offered under Regulation S to investors outside those regions.
  </span>
  </label>
+
+ <Honeypot value={company} onChange={(e) => setCompany(e.target.value)} />
 
  <button type="submit" disabled={!canSubmit} className="btn-primary mt-5 w-full disabled:cursor-not-allowed disabled:opacity-40">
  {state === "sending" ? "Submitting…" : `Pledge ${calc.ft.toLocaleString()} sq ft, no funds move today`}

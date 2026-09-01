@@ -6,6 +6,9 @@ import { sendMail, leadConfirmation } from "../lib/email.js";
 const router = Router();
 
 router.post("/", async (req, res, next) => {
+  // Honeypot — see pledges route.
+  if (req.body?.company) return res.status(201).json({ ok: true });
+
   const parsed = leadSchema.safeParse(req.body);
   if (!parsed.success) {
     return res.status(422).json({ ok: false, errors: fieldErrors(parsed.error) });

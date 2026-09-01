@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { CITIES } from "../data/cities";
 import { registerInterest } from "../lib/api";
+import { Honeypot } from "./ui";
 
 const AMOUNTS = ["Under $5K", "$5K–$25K", "$25K–$100K", "$100K+"];
 
@@ -9,6 +10,7 @@ export default function InterestModal({ open, initialCity = null, onClose }) {
  const [email, setEmail] = useState("");
  const [cities, setCities] = useState(initialCity ? [initialCity] : []);
  const [amount, setAmount] = useState("");
+ const [company, setCompany] = useState(""); // honeypot
  const [state, setState] = useState("idle");
 
  useEffect(() => {
@@ -33,7 +35,7 @@ export default function InterestModal({ open, initialCity = null, onClose }) {
  e.preventDefault();
  if (!canSubmit) return;
  setState("sending");
- await registerInterest({ email, cities, indicativeAmount: amount });
+ await registerInterest({ email, company, cities, indicativeAmount: amount });
  setState("done");
  };
 
@@ -83,6 +85,7 @@ export default function InterestModal({ open, initialCity = null, onClose }) {
  {AMOUNTS.map((a) => <option key={a}>{a}</option>)}
  </select>
 
+ <Honeypot value={company} onChange={(e) => setCompany(e.target.value)} />
  <button type="submit" disabled={!canSubmit} className="btn-primary mt-5 w-full disabled:opacity-40">
  {state === "sending" ? "Submitting…" : "Register interest"}
  </button>

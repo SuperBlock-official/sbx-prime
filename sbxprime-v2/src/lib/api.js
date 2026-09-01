@@ -33,15 +33,17 @@ export async function submitPledge(pledge) {
  usdcAmount: pledge.usdcAmount ?? 0,
  sqft: pledge.sqft ?? 0,
  eligibilitySelfCertified: pledge.eligibilitySelfCertified === true,
+ company: pledge.company || "", // honeypot (must stay empty)
  });
 }
 
 export async function registerInterest(interest) {
- const { email, name, source, ...rest } = interest;
+ const { email, name, source, company, ...rest } = interest;
  return apiPost("/leads", {
  email,
  name: name ?? null,
  source: source ?? "register-interest",
+ company: company || "", // honeypot (must stay empty)
  meta: rest,
  });
 }

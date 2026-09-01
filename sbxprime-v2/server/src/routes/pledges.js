@@ -7,6 +7,10 @@ import { config } from "../config.js";
 const router = Router();
 
 router.post("/", async (req, res, next) => {
+  // Honeypot: real users never fill the hidden `company` field; bots do.
+  // Pretend success and store nothing so bots don't retry.
+  if (req.body?.company) return res.status(201).json({ ok: true });
+
   const parsed = pledgeSchema.safeParse(req.body);
   if (!parsed.success) {
     return res.status(422).json({ ok: false, errors: fieldErrors(parsed.error) });

@@ -1,5 +1,18 @@
 import { useInView, useCountUp } from "../lib/hooks";
 
+/** Off-screen honeypot field. Real users never see or fill it; bots do, and the
+ *  server silently drops any submission where it's non-empty. */
+export function Honeypot({ value, onChange }) {
+ return (
+ <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: 0, width: 1, height: 1, overflow: "hidden" }}>
+ <label>
+ Company
+ <input type="text" name="company" tabIndex={-1} autoComplete="off" value={value} onChange={onChange} />
+ </label>
+ </div>
+ );
+}
+
 /** Scroll-entrance wrapper. Content is ALWAYS visible without JS, the .fx classes only animate when <html class="js"> is present. */
 export function Fx({ as: Tag = "div", delay = 0, scale = false, className = "", children, ...rest }) {
  const ref = useInView();

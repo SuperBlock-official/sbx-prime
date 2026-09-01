@@ -31,10 +31,20 @@ export function createApp() {
   app.use(express.json({ limit: "16kb" }));
   app.use(morgan(config.isProd ? "combined" : "dev"));
 
-  // Throttle the public write endpoints.
+  // Baseline flood protection on ALL API traffic (generous for real users).
+  const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 300,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { ok: false, error: "Too many requests, please slow down." },
+  });
+  app.use("/api", apiLimiter);
+
+  // Tighter throttle on the public write endpoints (spam / abuse).
   const writeLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    max: 30,
+    max: 20,
     standardHeaders: true,
     legacyHeaders: false,
     message: { ok: false, error: "Too many requests, please try again shortly." },
