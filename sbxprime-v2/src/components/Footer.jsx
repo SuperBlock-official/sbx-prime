@@ -95,7 +95,7 @@ export default function Footer() {
 
  {/* legal */}
  <p className="mt-8 text-[11px] leading-relaxed text-ink/40">
- Tokens are securities. This launch is offered under Regulation S to investors outside the US, UK, and
+ Tokens are issued through an offshore structure and are not offered as securities. This launch is offered only to eligible persons outside the US, UK, and
  Europe, and is not available to persons in the United States, the United Kingdom, or Europe. Rental yields are indicative
  and not guaranteed; capital appreciation figures are third-party market forecasts (Savills, JLL), capital is at risk and property values can fall as well as rise. Nothing on this site is investment,
  legal, or tax advice.

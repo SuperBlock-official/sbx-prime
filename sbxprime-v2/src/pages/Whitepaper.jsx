@@ -44,7 +44,7 @@ const SECTIONS = [
     id: "token-standard",
     title: "ERC-3643 token standard (T-REX)",
     body: [
-      "SBX Prime uses ERC-3643, the T-REX (Token for Regulated EXchanges) standard built and maintained by Superblock. It is the leading compliance-first security-token standard, adopted by regulated financial institutions worldwide, and it makes compliance a property of the asset itself.",
+      "SBX Prime uses ERC-3643, the T-REX (Token for Regulated EXchanges) standard built and maintained by Superblock. It is the leading compliance-first token standard, adopted by regulated financial institutions worldwide, and it makes compliance a property of the asset itself.",
     ],
     bullets: [
       ["Identity registry", "Every wallet is linked to an on-chain identity recording KYC/AML status, accreditation, and jurisdiction eligibility."],
@@ -84,13 +84,13 @@ const SECTIONS = [
     title: "Regulatory structure",
     body: [
       "There is no single right wrapper for tokenized real estate. SBX Prime structures each offering around three variables, where the asset sits, where the issuing vehicle is formed, and where the investor resides, then selects the most efficient combination for that deal.",
-      "In practice this lets a US-accredited base and a broad global audience outside the US invest in the same asset, each under the rule set built for them.",
-      "For the current Central London launch, tokens are offered under Regulation S only, to investors outside the United States, the United Kingdom, and Europe.",
+      "In practice this lets a broad global audience of eligible investors participate in the same asset under a structure built for them, without the tokens being offered or sold as securities in the jurisdictions where they are made available.",
+      "For the current Central London launch, tokens are offered only to eligible persons outside the United States, the United Kingdom, and Europe, through an offshore structure.",
     ],
     bullets: [
-      ["Delaware SPV", "A Delaware LLC or corporation holds the asset and its economic and governance rights; the tokens are that vehicle's shares."],
-      ["Reg D + Reg S", "Rule 506(c) admits verified accredited US investors; Regulation S opens the same offering to investors outside the US, targeting a broad global audience."],
-      ["Offshore vehicles", "Tax-neutral BVI, Cayman Islands, or Jersey companies for international pooling where they are the more efficient home."],
+      ["Ring-fenced SPV", "Each asset is held in its own single-asset special-purpose vehicle that holds the economic and governance rights; the tokens are that vehicle's shares."],
+      ["Eligibility-gated", "Access is limited to eligible persons outside the US, UK, and Europe, and other restricted jurisdictions, enforced at KYC and on-chain."],
+      ["Offshore vehicles", "Tax-neutral vehicles (for example BVI, Cayman Islands, or Jersey) for international pooling where they are the more efficient home."],
       ["Private fund structures", "Regulated or exempt fund vehicles where a fund, rather than a single-asset SPV, is the better fit."],
     ],
   },
@@ -177,7 +177,7 @@ const SECTIONS = [
     title: "Roadmap",
     body: ["SBX Prime is delivered in phases, from a compliant foundation to a global, liquid market."],
     bullets: [
-      ["Foundation", "ERC-3643 deployment on Base, Superblock ONCHAINID integration, first offerings structured under Reg D / Reg S, first tokenizations, web platform."],
+      ["Foundation", "ERC-3643 deployment on Base, Superblock ONCHAINID integration, first offerings structured for eligible investors outside restricted jurisdictions, first tokenizations, web platform."],
       ["Growth", "Mobile apps, the secondary marketplace, the DAO governance module, the AI engine, and London expansion."],
       ["Scale", "Singapore launch, an institutional tier, multi-chain deployment, DeFi integrations, and a $1B AUM milestone."],
       ["Global", "New York, Hong Kong, and Tokyo markets, exchange-listing partnerships, and regulated fund products."],
@@ -309,7 +309,7 @@ export default function Whitepaper() {
           <div className="mt-8 rounded-xl border-l-[3px] border-brand bg-mist/50 p-5">
             <p className="font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-brand-dark">Abstract</p>
             <p className="mt-2 text-[15px] leading-relaxed text-ink/75">
-              SBX Prime issues super-prime real estate as ERC-3643 security tokens, one token per square foot of
+              SBX Prime issues super-prime real estate as ERC-3643 tokens, one token per square foot of
               a bankruptcy-remote SPV, on Superblock's ONCHAINID infrastructure. Income flows through audited smart
               contracts, assets are revalued quarterly by RICS surveyors, and holders govern each building through
               an AI-assisted DAO. Each offering is wrapped in the most efficient regulatory structure for its asset,
@@ -390,8 +390,8 @@ export default function Whitepaper() {
           <p className="mt-10 border-t border-hairline pt-6 text-[11px] leading-relaxed text-ink/40">
             This whitepaper is for information only and does not constitute an offer to sell or a solicitation to buy
             any securities, nor investment, legal, or tax advice. It has not been reviewed by any regulatory authority.
-            Each offering is structured under the regime appropriate to its asset, vehicle, and investor jurisdictions,
-            for example Regulation D and Regulation S in and outside the United States. Figures are indicative and
+            Each offering is structured through an offshore structure appropriate to its asset, vehicle, and investor
+            jurisdictions, and is made available only to eligible persons outside restricted jurisdictions. Figures are indicative and
             subject to independent valuation. Capital is at risk and past performance is not a guide to future returns.
             The secondary market, liquidity pools, and $SBX are roadmap items subject to regulatory approval and may
             change. Prospective investors should read the full offering memorandum and risk disclosures before investing.

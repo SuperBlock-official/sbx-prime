@@ -52,7 +52,7 @@ const Connector = () => (
 const FLOW = [
  [I.building, "The building", "A fully-let, Grade-A commercial asset, independently valued."],
  [I.spv, "One SPV", "Held in a single-asset, English-law special purpose vehicle."],
- [I.token, "18,036 tokens", "The SPV is minted as ERC-3643 security tokens, one per saleable ft²."],
+ [I.token, "18,036 tokens", "The SPV is minted as ERC-3643 tokens, one per saleable ft²."],
  [I.investors, "Verified investors", "Tokens settle only to KYC'd, eligible wallets, globally."],
 ];
 
@@ -171,7 +171,7 @@ export default function Technology() {
  <>
  <Seo
  title="Technology, Powered by SUPERBLOCK | SBX Prime"
- description="How SBX Prime tokenizes trophy real estate: single-asset SPVs, ERC-3643 identity-bound security tokens, audited smart contracts, USDC rent distribution, on-chain governance, and AI insights, on Base."
+ description="How SBX Prime tokenizes trophy real estate: single-asset SPVs, ERC-3643 identity-bound tokens, audited smart contracts, USDC rent distribution, on-chain governance, and AI insights, on Base."
  path="/technology"
  />
 
@@ -243,7 +243,7 @@ export default function Technology() {
  <div>
  <SectionHead
  eyebrow="The token standard"
- title="A security regulators can live with."
+ title="A structure regulators can live with."
  lede="ERC-3643 binds identity to the token itself. Compliance is enforced by the contract on every transfer, not bolted on afterwards."
  />
  <Fx delay={140} className="mt-7">

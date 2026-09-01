@@ -191,7 +191,7 @@ export default function PledgeModule({ compact = false, pool }) {
  <span className="text-xs leading-relaxed text-ink/65">
  I confirm I am eligible to invest under the laws of my country of residence, and that I am not a
  resident or citizen of the United States, the United Kingdom, or Europe (EEA/EU). This launch is
- offered under Regulation S to investors outside those regions.
+ offered only to eligible persons outside those regions.
  </span>
  </label>
 

@@ -20,7 +20,7 @@ const LAYERS = [
  {
  h: "Platform level",
  items: [
- ["token", "ERC-3643 tokens", "Identity-bound security tokens. Transfers settle only between verified investors, enforced by the contract."],
+ ["token", "ERC-3643 tokens", "Identity-bound tokens. Transfers settle only between verified investors, enforced by the contract."],
  ["key", "Key recovery", "Lost keys don't mean lost property. The issuer can reissue tokens to your verified identity after checks."],
  ["node", "Institutional infrastructure", "Deployed on Base with AWS and Azure redundancy; smart contracts independently audited before issuance."],
  ["refresh", "On-chain register mirror", "The SPV shareholder register and the token ledger are reconciled continuously, one source of truth."],
@@ -29,8 +29,8 @@ const LAYERS = [
  {
  h: "Regulatory",
  items: [
- ["doc", "Compliance-first structure", "Every property is issued as a security to eligible investors only, structured with regulatory counsel across the jurisdictions we operate in."],
- ["globe", "Eligibility gating", "This launch is offered under Regulation S to investors outside the US, UK, and Europe. US, UK, and EEA/EU persons are excluded for this launch, enforced at KYC and on-chain."],
+ ["doc", "Compliance-first structure", "Every property is issued to eligible investors only through an offshore structure, structured with regulatory counsel across the jurisdictions we operate in."],
+ ["globe", "Eligibility gating", "This launch is offered only to eligible persons outside the US, UK, and Europe. US, UK, and EEA/EU persons are excluded for this launch, enforced at KYC and on-chain."],
  ["idcard", "Full KYC/AML", "Bank-grade identity, sanctions, and source-of-funds screening before any settlement."],
  ["users", "Professional advisers", "Structuring and audit support from Big-Four-calibre firms across the jurisdictions we operate in."],
  ],

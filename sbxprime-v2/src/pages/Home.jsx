@@ -29,7 +29,7 @@ export default function Home() {
  <>
  <Seo
  title="Tokenized Real Estate London | SBX Prime by SUPERBLOCK"
- description="Own institutional-grade London commercial real estate from one square foot. ERC-3643 security tokens, 6–7% rental yield plus 3–5% capital appreciation potential (Savills/JLL). For qualified investors."
+ description="Own institutional-grade London commercial real estate from one square foot. ERC-3643 tokens, 6–7% rental yield plus 3–5% capital appreciation potential (Savills/JLL). For qualified investors."
  path="/"
  />
 
@@ -48,7 +48,7 @@ export default function Home() {
  </span>
  </h1>
  <p className="lede">
- SBX Prime turns trophy commercial buildings into ERC-3643 security tokens.
+ SBX Prime turns trophy commercial buildings into ERC-3643 tokens.
  One token = one square foot = one SPV share, with rent paid monthly in USDC
  and institutional custody of title.
  </p>
@@ -213,7 +213,7 @@ export default function Home() {
  <div>
  <SectionHead
  eyebrow="The token"
- title="A security token that regulators can live with."
+ title="A token that regulators can live with."
  lede="ERC-3643 binds identity to the token itself. Transfers only settle between verified investors, compliance is enforced by the contract, not by promises."
  />
  <div className="mt-8"><TokenCard /></div>

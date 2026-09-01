@@ -377,7 +377,7 @@ export function Kyc() {
       <Card>
         <div className="flex items-center gap-3">
           <span className="grid h-11 w-11 place-items-center rounded-full bg-brand/12"><Icon name="shield" className="h-6 w-6 text-brand-dark" /></span>
-          <div><p className="font-display text-[15px] font-extrabold text-ink">Verified</p><p className="text-[12px] text-ink/50">Eligible under Regulation S · outside US/UK/EEA</p></div>
+          <div><p className="font-display text-[15px] font-extrabold text-ink">Verified</p><p className="text-[12px] text-ink/50">Eligible · outside US/UK/EEA</p></div>
         </div>
         <ul className="mt-5 space-y-3">
           {steps.map(([t, s]) => (

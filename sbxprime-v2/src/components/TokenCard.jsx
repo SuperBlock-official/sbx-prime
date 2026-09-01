@@ -39,7 +39,7 @@ export default function TokenCard() {
  <p className="mt-1 text-xs text-white/55">Victoria SW1 · 18,036 sq ft · income-producing</p>
  <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
  <span className="rounded-full border border-brand-teal/50 px-3 py-1 font-display text-[10px] font-bold uppercase tracking-widest text-brand-teal">
- ERC-3643 security token
+ ERC-3643 token
  </span>
  <span className="font-display text-[10px] font-bold text-white/40">SPV #SBX-LDN-01</span>
  </div>

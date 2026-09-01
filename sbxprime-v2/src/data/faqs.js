@@ -4,7 +4,7 @@ export const FAQ_CATEGORIES = [
  items: [
  {
  q: "What is SBX Prime?",
- a: "SBX Prime is an institutional-grade real estate tokenization platform by SUPERBLOCK. Investors outside the US, UK, and Europe own fractional shares of trophy commercial real estate through ERC-3643 security tokens, where one token represents one square foot and one share in the property-owning SPV.",
+ a: "SBX Prime is an institutional-grade real estate tokenization platform by SUPERBLOCK. Investors outside the US, UK, and Europe own fractional shares of trophy commercial real estate through ERC-3643 tokens, where one token represents one square foot and one share in the property-owning SPV.",
  },
  {
  q: "What does 1 token actually represent?",
@@ -25,15 +25,15 @@ export const FAQ_CATEGORIES = [
  items: [
  {
  q: "Who can invest?",
- a: "The current launch is offered under Regulation S to investors outside the US, UK, and Europe, subject to the laws of your country of residence. It is not available to persons in the United States, the United Kingdom, or Europe (EEA/EU). Eligibility is self-certified at pledge and verified during onboarding KYC.",
+ a: "The current launch is offered only to eligible persons outside the US, UK, and Europe, subject to the laws of your country of residence. It is not available to persons in the United States, the United Kingdom, or Europe (EEA/EU). Eligibility is self-certified at pledge and verified during onboarding KYC.",
  },
  {
  q: "Why ERC-3643 and not a normal token?",
- a: "ERC-3643 is a permissioned security token standard. Identity is bound to the token itself: transfers only settle between wallets that hold verified on-chain credentials. That makes it legally enforceable for securities, unlike ERC-20, where anyone can hold or move the token and compliance is bolted on afterwards.",
+ a: "ERC-3643 is a permissioned token standard. Identity is bound to the token itself: transfers only settle between wallets that hold verified on-chain credentials. That makes compliance legally enforceable at the token level, unlike ERC-20, where anyone can hold or move the token and compliance is bolted on afterwards.",
  },
  {
  q: "Is SBX Prime regulated?",
- a: "The platform operates a compliance-first structure: each property sits in its own SPV, tokens are securities issued to eligible investors only, and full KYC/AML applies before settlement. The structure is designed with regulatory counsel across the jurisdictions we operate in.",
+ a: "The platform operates a compliance-first structure: each property sits in its own SPV, tokens are issued to eligible investors only through an offshore structure and are not offered as securities, and full KYC/AML applies before settlement. The structure is designed with regulatory counsel across the jurisdictions we operate in.",
  },
  {
  q: "Do I pay tax on my returns?",
@@ -67,7 +67,7 @@ export const FAQ_CATEGORIES = [
  ],
  },
  {
- category: "The Asset & Security",
+ category: "The Asset & Structure",
  items: [
  {
  q: "Who manages the building?",

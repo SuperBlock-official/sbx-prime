@@ -14,7 +14,7 @@ export default function HowItWorks() {
  <>
  <Seo
  title="How It Works, The Investor Journey | SBX Prime"
- description="Discover, pledge, verify, own, earn. How SBX Prime turns trophy commercial real estate into ERC-3643 security tokens with monthly USDC rent and a compliant secondary market."
+ description="Discover, pledge, verify, own, earn. How SBX Prime turns trophy commercial real estate into ERC-3643 tokens with monthly USDC rent and a compliant secondary market."
  path="/how-it-works"
  />
  <section className="relative overflow-hidden border-b border-hairline">
@@ -130,7 +130,7 @@ export default function HowItWorks() {
  <SectionHead
  eyebrow="Under the hood"
  title="Why the token standard matters."
- lede="ERC-3643 makes compliance a property of the asset itself. That's what lets a security trade globally without becoming a regulatory accident."
+ lede="ERC-3643 makes compliance a property of the asset itself. That's what lets a token trade globally without becoming a regulatory accident."
  />
  <Fx delay={150} className="mt-7">
  <PushNotification body="Transfer approved, counterparty KYC verified on-chain (ERC-3643)." time="1m" delay={500} />

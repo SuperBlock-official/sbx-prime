@@ -3,7 +3,7 @@ import { Fx } from "./ui";
 const CAPS = [
  ["Identity bound to the token (on-chain KYC)", true, false],
  ["Transfers restricted to verified investors", true, false],
- ["Recognised security-token standard", true, false],
+ ["Recognised compliant-token standard", true, false],
  ["Issuer can recover tokens if keys are lost", true, false],
  ["Regulator-visible cap table at all times", true, false],
  ["Anyone can hold or move it anonymously", false, true],
@@ -40,7 +40,7 @@ export default function Erc3643Table() {
  </span>
  <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-brand-dark">Standard</p>
  <h3 className="mt-1 font-display text-2xl font-extrabold text-ink">ERC-3643</h3>
- <p className="mt-1 text-sm text-ink/60">Permissioned security token</p>
+ <p className="mt-1 text-sm text-ink/60">Permissioned token</p>
  <ul className="mt-5 space-y-3">
  {CAPS.map(([cap, a]) => (
  <li key={cap} className="flex items-start gap-3">
