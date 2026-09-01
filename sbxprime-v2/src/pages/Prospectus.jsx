@@ -75,6 +75,23 @@ function GrowthChart({ projection }) {
   );
 }
 
+/* A per-section call to action. Scrolls to this asset's pledge module by
+   default (#pledge), or links elsewhere when `to` is a route. */
+function SectionCTA({ label, sub, to = "#pledge" }) {
+  return (
+    <div className="shell">
+      <Fx delay={60} className="mt-10 flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:gap-5">
+        {sub && <span className="text-[13px] text-ink/55">{sub}</span>}
+        {to.startsWith("#") ? (
+          <a href={to} className="btn-primary">{label}</a>
+        ) : (
+          <Link to={to} className="btn-primary">{label}</Link>
+        )}
+      </Fx>
+    </div>
+  );
+}
+
 export default function Prospectus() {
   const { slug } = useParams();
   const a = useAsset(slug) || ASSET;
@@ -155,7 +172,7 @@ export default function Prospectus() {
           </div>
 
           {/* sticky pledge */}
-          <div className="lg:sticky lg:top-24 lg:self-start">
+          <div id="pledge" className="scroll-mt-28 lg:sticky lg:top-24 lg:self-start">
             <Fx delay={100}><PledgeModule pool={poolFor(a)} /></Fx>
           </div>
         </div>
@@ -225,6 +242,7 @@ export default function Prospectus() {
             </div>
           </Fx>
         </div>
+        <SectionCTA label="Pledge your allocation" sub="1 token = 1 sq ft · monthly USDC income" />
       </section>
 
       {/* ---------- location / map ---------- */}
@@ -249,6 +267,7 @@ export default function Prospectus() {
             </div>
           </div>
         </div>
+        <SectionCTA label="Own a square foot here" sub="Approximate area shown; exact address on verification" />
       </section>
 
       {/* ---------- investment breakdown ---------- */}
@@ -329,6 +348,7 @@ export default function Prospectus() {
             </Fx>
           </div>
         </div>
+        <SectionCTA label="Start your pledge" sub={`${a.yieldPa} target yield + ${a.appreciationPa} appreciation`} />
       </section>
 
       {/* ---------- transparent costs & income ---------- */}
@@ -418,6 +438,7 @@ export default function Prospectus() {
             Capital is at risk and returns are not guaranteed.
           </p>
         </div>
+        <SectionCTA label="Pledge with full transparency" sub="Every cost and fee shown above" />
       </section>
 
       {/* ---------- tenancy ---------- */}
@@ -438,6 +459,7 @@ export default function Prospectus() {
             ))}
           </div>
         </div>
+        <SectionCTA label="Back this tenancy" sub="Monthly USDC income, professionally managed" />
       </section>
 
       {/* ---------- management & lifecycle ---------- */}
@@ -463,6 +485,7 @@ export default function Prospectus() {
             ))}
           </div>
         </div>
+        <SectionCTA label="Pledge your allocation" sub="We run the building for its whole life" />
       </section>
 
       {/* ---------- gated document bank ---------- */}
@@ -527,6 +550,7 @@ export default function Prospectus() {
             performance is not a guide to future returns.
           </p>
         </div>
+        <SectionCTA label="Pledge your allocation" sub="Reserve your square feet — no funds move today" />
       </section>
 
       {/* floating proof */}
