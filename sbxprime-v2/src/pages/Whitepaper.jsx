@@ -12,8 +12,8 @@ const SECTIONS = [
     id: "summary",
     title: "Executive summary",
     body: [
-      "SBX Prime is an institutional-grade tokenized real estate platform built on the ERC-3643 security-token standard and powered by Superblock's tokenization infrastructure. It gives investors direct fractional ownership of super-prime buildings in London, Dubai, and Singapore, from a single square foot.",
-      "It combines two decades of SBX Group's real estate expertise with on-chain compliance and AI-assisted governance, delivering institutional investment quality with the access, transparency, and liquidity of a modern digital asset.",
+      "SBX Prime is an institutional-grade tokenized real estate platform built on the ERC-3643 token standard and powered by Superblock's tokenization infrastructure. It gives investors direct fractional ownership of super-prime buildings, starting in Central London, from a single square foot, with further global markets on the roadmap.",
+      "It combines deep institutional real estate expertise with on-chain compliance and AI-assisted governance, delivering institutional investment quality with the access, transparency, and liquidity of a modern digital asset.",
     ],
   },
   {
@@ -36,7 +36,7 @@ const SECTIONS = [
       ["Fractional tokenization", "Each building is issued as ERC-3643 tokens, one token per saleable square foot."],
       ["On-chain liquidity", "Tokens are transferable on a compliant secondary marketplace (coming soon)."],
       ["Global compliant KYC", "Identity verification across 190+ countries, under each investor's applicable regime."],
-      ["Transparent ledger", "Ownership, income, and governance recorded on the Polygon blockchain."],
+      ["Transparent ledger", "Ownership, income, and governance recorded on the Base blockchain."],
       ["AI-assisted governance", "A DAO voting system with AI analysis of every proposal."],
     ],
   },
@@ -158,7 +158,7 @@ const SECTIONS = [
     bullets: [
       ["Legal", "Bankruptcy-remote SPVs, a jurisdiction-appropriate regulated framework, an independent trustee per SPV, and legal title held at the relevant land registry."],
       ["Financial", "Multi-signature escrow until acquisition completes, annual Big Four audits, quarterly RICS valuations, and full insurance."],
-      ["Blockchain", "Immutable ownership records on Polygon and rental income routed through audited smart contracts, with no manual handling."],
+      ["Blockchain", "Immutable ownership records on Base and rental income routed through audited smart contracts, with no manual handling."],
     ],
   },
   {
@@ -166,7 +166,7 @@ const SECTIONS = [
     title: "Technology stack",
     body: ["The platform is engineered on institutional infrastructure across four layers."],
     bullets: [
-      ["Blockchain", "Polygon PoS, Solidity 0.8+ audited by CertiK, IPFS document hashing, and Chainlink oracles for valuations and FX."],
+      ["Blockchain", "Base (Ethereum L2), Solidity 0.8+ audited by CertiK, IPFS document hashing, and Chainlink oracles for valuations and FX."],
       ["Identity", "ONCHAINID (EIP-734/735) via Superblock, Jumio biometric KYC, and Chainalysis plus ComplyAdvantage AML screening."],
       ["Application", "Next.js frontend, Node.js APIs, PostgreSQL and IPFS storage, on AWS and Azure behind Cloudflare."],
       ["AI", "Governance analysis, an ML property-valuation model, risk scoring, and portfolio personalisation."],
@@ -177,7 +177,7 @@ const SECTIONS = [
     title: "Roadmap",
     body: ["SBX Prime is delivered in phases, from a compliant foundation to a global, liquid market."],
     bullets: [
-      ["Foundation", "ERC-3643 deployment on Polygon, Superblock ONCHAINID integration, first offerings structured under Reg D / Reg S, first tokenizations, web platform."],
+      ["Foundation", "ERC-3643 deployment on Base, Superblock ONCHAINID integration, first offerings structured under Reg D / Reg S, first tokenizations, web platform."],
       ["Growth", "Mobile apps, the secondary marketplace, the DAO governance module, the AI engine, and London expansion."],
       ["Scale", "Singapore launch, an institutional tier, multi-chain deployment, DeFi integrations, and a $1B AUM milestone."],
       ["Global", "New York, Hong Kong, and Tokyo markets, exchange-listing partnerships, and regulated fund products."],
@@ -187,8 +187,8 @@ const SECTIONS = [
     id: "team",
     title: "Team & advisors",
     body: [
-      "SBX Prime is built by the SBX Group team, a Dubai-based real estate group with over twenty years of institutional market experience. The advisory board spans real estate (former JLL, CBRE, and Knight Frank executives), blockchain (ERC-3643 core contributors), regulation (former SEC and FCA advisers), and finance (former Goldman Sachs and Morgan Stanley real estate bankers).",
-      "Technology partners include Superblock (tokenization infrastructure), Chainlink (oracles), Polygon (network), and AWS and Azure (cloud).",
+      "SBX Prime is built by SUPERBLOCK together with a team of specialists and partners across real estate, capital markets, blockchain, regulation, and accounting and audit, brought together to build a serious institutional-grade platform. The product is offered through an appropriate offshore structure, with regulatory counsel in the jurisdictions in which it operates.",
+      "Technology partners include Superblock (tokenization infrastructure), Chainlink (oracles), Base (network), and AWS and Azure (cloud).",
     ],
   },
 ];

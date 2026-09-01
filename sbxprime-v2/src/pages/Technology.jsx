@@ -83,7 +83,7 @@ const STACK = [
  [I.ai, "AI & data", "Prime AI insights · Chainlink price & rent oracles", "teal"],
  [I.shield, "Compliance", "ERC-3643 identity · on-chain KYC/AML · transfer rules", "brand"],
  [I.contract, "Settlement", "Audited smart contracts · USDC escrow · monthly distributions", "teal"],
- [I.cloud, "Infrastructure", "Polygon · AWS · Azure redundancy", "brand"],
+ [I.cloud, "Infrastructure", "Base · AWS · Azure redundancy", "brand"],
 ];
 
 function ArchitectureStack() {
@@ -171,7 +171,7 @@ export default function Technology() {
  <>
  <Seo
  title="Technology, Powered by SUPERBLOCK | SBX Prime"
- description="How SBX Prime tokenizes trophy real estate: single-asset SPVs, ERC-3643 identity-bound security tokens, audited smart contracts, USDC rent distribution, on-chain governance, and AI insights, on Polygon."
+ description="How SBX Prime tokenizes trophy real estate: single-asset SPVs, ERC-3643 identity-bound security tokens, audited smart contracts, USDC rent distribution, on-chain governance, and AI insights, on Base."
  path="/technology"
  />
 

@@ -254,15 +254,15 @@ export default function Home() {
  </Fx>
  <div className="mx-auto mt-9 grid max-w-4xl gap-5 sm:grid-cols-3">
  {[
- ["“Finally a structure I could explain to my compliance officer in one sentence.”", "Family office principal, Dubai"],
- ["“The 1 sq ft standard makes cross-market comparison trivial. That's the unlock.”", "Private banker, Singapore"],
- ["“Monthly USDC rent, on time, with a statement. That's all I wanted.”", "Early pledge investor, London raise"],
- ].map(([quote, who], i) => (
- <Fx key={who} delay={i * 100} scale>
- <figure className="card-dark gloss h-full p-5">
- <blockquote className="text-sm leading-relaxed text-ink/70">{quote}</blockquote>
- <figcaption className="mt-4 font-display text-xs font-bold uppercase tracking-wider text-brand">{who}</figcaption>
- </figure>
+ ["Simple enough for compliance", "One token = one square foot = one SPV share. A structure you can explain in a single sentence."],
+ ["Comparable across markets", "The single square-foot standard makes comparing one building to another trivial."],
+ ["Paid like clockwork", "Monthly USDC rental income, on time, with a clear on-chain statement."],
+ ].map(([t, b], i) => (
+ <Fx key={t} delay={i * 100} scale>
+ <div className="card-dark gloss h-full p-5">
+ <h3 className="font-display text-sm font-bold text-ink">{t}</h3>
+ <p className="mt-2 text-sm leading-relaxed text-ink/65">{b}</p>
+ </div>
  </Fx>
  ))}
  </div>

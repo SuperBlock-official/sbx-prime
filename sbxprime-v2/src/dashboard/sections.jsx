@@ -355,7 +355,7 @@ export function Wallet({ p }) {
       <Card className="col-span-2">
         <SectionTitle>Wallet address</SectionTitle>
         <div className="flex items-center justify-between rounded-xl bg-[#F4F9F6] px-4 py-3 font-mono text-[12px] text-ink/60">
-          0x9f2a…4E71 (Polygon)
+          0x9f2a…4E71 (Base)
           <span className="rounded-md bg-brand/12 px-2 py-0.5 text-[11px] font-bold text-brand-dark">ERC-3643</span>
         </div>
       </Card>

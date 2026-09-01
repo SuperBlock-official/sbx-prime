@@ -107,7 +107,7 @@ export default function About() {
  <p className="text-sm leading-relaxed text-ink/60 sm:border-l sm:border-hairline sm:pl-6">
  SUPERBLOCK is the technology company behind SBX Prime: the tokenization engine, the ERC-3643
  identity layer, on-chain register reconciliation, and the distribution rails that pay rent in
- USDC every month, on Polygon with AWS and Azure infrastructure.
+ USDC every month, on Base with AWS and Azure infrastructure.
  </p>
  </div>
  </Fx>

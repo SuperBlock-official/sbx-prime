@@ -22,7 +22,7 @@ const LAYERS = [
  items: [
  ["token", "ERC-3643 tokens", "Identity-bound security tokens. Transfers settle only between verified investors, enforced by the contract."],
  ["key", "Key recovery", "Lost keys don't mean lost property. The issuer can reissue tokens to your verified identity after checks."],
- ["node", "Institutional infrastructure", "Deployed on Polygon with AWS and Azure redundancy; smart contracts independently audited before issuance."],
+ ["node", "Institutional infrastructure", "Deployed on Base with AWS and Azure redundancy; smart contracts independently audited before issuance."],
  ["refresh", "On-chain register mirror", "The SPV shareholder register and the token ledger are reconciled continuously, one source of truth."],
  ],
  },

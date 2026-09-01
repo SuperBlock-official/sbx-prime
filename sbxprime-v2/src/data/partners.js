@@ -7,7 +7,6 @@ import deloitte from "../assets/logos/Deloitte.svg";
 import ey from "../assets/logos/ey_logo.svg";
 import kpmg from "../assets/logos/KPMG_logo.svg";
 import aws from "../assets/logos/AWS_Logo.svg";
-import polygon from "../assets/logos/Polygon_Logo.svg";
 import azure from "../assets/logos/Azure_Logo.svg";
 import chainlink from "../assets/logos/chainlink_logo.svg";
 
@@ -22,7 +21,6 @@ export const PARTNERS = [
  { name: "EY", src: ey },
  { name: "KPMG", src: kpmg },
  { name: "AWS", src: aws },
- { name: "Polygon", src: polygon },
  { name: "Azure", src: azure },
  { name: "Chainlink", src: chainlink },
 ];
