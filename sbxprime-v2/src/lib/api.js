@@ -32,6 +32,8 @@ export async function submitPledge(pledge) {
  assetSlug: pledge.assetSlug ?? null,
  usdcAmount: pledge.usdcAmount ?? 0,
  sqft: pledge.sqft ?? 0,
+ walletAddress: pledge.walletAddress || "",
+ noWallet: pledge.noWallet === true,
  eligibilitySelfCertified: pledge.eligibilitySelfCertified === true,
  company: pledge.company || "", // honeypot (must stay empty)
  });

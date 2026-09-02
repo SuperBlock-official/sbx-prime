@@ -33,6 +33,7 @@ export default function Pledges() {
               <th className="px-4 py-3 font-bold">Asset</th>
               <th className="px-4 py-3 font-bold">Amount</th>
               <th className="px-4 py-3 font-bold">Sq ft</th>
+              <th className="px-4 py-3 font-bold">Wallet</th>
               <th className="px-4 py-3 font-bold">When</th>
             </tr>
           </thead>
@@ -46,11 +47,14 @@ export default function Pledges() {
                 <td className="px-4 py-3 text-ink/70">{r.asset_slug || "—"}</td>
                 <td className="px-4 py-3 tabular-nums text-ink/70">{money(r.usdc_amount)}</td>
                 <td className="px-4 py-3 tabular-nums text-ink/70">{Number(r.sqft).toLocaleString("en-US")}</td>
+                <td className="px-4 py-3 font-mono text-[11px] text-ink/60">
+                  {r.wallet_address ? `${r.wallet_address.slice(0, 6)}…${r.wallet_address.slice(-4)}` : r.no_wallet ? "no wallet" : "—"}
+                </td>
                 <td className="px-4 py-3 text-ink/45">{date(r.created_at)}</td>
               </tr>
             ))}
             {!rows.length && (
-              <tr><td colSpan={8} className="px-4 py-8 text-center text-ink/40">No pledges yet.</td></tr>
+              <tr><td colSpan={9} className="px-4 py-8 text-center text-ink/40">No pledges yet.</td></tr>
             )}
           </tbody>
         </table>

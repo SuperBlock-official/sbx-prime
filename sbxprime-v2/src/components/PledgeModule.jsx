@@ -1,14 +1,10 @@
 import { useMemo, useState } from "react";
 import { RAISE, submitPledge } from "../lib/api";
 import { Counter, Honeypot } from "./ui";
+import CountrySelect from "./CountrySelect";
+import { isEmail, isEvmAddress, isFilled } from "../lib/validators";
 
 const fmtUsd = (n) => n.toLocaleString("en-US", { maximumFractionDigits: 0 });
-
-const COUNTRIES = [
- "United Arab Emirates", "Saudi Arabia", "Qatar", "Kuwait", "Singapore", "Hong Kong SAR",
- "Switzerland", "United Kingdom (professional)", "Australia", "Canada", "Japan",
- "South Africa", "India", "Pakistan", "Nigeria", "Brazil", "Mexico", "Other",
-];
 
 /** Circular raise-progress ring. */
 function Ring({ pct }) {
@@ -38,8 +34,11 @@ export default function PledgeModule({ compact = false, pool }) {
  const [usd, setUsd] = useState(25_000); // USDC amount
  const [sqft, setSqft] = useState(24);
  const [form, setForm] = useState({ name: "", email: "", country: "" });
+ const [wallet, setWallet] = useState("");
+ const [noWallet, setNoWallet] = useState(false);
  const [company, setCompany] = useState(""); // honeypot
  const [certified, setCertified] = useState(false);
+ const [submitted, setSubmitted] = useState(false); // reveal errors after first attempt
  const [state, setState] = useState("idle");
  const [assignedNo, setAssignedNo] = useState(null); // authoritative # from the server
 
@@ -60,14 +59,29 @@ export default function PledgeModule({ compact = false, pool }) {
 
  const pct = (cfg.raisedUsd / cfg.targetUsd) * 100;
  const investorNo = cfg.investors + 1;
- const canSubmit = form.name && /\S+@\S+\.\S+/.test(form.email) && form.country && certified && state !== "sending";
+
+ // Per-field validation (server re-validates). Errors surface after first submit.
+ const errors = {
+ name: !isFilled(form.name) ? "Enter your full name" : "",
+ email: !isEmail(form.email) ? "Enter a valid email address" : "",
+ country: !isFilled(form.country) ? "Select your country of residence" : "",
+ wallet: !noWallet && !isEvmAddress(wallet) ? "Enter a valid Base wallet address (0x…) or tick “I don’t have one”" : "",
+ certified: !certified ? "Please confirm your eligibility" : "",
+ };
+ const err = (k) => (submitted ? errors[k] : "");
+ const hasErrors = Object.values(errors).some(Boolean);
 
  const onSubmit = async (e) => {
  e.preventDefault();
- if (!canSubmit) return;
+ setSubmitted(true);
+ if (hasErrors || state === "sending") return;
  setState("sending");
  try {
- const res = await submitPledge({ ...form, company, usdcAmount: calc.usdc, sqft: calc.ft, eligibilitySelfCertified: true });
+ const res = await submitPledge({
+ ...form, company, usdcAmount: calc.usdc, sqft: calc.ft,
+ walletAddress: noWallet ? "" : wallet.trim(), noWallet,
+ eligibilitySelfCertified: true,
+ });
  setAssignedNo(res?.investorNumber ?? investorNo);
  setState("done");
  } catch {
@@ -177,27 +191,52 @@ export default function PledgeModule({ compact = false, pool }) {
 
  {/* details */}
  <div className="mt-4 grid gap-3 sm:grid-cols-2">
- <input className="field" placeholder="Full name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} aria-label="Full name" required />
- <input className="field" type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} aria-label="Email" required />
- <select className="field sm:col-span-2" value={form.country} required aria-label="Country of residence" onChange={(e) => setForm({ ...form, country: e.target.value })}>
- <option value="" disabled>Country of residence</option>
- {COUNTRIES.map((c) => <option key={c} value={c}>{c}</option>)}
- </select>
+ <div>
+ <input className={`field ${err("name") ? "!border-red-400" : ""}`} placeholder="Full name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} aria-label="Full name" />
+ {err("name") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("name")}</p>}
+ </div>
+ <div>
+ <input className={`field ${err("email") ? "!border-red-400" : ""}`} type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} aria-label="Email" />
+ {err("email") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("email")}</p>}
+ </div>
+ <div className="sm:col-span-2">
+ <CountrySelect value={form.country} onChange={(c) => setForm({ ...form, country: c })} error={!!err("country")} />
+ {err("country") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("country")}</p>}
+ </div>
+ </div>
+
+ {/* Base wallet address (or opt out) */}
+ <div className="mt-3">
+ <input
+ className={`field font-mono text-[13px] ${err("wallet") ? "!border-red-400" : ""} ${noWallet ? "opacity-40" : ""}`}
+ placeholder="Your Base wallet address (0x…)"
+ value={wallet}
+ onChange={(e) => setWallet(e.target.value)}
+ disabled={noWallet}
+ aria-label="Base wallet address"
+ spellCheck={false}
+ />
+ <label className="mt-2 flex cursor-pointer items-center gap-2 text-xs text-ink/60">
+ <input type="checkbox" checked={noWallet} onChange={(e) => setNoWallet(e.target.checked)} className="h-3.5 w-3.5 accent-[#1FB462]" />
+ I don’t have a wallet yet — help me set one up before closing.
+ </label>
+ {err("wallet") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("wallet")}</p>}
  </div>
 
  {/* eligibility self-certification, required, unchecked by default */}
- <label className="mt-4 flex cursor-pointer items-start gap-3 rounded-xl border border-hairline bg-mist p-4">
- <input type="checkbox" checked={certified} onChange={(e) => setCertified(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[#1FB462]" required />
+ <label className={`mt-4 flex cursor-pointer items-start gap-3 rounded-xl border bg-mist p-4 ${err("certified") ? "border-red-400" : "border-hairline"}`}>
+ <input type="checkbox" checked={certified} onChange={(e) => setCertified(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[#1FB462]" />
  <span className="text-xs leading-relaxed text-ink/65">
  I confirm I am eligible to invest under the laws of my country of residence, and that I am not a
  resident or citizen of the United States, the United Kingdom, or Europe (EEA/EU). This launch is
  offered only to eligible persons outside those regions.
  </span>
  </label>
+ {err("certified") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("certified")}</p>}
 
  <Honeypot value={company} onChange={(e) => setCompany(e.target.value)} />
 
- <button type="submit" disabled={!canSubmit} className="btn-primary mt-5 w-full disabled:cursor-not-allowed disabled:opacity-40">
+ <button type="submit" disabled={state === "sending"} className="btn-primary mt-5 w-full disabled:cursor-not-allowed disabled:opacity-40">
  {state === "sending" ? "Submitting…" : `Pledge ${calc.ft.toLocaleString()} sq ft, no funds move today`}
  </button>
  {state === "error" && <p className="mt-2 text-xs text-[#c0492f]">Something went wrong, please try again.</p>}

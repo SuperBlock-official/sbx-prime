@@ -25,6 +25,10 @@ create table if not exists pledges (
 create index if not exists pledges_email_idx on pledges (email);
 create index if not exists pledges_created_idx on pledges (created_at desc);
 
+-- Base wallet on pledges (added 2026-09).
+alter table pledges add column if not exists wallet_address text;
+alter table pledges add column if not exists no_wallet boolean not null default false;
+
 create table if not exists leads (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),

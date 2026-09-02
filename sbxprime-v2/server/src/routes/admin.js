@@ -147,7 +147,7 @@ router.get("/pledges", async (_req, res, next) => {
   try {
     const { rows } = await query(
       `select id, created_at, investor_number, name, email, country, asset_slug,
-              usdc_amount, sqft, status
+              usdc_amount, sqft, wallet_address, no_wallet, status
          from pledges order by created_at desc limit 500`
     );
     res.json({ ok: true, pledges: rows });
