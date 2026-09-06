@@ -14,7 +14,7 @@ export default function Login() {
     setBusy(true);
     try {
       await adminApi.login(form.email, form.password);
-      navigate("/admin", { replace: true });
+      navigate("/", { replace: true });
     } catch (err) {
       setError(err.message || "Sign in failed");
     } finally {

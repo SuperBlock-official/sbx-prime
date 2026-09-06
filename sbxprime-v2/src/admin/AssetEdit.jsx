@@ -82,7 +82,7 @@ export default function AssetEdit() {
     try {
       if (isNew) await adminApi.createAsset(buildPayload());
       else await adminApi.updateAsset(slug, buildPayload());
-      navigate("/admin");
+      navigate("/");
     } catch (e) {
       setStatus((s) => ({ ...s, saving: false, error: e.message, fieldErrors: e.errors || {} }));
     }
@@ -98,7 +98,7 @@ export default function AssetEdit() {
 
   return (
     <div className="max-w-3xl">
-      <Link to="/admin" className="text-[13px] text-ink/50 hover:text-ink">← Back to assets</Link>
+      <Link to="/" className="text-[13px] text-ink/50 hover:text-ink">← Back to assets</Link>
       <div className="mt-2 flex items-center justify-between">
         <h1 className="font-display text-xl font-extrabold text-ink">
           {isNew ? "New asset" : f.name || slug}
@@ -171,7 +171,7 @@ export default function AssetEdit() {
         <button onClick={save} disabled={status.saving} className="btn-primary disabled:opacity-60">
           {status.saving ? "Saving…" : isNew ? "Create asset" : "Save changes"}
         </button>
-        <Link to="/admin" className="btn-ghost">Cancel</Link>
+        <Link to="/" className="btn-ghost">Cancel</Link>
       </div>
     </div>
   );

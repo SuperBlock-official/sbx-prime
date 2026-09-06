@@ -27,7 +27,7 @@ export default function Assets() {
           <h1 className="font-display text-xl font-extrabold text-ink">Assets</h1>
           <p className="text-[13px] text-ink/50">{assets.length} assets · edit details, financials and images.</p>
         </div>
-        <Link to="/admin/assets/new" className="btn-primary">Add asset</Link>
+        <Link to="/assets/new" className="btn-primary">Add asset</Link>
       </div>
 
       <div className="mt-6 overflow-hidden rounded-2xl border border-hairline bg-white">
@@ -65,7 +65,7 @@ export default function Assets() {
                   </span>
                 </td>
                 <td className="px-4 py-3 text-right">
-                  <Link to={`/admin/assets/${a.slug}`} className="font-bold text-brand-dark hover:underline">Edit</Link>
+                  <Link to={`/assets/${a.slug}`} className="font-bold text-brand-dark hover:underline">Edit</Link>
                   <button onClick={() => remove(a.slug)} className="ml-4 text-ink/40 hover:text-red-600">Delete</button>
                 </td>
               </tr>

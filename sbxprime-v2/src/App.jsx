@@ -72,15 +72,21 @@ function PublicSite() {
  );
 }
 
+// The admin lives on its own subdomain (users.sbxprime.com) at the root — no
+// /admin segment. The public site runs on every other host.
+const IS_ADMIN_HOST = typeof window !== "undefined" && /^users\./.test(window.location.hostname);
+
 export default function App() {
  return (
  <BrowserRouter>
  <ScrollToTop />
+ {IS_ADMIN_HOST ? (
+ <AdminApp />
+ ) : (
  <Routes>
- {/* Admin gets its own chrome-free shell */}
- <Route path="/admin/*" element={<AdminApp />} />
  <Route path="/*" element={<PublicSite />} />
  </Routes>
+ )}
  </BrowserRouter>
  );
 }

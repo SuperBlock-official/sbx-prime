@@ -3,9 +3,9 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { adminApi } from "../lib/adminApi";
 
 const NAV = [
-  ["Assets", "/admin"],
-  ["Pledges", "/admin/pledges"],
-  ["Leads", "/admin/leads"],
+  ["Assets", "/"],
+  ["Pledges", "/pledges"],
+  ["Leads", "/leads"],
 ];
 
 export default function AdminLayout() {
@@ -16,12 +16,12 @@ export default function AdminLayout() {
     adminApi
       .me()
       .then((r) => setState({ loading: false, email: r.admin.email }))
-      .catch(() => navigate("/admin/login", { replace: true }));
+      .catch(() => navigate("/login", { replace: true }));
   }, [navigate]);
 
   const logout = async () => {
     await adminApi.logout().catch(() => {});
-    navigate("/admin/login", { replace: true });
+    navigate("/login", { replace: true });
   };
 
   if (state.loading) {
@@ -41,7 +41,7 @@ export default function AdminLayout() {
                 <NavLink
                   key={to}
                   to={to}
-                  end={to === "/admin"}
+                  end={to === "/"}
                   className={({ isActive }) =>
                     `rounded-lg px-3 py-1.5 font-display text-[13px] font-bold transition-colors ${
                       isActive ? "bg-brand/10 text-brand-dark" : "text-ink/60 hover:text-ink"
