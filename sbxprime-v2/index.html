@@ -13,8 +13,9 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
-      // Consent Mode: deny analytics until the user accepts (see CookieConsent).
-      gtag("consent", "default", { analytics_storage: "denied", ad_storage: "denied" });
+      // Analytics on by default (as on the previous site) so all visits are tracked;
+      // the cookie banner's "Necessary only" still lets a visitor opt out.
+      gtag("consent", "default", { analytics_storage: "granted", ad_storage: "denied" });
       gtag("js", new Date());
       gtag("config", "G-E1DJZNL07K");
     </script>
