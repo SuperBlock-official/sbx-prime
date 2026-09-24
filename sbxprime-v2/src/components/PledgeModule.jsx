@@ -85,7 +85,10 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  walletAddress: noWallet ? "" : wallet.trim(), noWallet,
  eligibilitySelfCertified: true,
  });
- setAssignedNo(res?.investorNumber ?? investorNo);
+ // On a per-property module keep the property-level position (anchors + public
+ // pledges) so the confirmation matches what they saw; the global module uses
+ // the server's authoritative site-wide number.
+ setAssignedNo(slug ? investorNo : (res?.investorNumber ?? investorNo));
  setState("done");
  refreshRaise(); // update the global live pledged total + percentage
  onPledged?.(); // let the parent (per-asset prospectus) refresh its own total

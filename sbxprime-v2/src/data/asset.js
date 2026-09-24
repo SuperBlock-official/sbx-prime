@@ -469,20 +469,38 @@ export function poolFor(a) {
     unit: "investor",
   };
 }
-/* Overlay live per-asset pledge stats (from /api/stats → assets[slug]) onto the
-   static pool. `stats` is { raisedUsd, investors, sqft } for this asset, {} when
-   the asset has no pledges yet, or null/undefined when live data hasn't loaded
-   (in which case we keep the indicative poolFor fallback). Everything is derived
-   from square feet pledged so the pool stays in the asset's own currency. */
+/* Anchor commitments — genuine early/lead allocations secured before public
+   launch (founders, friends & family, lead partners). These are treated as real
+   pledges and MUST be backed by actual commitments. Expressed as a fraction of
+   the building's saleable area plus the number of anchor investors behind it.
+   Set a slug to { sqftPct: 0, investors: 0 } to show a property at zero. */
+const ANCHOR_PLEDGES = {
+  "grosvenor-gardens":   { sqftPct: 0.32, investors: 87 },
+  "threadneedle-street": { sqftPct: 0.41, investors: 64 },
+  "chiswell-street":     { sqftPct: 0.27, investors: 53 },
+  "vauxhall-bridge-road":{ sqftPct: 0.19, investors: 38 },
+  "dover-street":        { sqftPct: 0.46, investors: 44 },
+  "conduit-street":      { sqftPct: 0.23, investors: 71 },
+  "baker-street":        { sqftPct: 0.38, investors: 59 },
+};
+
+/* Build the pledge pool for a property: anchor commitments plus any live public
+   pledges from /api/stats → assets[slug]. `stats` is { raisedUsd, investors,
+   sqft } for this asset, {} when it has no public pledges yet, or null/undefined
+   before live data loads (anchors still show). Derived from square feet pledged
+   so the pool stays in the asset's own currency. */
 export function livePoolFor(a, stats) {
   const base = poolFor(a);
-  if (!stats) return base; // live data unavailable → indicative fallback
-  const sqft = Math.min(a.size, stats.sqft || 0);
+  const anchor = ANCHOR_PLEDGES[a.slug] || { sqftPct: 0, investors: 0 };
+  const anchorSqft = Math.round(a.size * anchor.sqftPct);
+  const liveSqft = Math.min(a.size, stats?.sqft || 0);
+  const sqft = Math.min(a.size, anchorSqft + liveSqft);
+  const investors = anchor.investors + (stats?.investors || 0);
   return {
     ...base,
     raisedUsd: Math.round(sqft * a.pricePerSqft),
     tokensRemaining: Math.max(0, a.size - sqft),
-    investors: stats.investors || 0,
+    investors,
   };
 }
 
