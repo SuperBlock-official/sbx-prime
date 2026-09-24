@@ -344,7 +344,7 @@ export default function Technology() {
  <Counter value={18036} /> sq ft of Central London, tokenized under ERC-3643.
  </p>
  <div className="mt-8 flex flex-wrap justify-center gap-3">
- <Link to="/invest/london" className="btn-primary">View the London asset</Link>
+ <Link to="/invest" className="btn-primary">View the London asset</Link>
  <Link to="/whitepaper" className="btn-ghost">Read the whitepaper</Link>
  </div>
  </Fx>

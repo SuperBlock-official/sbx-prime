@@ -1,4 +1,16 @@
 import { useEffect, useRef, useState, useCallback } from "react";
+import { RAISE, getRaiseStats } from "./api";
+
+/** Live raise progress (pledged total, investors, sq ft left) with the static
+ *  RAISE as fallback. Returns [raise, refresh] — call refresh() after a pledge. */
+export function useRaise() {
+ const [raise, setRaise] = useState(RAISE);
+ const refresh = useCallback(() => {
+ getRaiseStats().then((s) => { if (s) setRaise({ ...RAISE, ...s }); });
+ }, []);
+ useEffect(() => { refresh(); }, [refresh]);
+ return [raise, refresh];
+}
 
 const motionOK = () =>
  typeof window !== "undefined" &&
@@ -30,21 +42,55 @@ export function useInView(options = { threshold: 0.18 }) {
  return ref;
 }
 
-/** Counts up 0 → value when in view. Renders final value immediately without JS/motion. */
+/** Counts up 0 → value when in view. Re-animates whenever `target` changes
+ *  (e.g. live stats arriving after mount). Renders final value immediately
+ *  without JS/motion. */
 export function useCountUp(target, { duration = 1400, decimals = 0 } = {}) {
  const ref = useRef(null);
+ const [inView, setInView] = useState(false);
  const [val, setVal] = useState(motionOK() ? 0 : target);
+
+ // Mark as in view once (then stop observing).
  useEffect(() => {
  const el = ref.current;
  if (!el || !motionOK() || !("IntersectionObserver" in window)) {
+ setInView(true);
+ return;
+ }
+ // Already at/above the fold? Reveal immediately (IO can be slow to fire).
+ const r = el.getBoundingClientRect();
+ const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+ if (vh && r.top < vh * 0.95) {
+ setInView(true);
+ return;
+ }
+ const io = new IntersectionObserver(
+ (entries) => {
+ if (entries[0].isIntersecting) {
+ setInView(true);
+ io.disconnect();
+ }
+ },
+ { threshold: 0.4 }
+ );
+ io.observe(el);
+ // Safety net: if the observer never fires (backgrounded/zero-viewport tab),
+ // reveal anyway so the number is never stuck at 0.
+ const fallback = setTimeout(() => setInView(true), 1600);
+ return () => {
+ io.disconnect();
+ clearTimeout(fallback);
+ };
+ }, []);
+
+ // Animate 0 → target whenever we're in view and the target changes.
+ useEffect(() => {
+ if (!inView) return;
+ if (!motionOK()) {
  setVal(target);
  return;
  }
  let raf;
- const io = new IntersectionObserver(
- (entries) => {
- if (!entries[0].isIntersecting) return;
- io.disconnect();
  const t0 = performance.now();
  const tick = (t) => {
  const p = Math.min(1, (t - t0) / duration);
@@ -53,15 +99,15 @@ export function useCountUp(target, { duration = 1400, decimals = 0 } = {}) {
  if (p < 1) raf = requestAnimationFrame(tick);
  };
  raf = requestAnimationFrame(tick);
- },
- { threshold: 0.4 }
- );
- io.observe(el);
+ // Guarantee the exact final value even if rAF is throttled/paused
+ // (hidden tab) or interrupted — correctness must not depend on animation.
+ const settle = setTimeout(() => setVal(target), duration + 400);
  return () => {
- io.disconnect();
  cancelAnimationFrame(raf);
+ clearTimeout(settle);
  };
- }, [target]);
+ }, [inView, target, duration, decimals]);
+
  return [ref, val];
 }
 

@@ -7,8 +7,9 @@ import { TiltCard } from "../components/cards";
 import { Fx, SectionHead, Counter, ReturnSplit } from "../components/ui";
 import ApproxMap from "../components/ApproxMap";
 import { Icon } from "../components/icons";
-import { ASSET, getProjection, poolFor, costModel, PLATFORM_FEES, DOCUMENTS, REFERENCES } from "../data/asset";
+import { ASSET, getProjection, livePoolFor, costModel, PLATFORM_FEES, DOCUMENTS, REFERENCES } from "../data/asset";
 import { useAsset } from "../lib/assetsStore";
+import { useRaise } from "../lib/hooks";
 
 /* Simple, dependency-free comparison bar (current / comparable / forecast). */
 function CompareBars({ rows, prefix = "£", suffix = "" }) {
@@ -95,6 +96,11 @@ function SectionCTA({ label, sub, to = "#pledge" }) {
 export default function Prospectus() {
   const { slug } = useParams();
   const a = useAsset(slug) || ASSET;
+  const [raise, refreshRaise] = useRaise();
+  // Live per-asset stats when loaded; {} if the asset has no pledges yet;
+  // null until the stats fetch resolves (keeps the indicative fallback).
+  const assetStats = raise.assets ? (raise.assets[a.slug] || {}) : null;
+  const pool = livePoolFor(a, assetStats);
   const projection = getProjection(a);
   const cm = costModel(a);
   const money = (n) => a.cur + Math.round(n).toLocaleString("en-US");
@@ -173,7 +179,7 @@ export default function Prospectus() {
 
           {/* sticky pledge */}
           <div id="pledge" className="scroll-mt-28 lg:sticky lg:top-24 lg:self-start">
-            <Fx delay={100}><PledgeModule pool={poolFor(a)} /></Fx>
+            <Fx delay={100}><PledgeModule pool={pool} slug={a.slug} onPledged={refreshRaise} /></Fx>
           </div>
         </div>
       </section>

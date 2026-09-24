@@ -145,7 +145,7 @@ export default function HowItWorks() {
  <Fx>
  <h2 className="h-section mx-auto max-w-2xl">Ready to hold your first square foot?</h2>
  <div className="mt-8 flex flex-wrap justify-center gap-3">
- <Link to="/invest/london" className="btn-primary">View the London asset</Link>
+ <Link to="/invest" className="btn-primary">View the London asset</Link>
  <Link to="/faq" className="btn-ghost">Read the FAQ</Link>
  </div>
  </Fx>

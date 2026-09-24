@@ -469,6 +469,23 @@ export function poolFor(a) {
     unit: "investor",
   };
 }
+/* Overlay live per-asset pledge stats (from /api/stats → assets[slug]) onto the
+   static pool. `stats` is { raisedUsd, investors, sqft } for this asset, {} when
+   the asset has no pledges yet, or null/undefined when live data hasn't loaded
+   (in which case we keep the indicative poolFor fallback). Everything is derived
+   from square feet pledged so the pool stays in the asset's own currency. */
+export function livePoolFor(a, stats) {
+  const base = poolFor(a);
+  if (!stats) return base; // live data unavailable → indicative fallback
+  const sqft = Math.min(a.size, stats.sqft || 0);
+  return {
+    ...base,
+    raisedUsd: Math.round(sqft * a.pricePerSqft),
+    tokensRemaining: Math.max(0, a.size - sqft),
+    investors: stats.investors || 0,
+  };
+}
+
 export const PROJECTION = DEFAULT_PROJECTION;
 export { DOCUMENTS, REFERENCES };
 

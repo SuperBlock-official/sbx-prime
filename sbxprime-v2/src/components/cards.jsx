@@ -134,7 +134,7 @@ export function CityCard({ city, raise, delay = 0, onRegister }) {
  return (
  <Fx delay={delay} scale>
  {live ? (
- <Link to="/invest/london" className="block" aria-label="View the Central London asset">
+ <Link to="/invest" className="block" aria-label="View the Central London asset">
  {inner}
  </Link>
  ) : (

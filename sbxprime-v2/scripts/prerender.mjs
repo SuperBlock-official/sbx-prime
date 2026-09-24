@@ -28,7 +28,6 @@ const STATIC = [
   ["/dashboard", "Your Dashboard | SBX Prime", "Track portfolio value, monthly USDC rent, holdings, DAO governance and compliance — the full SBX Prime investor console."],
   ["/register", "Pledge Your Allocation | SBX Prime", "Reserve your allocation in the Central London launch. Pledge by USDC amount or square feet, no KYC, no wallet, no funds move until closing."],
   ["/verify", "Verify your account | SBX Prime", "Create your SBX Prime account, set up two-factor authentication, and complete identity verification to unlock the full investor data room."],
-  ["/invest/london", "Grosvenor Gardens, Victoria SW1 — Launching Soon | SBX Prime", "Own the Central London launch asset on Grosvenor Gardens from one square foot (£582). 6–7% target rental yield plus 3–5% capital appreciation potential (Savills/JLL). Pledge now, no KYC until closing."],
 ];
 
 // Prospectus routes — per-asset title/description/image. Keep in sync with the

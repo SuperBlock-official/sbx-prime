@@ -74,11 +74,32 @@ export async function submitKyc({ email, documents }) {
 }
 
 export const RAISE = {
- // Grosvenor Gardens flagship in USDC-equivalent (£582/sq ft ≈ $740), 32% pledged.
+ // Offering parameters (target/supply/price). raised/investors/tokensRemaining
+ // are overridden with live totals from /api/stats via getRaiseStats().
  targetUsd: 13_350_000,
- raisedUsd: 4_272_000,
+ raisedUsd: 0,
  totalTokens: 18_036,
- tokensRemaining: 12_264,
- investors: 120,
+ tokensRemaining: 18_036,
+ investors: 0,
  tokenPriceUsd: 740,
 };
+
+/** Live raise progress from real pledges. Returns null on failure (callers keep
+ *  the static RAISE fallback). */
+export async function getRaiseStats() {
+ try {
+ const res = await fetch(`${API_BASE}/stats`);
+ if (!res.ok) return null;
+ const d = await res.json();
+ if (!d.ok) return null;
+ return {
+ raisedUsd: d.raisedUsd,
+ investors: d.investors,
+ sqftPledged: d.sqftPledged,
+ tokensRemaining: Math.max(0, RAISE.totalTokens - d.sqftPledged),
+ assets: d.assets || {},
+ };
+ } catch {
+ return null;
+ }
+}

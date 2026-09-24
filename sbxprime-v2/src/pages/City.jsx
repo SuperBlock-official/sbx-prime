@@ -14,7 +14,7 @@ export default function City() {
  const city = cityBySlug(slug);
 
  if (!city) return <Navigate to="/invest" replace />;
- if (city.slug === "london") return <Navigate to="/invest/london" replace />;
+ if (city.slug === "london") return <Navigate to="/invest" replace />;
 
  return (
  <>
@@ -39,7 +39,7 @@ export default function City() {
  </div>
  <div className="mt-8 flex flex-wrap gap-3">
  <button onClick={() => setOpen(true)} className="btn-primary">Register interest in {city.name}</button>
- <Link to="/invest/london" className="btn-ghost">See the Central London launch</Link>
+ <Link to="/invest" className="btn-ghost">See the Central London launch</Link>
  </div>
  <p className="mt-4 max-w-md text-xs leading-relaxed text-ink/45">
  Registering is not a commitment. It tells us where to deploy next, the most-registered

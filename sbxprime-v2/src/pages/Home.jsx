@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Seo from "../lib/Seo";
-import { useTyped } from "../lib/hooks";
-import { RAISE } from "../lib/api";
+import { useTyped, useRaise } from "../lib/hooks";
 import { CITIES, LONDON } from "../data/cities";
 import { FAQ_CATEGORIES } from "../data/faqs";
 import NodeBackground from "../components/NodeBackground";
@@ -23,7 +22,8 @@ const TYPED_CITIES = ["London.", "Dubai.", "Singapore.", "New York.", "Riyadh.",
 export default function Home() {
  const [modal, setModal] = useState(null);
  const typed = useTyped(TYPED_CITIES);
- const pct = Math.round((RAISE.raisedUsd / RAISE.targetUsd) * 100);
+ const [raise] = useRaise();
+ const pct = raise.targetUsd ? Math.round((raise.raisedUsd / raise.targetUsd) * 100) : 0;
 
  return (
  <>
@@ -59,7 +59,7 @@ export default function Home() {
  </p>
  </div>
  <div className="mt-8 flex flex-wrap gap-3">
- <Link to="/invest/london" className="btn-primary">View the London asset</Link>
+ <Link to="/invest" className="btn-primary">View the London asset</Link>
  <Link to="/how-it-works" className="btn-ghost">How it works</Link>
  </div>
  </Fx>
@@ -78,9 +78,9 @@ export default function Home() {
  </div>
  <div className="mt-4 grid grid-cols-3 gap-3">
  {[
- ["Pledged", <>$<Counter value={RAISE.raisedUsd / 1e6} decimals={1} />M</>],
- ["Investors", <Counter value={RAISE.investors} />],
- ["Sq ft left", <Counter value={RAISE.tokensRemaining} />],
+ ["Pledged", <>$<Counter value={raise.raisedUsd / 1e6} decimals={1} />M</>],
+ ["Investors", <Counter value={raise.investors} />],
+ ["Sq ft left", <Counter value={raise.tokensRemaining} />],
  ].map(([label, node], i) => (
  <div key={i}>
  <p className="font-mono text-[9.5px] uppercase tracking-[0.14em] text-ink/45">{label}</p>
@@ -153,7 +153,7 @@ export default function Home() {
  ))}
  </ul>
  <Fx delay={280}>
- <Link to="/invest/london" className="btn-primary mt-8">Explore the asset →</Link>
+ <Link to="/invest" className="btn-primary mt-8">Explore the asset →</Link>
  </Fx>
  </div>
  <Fx scale delay={120} className="relative">
@@ -200,7 +200,7 @@ export default function Home() {
  </div>
  <div className="mt-9 grid gap-6 md:grid-cols-3">
  {CITIES.slice(0, 3).map((c, i) => (
- <CityCard key={c.slug} city={c} raise={RAISE} delay={i * 110} onRegister={(city) => setModal(city.slug)} />
+ <CityCard key={c.slug} city={c} raise={raise} delay={i * 110} onRegister={(city) => setModal(city.slug)} />
  ))}
  </div>
  </div>
@@ -293,7 +293,7 @@ export default function Home() {
  Own a piece of <span className="text-brand">{LONDON.asset}</span>, from one square foot.
  </h2>
  <p className="lede mx-auto">
- {pct}% pledged · {RAISE.tokensRemaining.toLocaleString()} sq ft remaining · pledge now, verify at closing.
+ {pct}% pledged · {raise.tokensRemaining.toLocaleString()} sq ft remaining · pledge now, verify at closing.
  </p>
  <div className="mt-8 flex flex-wrap justify-center gap-3">
  <Link to="/register" className="btn-primary">Pledge your allocation</Link>

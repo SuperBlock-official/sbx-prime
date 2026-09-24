@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { RAISE, submitPledge } from "../lib/api";
+import { submitPledge } from "../lib/api";
+import { useRaise } from "../lib/hooks";
 import { Counter, Honeypot } from "./ui";
 import CountrySelect from "./CountrySelect";
 import { isEmail, isEvmAddress, isFilled } from "../lib/validators";
@@ -20,14 +21,15 @@ function Ring({ pct }) {
 
 /** The primary conversion module: pledge by $ or by sq ft. No KYC, no wallet.
     `pool` lets a page override the offering (e.g. the London pledge pool). */
-export default function PledgeModule({ compact = false, pool }) {
+export default function PledgeModule({ compact = false, pool, slug = null, onPledged }) {
+ const [raise, refreshRaise] = useRaise();
  const cfg = pool || {
- price: RAISE.tokenPriceUsd,
- raisedUsd: RAISE.raisedUsd,
- targetUsd: RAISE.targetUsd,
- investors: RAISE.investors,
- totalTokens: RAISE.totalTokens,
- tokensRemaining: RAISE.tokensRemaining,
+ price: raise.tokenPriceUsd,
+ raisedUsd: raise.raisedUsd,
+ targetUsd: raise.targetUsd,
+ investors: raise.investors,
+ totalTokens: raise.totalTokens,
+ tokensRemaining: raise.tokensRemaining,
  unit: "investor",
  };
  const [tab, setTab] = useState("usdc");
@@ -79,11 +81,14 @@ export default function PledgeModule({ compact = false, pool }) {
  try {
  const res = await submitPledge({
  ...form, company, usdcAmount: calc.usdc, sqft: calc.ft,
+ assetSlug: slug, // attribute the pledge to this property (null on the global module)
  walletAddress: noWallet ? "" : wallet.trim(), noWallet,
  eligibilitySelfCertified: true,
  });
  setAssignedNo(res?.investorNumber ?? investorNo);
  setState("done");
+ refreshRaise(); // update the global live pledged total + percentage
+ onPledged?.(); // let the parent (per-asset prospectus) refresh its own total
  } catch {
  setState("error");
  }

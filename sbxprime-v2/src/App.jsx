@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import LaunchPopup from "./components/LaunchPopup";
@@ -7,7 +7,6 @@ import CookieConsent from "./components/CookieConsent";
 import StickyCTA from "./components/StickyCTA";
 import Home from "./pages/Home";
 import Invest from "./pages/Invest";
-import London from "./pages/London";
 import Prospectus from "./pages/Prospectus";
 import Dashboard from "./pages/Dashboard";
 import City from "./pages/City";
@@ -47,7 +46,8 @@ function PublicSite() {
  <Routes>
  <Route path="/" element={<Home />} />
  <Route path="/invest" element={<Invest />} />
- <Route path="/invest/london" element={<London />} />
+ {/* Legacy aggregate "London asset" pledge page removed — pledging now lives on each individual property prospectus. */}
+ <Route path="/invest/london" element={<Navigate to="/invest" replace />} />
  <Route path="/invest/:slug/prospectus" element={<Prospectus />} />
  <Route path="/dashboard" element={<Dashboard />} />
  <Route path="/invest/:slug" element={<City />} />

@@ -10,6 +10,7 @@ import health from "./routes/health.js";
 import pledges from "./routes/pledges.js";
 import leads from "./routes/leads.js";
 import assets from "./routes/assets.js";
+import stats from "./routes/stats.js";
 import admin from "./routes/admin.js";
 import { UPLOAD_ROOT } from "./lib/uploads.js";
 
@@ -57,6 +58,7 @@ export function createApp() {
   app.use("/api/pledges", writeLimiter, pledges);
   app.use("/api/leads", writeLimiter, leads);
   app.use("/api/assets", assets);
+  app.use("/api/stats", stats);
   app.use("/api/admin", admin);
 
   app.use((_req, res) => res.status(404).json({ ok: false, error: "Not found" }));
