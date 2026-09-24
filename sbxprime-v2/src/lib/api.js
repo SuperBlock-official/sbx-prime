@@ -73,14 +73,21 @@ export async function submitKyc({ email, documents }) {
  return { ok: true, status: "in_review" };
 }
 
+// Flagship (Grosvenor Gardens) anchor commitments — mirrors the 32% / 87-investor
+// ANCHOR_PLEDGES["grosvenor-gardens"] entry in data/asset.js. The home hero is
+// modelled on the flagship raise (18,036 sq ft · $740/sq ft), so it shows these
+// secured allocations plus any live public pledges on top. Keep the two in sync.
+const FLAGSHIP_ANCHOR = { sqft: 5_772, investors: 87 };
+
 export const RAISE = {
  // Offering parameters (target/supply/price). raised/investors/tokensRemaining
- // are overridden with live totals from /api/stats via getRaiseStats().
+ // are overridden with live totals from /api/stats via getRaiseStats(), which
+ // adds the flagship anchor baseline on top.
  targetUsd: 13_350_000,
- raisedUsd: 0,
+ raisedUsd: FLAGSHIP_ANCHOR.sqft * 740,
  totalTokens: 18_036,
- tokensRemaining: 18_036,
- investors: 0,
+ tokensRemaining: 18_036 - FLAGSHIP_ANCHOR.sqft,
+ investors: FLAGSHIP_ANCHOR.investors,
  tokenPriceUsd: 740,
 };
 
@@ -92,11 +99,13 @@ export async function getRaiseStats() {
  if (!res.ok) return null;
  const d = await res.json();
  if (!d.ok) return null;
+ // Site-wide hero = flagship anchor baseline + live public pledges.
+ const sqftPledged = FLAGSHIP_ANCHOR.sqft + d.sqftPledged;
  return {
- raisedUsd: d.raisedUsd,
- investors: d.investors,
- sqftPledged: d.sqftPledged,
- tokensRemaining: Math.max(0, RAISE.totalTokens - d.sqftPledged),
+ raisedUsd: Math.round(sqftPledged * RAISE.tokenPriceUsd),
+ investors: FLAGSHIP_ANCHOR.investors + d.investors,
+ sqftPledged,
+ tokensRemaining: Math.max(0, RAISE.totalTokens - sqftPledged),
  assets: d.assets || {},
  };
  } catch {
