@@ -15,6 +15,14 @@ import webSecondary from "../assets/mockups/web-secondary.png";
 /* All imagery uses the real SBX Prime app mockups (mockups-v2 exports, transparent PNGs). */
 
 /* ---- Hero: two app screens + floating payout notification (enlarged) ---- */
+/* Rent is distributed for the previous completed month — keep the demo current. */
+function lastRentMonth() {
+ const d = new Date();
+ d.setDate(1);
+ d.setMonth(d.getMonth() - 1);
+ return d.toLocaleString("en-GB", { month: "long", year: "numeric" });
+}
+
 export function DualPhoneHero() {
  return (
  <div className="relative mx-auto flex max-w-lg items-center justify-center">
@@ -23,7 +31,7 @@ export function DualPhoneHero() {
  <img src={portfolio} alt="SBX Prime app, investor portfolio and rental income"
  className="float-slower z-10 -ml-[14%] w-[58%] max-w-[312px]" loading="eager" />
  <div className="absolute -top-2 left-1/2 z-20 w-[min(90%,320px)] -translate-x-1/2 sm:top-2">
- <PushNotification body="You've been paid 1,050 USDC rental income for January 2025" time="now" delay={700} />
+ <PushNotification body={`You've been paid 1,050 USDC rental income for ${lastRentMonth()}`} time="now" delay={700} />
  </div>
  </div>
  );
@@ -52,21 +60,25 @@ export function PhoneFan() {
  );
 }
 
-/* ---- Mobile app showcase: a row of feature screens ---- */
+/* ---- Mobile app showcase: a horizontally-scrollable row of feature screens ---- */
 export function AppShowcase() {
  const screens = [
  [portfolio, "Portfolio", "Value, yield and rent at a glance."],
  [rental, "Rental income", "Monthly USDC, paid automatically."],
  [secondary, "Secondary market", "List and sell your square feet."],
  [ai, "Prime AI", "Ask anything about your holdings."],
+ [marketplace, "Marketplace", "Every tokenized building in one place."],
+ [invest, "Invest", "Pledge by dollars or square feet."],
  ];
  return (
- <div className="grid grid-cols-2 gap-x-2 gap-y-6 sm:gap-x-4 lg:grid-cols-4">
+ <div className="relative">
+ {/* edge-to-edge horizontal scroller with snap; scrolls left↔right */}
+ <div className="sbx-scroll -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-5 sm:-mx-8 sm:gap-6 sm:px-8">
  {screens.map(([img, label, body], i) => (
- <Fx key={label} delay={i * 90} scale>
- <figure className="group text-center">
+ <Fx key={label} delay={i * 70} scale className="shrink-0 snap-center">
+ <figure className="group w-[210px] text-center sm:w-[236px]">
  <img src={img} alt={`SBX Prime app, ${label}`}
- className="mx-auto w-[230px] transition-transform duration-300 group-hover:-translate-y-1.5" loading="lazy" />
+ className="mx-auto w-full transition-transform duration-300 group-hover:-translate-y-1.5" loading="lazy" draggable="false" />
  <figcaption className="-mt-1">
  <p className="font-display text-sm font-bold text-ink">{label}</p>
  <p className="mx-auto mt-1 max-w-[200px] text-xs leading-relaxed text-ink/55">{body}</p>
@@ -74,6 +86,11 @@ export function AppShowcase() {
  </figure>
  </Fx>
  ))}
+ {/* trailing spacer so the last card can center-snap */}
+ <div aria-hidden="true" className="shrink-0 basis-1 sm:basis-4" />
+ </div>
+ {/* soft fade hint on the right edge */}
+ <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white to-transparent" />
  </div>
  );
 }

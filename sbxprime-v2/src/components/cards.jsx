@@ -67,7 +67,7 @@ export function Skyline({ seed = 5, className = "" }) {
 }
 
 const STATUS_BADGE = {
- live: <span className="badge-live">Launching soon</span>,
+ live: <span className="badge-live">Pledges open</span>,
  soon: <span className="badge-soon">Coming soon</span>,
  pipeline: <span className="badge-pipeline">Pipeline</span>,
 };

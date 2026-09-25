@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { CITIES } from "../data/cities";
 import { registerInterest } from "../lib/api";
 import { Honeypot } from "./ui";
+import { isPhone } from "../lib/validators";
 
 const AMOUNTS = ["Under $5K", "$5K–$25K", "$25K–$100K", "$100K+"];
 
 /** Demand-intelligence capture for pipeline cities. */
 export default function InterestModal({ open, initialCity = null, onClose }) {
  const [email, setEmail] = useState("");
+ const [phone, setPhone] = useState("");
  const [cities, setCities] = useState(initialCity ? [initialCity] : []);
  const [amount, setAmount] = useState("");
  const [company, setCompany] = useState(""); // honeypot
@@ -17,6 +19,7 @@ export default function InterestModal({ open, initialCity = null, onClose }) {
  if (open) {
  setCities(initialCity ? [initialCity] : []);
  setState("idle");
+ setPhone("");
  }
  }, [open, initialCity]);
 
@@ -29,13 +32,13 @@ export default function InterestModal({ open, initialCity = null, onClose }) {
  if (!open) return null;
 
  const toggle = (slug) => setCities((c) => (c.includes(slug) ? c.filter((x) => x !== slug) : [...c, slug]));
- const canSubmit = /\S+@\S+\.\S+/.test(email) && cities.length && amount && state !== "sending";
+ const canSubmit = /\S+@\S+\.\S+/.test(email) && isPhone(phone) && cities.length && amount && state !== "sending";
 
  const submit = async (e) => {
  e.preventDefault();
  if (!canSubmit) return;
  setState("sending");
- await registerInterest({ email, company, cities, indicativeAmount: amount });
+ await registerInterest({ email, phone, company, cities, indicativeAmount: amount });
  setState("done");
  };
 
@@ -66,6 +69,7 @@ export default function InterestModal({ open, initialCity = null, onClose }) {
  </div>
 
  <input className="field mt-5" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Email" required />
+ <input className="field mt-3" type="tel" placeholder="Contact number (e.g. +44 7911 123456)" value={phone} onChange={(e) => setPhone(e.target.value)} aria-label="Contact number" required />
 
  <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-ink/50">Which cities interest you?</p>
  <div className="mt-2 flex flex-wrap gap-2">

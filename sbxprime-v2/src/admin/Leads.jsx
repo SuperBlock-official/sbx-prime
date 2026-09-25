@@ -25,6 +25,7 @@ export default function Leads() {
             <tr>
               <th className="px-4 py-3 font-bold">Email</th>
               <th className="px-4 py-3 font-bold">Name</th>
+              <th className="px-4 py-3 font-bold">Phone</th>
               <th className="px-4 py-3 font-bold">Source</th>
               <th className="px-4 py-3 font-bold">When</th>
             </tr>
@@ -34,12 +35,13 @@ export default function Leads() {
               <tr key={r.id} className="border-b border-hairline/70 last:border-0">
                 <td className="px-4 py-3 font-bold text-ink">{r.email}</td>
                 <td className="px-4 py-3 text-ink/70">{r.name || "—"}</td>
+                <td className="px-4 py-3 text-ink/70">{r.phone || "—"}</td>
                 <td className="px-4 py-3 text-ink/70">{r.source || "—"}</td>
                 <td className="px-4 py-3 text-ink/45">{date(r.created_at)}</td>
               </tr>
             ))}
             {!rows.length && (
-              <tr><td colSpan={4} className="px-4 py-8 text-center text-ink/40">No leads yet.</td></tr>
+              <tr><td colSpan={5} className="px-4 py-8 text-center text-ink/40">No leads yet.</td></tr>
             )}
           </tbody>
         </table>

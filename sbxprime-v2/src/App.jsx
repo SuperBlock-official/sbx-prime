@@ -4,7 +4,6 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import LaunchPopup from "./components/LaunchPopup";
 import CookieConsent from "./components/CookieConsent";
-import StickyCTA from "./components/StickyCTA";
 import Home from "./pages/Home";
 import Invest from "./pages/Invest";
 import Prospectus from "./pages/Prospectus";
@@ -26,7 +25,9 @@ import { AssetsProvider } from "./lib/assetsStore";
 function ScrollToTop() {
  const { pathname } = useLocation();
  useEffect(() => {
- window.scrollTo(0, 0);
+ // Jump (not smooth-scroll) to the top on every route change, so a new page
+ // always opens at its top regardless of where the previous page was scrolled.
+ window.scrollTo({ top: 0, left: 0, behavior: "instant" });
  // GA4 SPA page_view on route change
  if (typeof window.gtag === "function") {
  window.gtag("event", "page_view", { page_path: pathname });
@@ -65,7 +66,8 @@ function PublicSite() {
  </Routes>
  </main>
  <Footer />
- <StickyCTA />
+ {/* clearance so the fixed mobile bottom dock never covers footer content */}
+ <div aria-hidden="true" className="h-24 xl:hidden" />
  <LaunchPopup />
  <CookieConsent />
  </AssetsProvider>

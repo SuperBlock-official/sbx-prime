@@ -4,10 +4,16 @@ import { z } from "zod";
 const email = z.string().trim().toLowerCase().email().max(254);
 const name = z.string().trim().min(1).max(120);
 const country = z.string().trim().min(2).max(80);
+// Loose international phone: 7–15 digits, optional + and separators.
+const phone = z.string().trim().max(32)
+  .refine((v) => /^\+?[0-9()\-\s]{7,20}$/.test(v) && (v.match(/\d/g) || []).length >= 7, {
+    message: "Enter a valid contact number.",
+  });
 
 export const pledgeSchema = z.object({
   name,
   email,
+  phone,
   country,
   assetSlug: z.string().trim().max(80).optional().nullable(),
   usdcAmount: z.coerce.number().nonnegative().max(1_000_000_000).default(0),
@@ -25,6 +31,9 @@ export const pledgeSchema = z.object({
 export const leadSchema = z.object({
   email,
   name: name.optional().nullable(),
+  // Loose for leads — some lead sources (e.g. whitepaper download) collect no
+  // phone; the interest form enforces a valid number on the client.
+  phone: z.string().trim().max(32).optional().nullable().default(""),
   source: z.string().trim().max(80).optional().nullable(),
   meta: z.record(z.any()).optional().default({}),
 });

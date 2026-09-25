@@ -385,3 +385,34 @@
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-thumb { background: #c8dfd0; border-radius: 8px; }
 ::-webkit-scrollbar-track { background: #eef5f0; }
+
+/* horizontal feature scroller (mobile app showcase) --------------------- */
+.sbx-scroll { scrollbar-width: thin; scrollbar-color: #c8dfd0 transparent; -webkit-overflow-scrolling: touch; }
+.sbx-scroll::-webkit-scrollbar { height: 7px; }
+.sbx-scroll::-webkit-scrollbar-thumb { background: #c8dfd0; border-radius: 8px; }
+.sbx-scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* 3D layered "protection stack" diagram (Trust page) --------------------- */
+.layers3d { perspective: 1500px; margin-inline: auto; max-width: 440px; }
+.layers3d-inner {
+  transform: rotateX(24deg) rotateZ(-2deg);
+  transform-style: preserve-3d;
+  display: flex; flex-direction: column; gap: 30px;
+}
+.layer-slab {
+  position: relative; border-radius: 18px; padding: 16px 18px;
+  background: var(--surface); border: 1px solid var(--hairline);
+  /* stacked flat shadows fake the slab thickness; the soft one grounds it */
+  box-shadow:
+    0 1px 0 #cfe6d8, 0 2px 0 #c6e0cf, 0 3px 0 #bddac7,
+    0 4px 0 #b4d4bf, 0 5px 0 #abcdb7, 0 6px 0 #a2c6af,
+    0 26px 34px -16px rgba(15, 45, 32, 0.45);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .layer-slab:hover { transform: translateY(-5px) translateZ(24px); }
+}
+.layer-spine {
+  position: absolute; left: 34px; top: 34px; bottom: 34px; width: 2px;
+  background: linear-gradient(var(--brand), var(--teal)); opacity: 0.35; transform: translateZ(-6px);
+}

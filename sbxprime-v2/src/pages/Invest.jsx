@@ -4,10 +4,13 @@ import Seo from "../lib/Seo";
 import { CITIES, GLOBAL_DEMAND } from "../data/cities";
 import { useAssets } from "../lib/assetsStore";
 import { RAISE } from "../lib/api";
+import { livePoolFor } from "../data/asset";
+import { useRaise } from "../lib/hooks";
 import { CityCard, TiltCard } from "../components/cards";
 import InterestModal from "../components/InterestModal";
 import NodeBackground from "../components/NodeBackground";
 import { Fx, SectionHead, Counter } from "../components/ui";
+import { Icon } from "../components/icons";
 
 const TABS = [
  ["all", "All"],
@@ -18,6 +21,7 @@ const TABS = [
 
 export default function Invest() {
  const { assets } = useAssets();
+ const [raise] = useRaise();
  const [tab, setTab] = useState("all");
  const [modal, setModal] = useState(null);
  const list = CITIES.filter((c) => tab === "all" || c.status === tab);
@@ -40,15 +44,21 @@ export default function Invest() {
  {/* global demand counter */}
  <Fx delay={140}>
  <div className="card-dark mt-8 inline-flex flex-wrap items-center gap-x-8 gap-y-3 px-6 py-4">
+ <div className="flex items-center gap-3">
+ <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand-dark"><Icon name="coins" className="h-6 w-6" /></span>
  <div>
  <p className="text-[10px] uppercase tracking-[0.18em] text-ink/45">Indicative demand registered</p>
  <p className="font-display text-2xl font-extrabold text-brand">
  $<Counter value={GLOBAL_DEMAND.indicativeUsd / 1e6} decimals={2} />M+
  </p>
  </div>
+ </div>
+ <div className="flex items-center gap-3">
+ <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand-dark"><Icon name="users" className="h-6 w-6" /></span>
  <div>
  <p className="text-[10px] uppercase tracking-[0.18em] text-ink/45">Registrations</p>
  <p className="font-display text-2xl font-extrabold text-ink"><Counter value={GLOBAL_DEMAND.registrations} /></p>
+ </div>
  </div>
  <p className="max-w-[220px] text-xs leading-relaxed text-ink/50">
  Demand routes our pipeline, the most-registered market opens next.
@@ -71,7 +81,11 @@ export default function Invest() {
  </div>
 
  <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
- {assets.map((a, i) => (
+ {assets.map((a, i) => {
+ const s = raise.assets ? (raise.assets[a.slug] || {}) : null;
+ const pool = livePoolFor(a, s);
+ const pledgedPct = Math.round((pool.raisedUsd / pool.targetUsd) * 100);
+ return (
  <Fx key={a.slug} delay={(i % 3) * 80} scale>
  <Link to={`/invest/${a.slug}/prospectus`} className="group block h-full">
  <TiltCard className="card-dark flex h-full flex-col overflow-hidden">
@@ -88,6 +102,15 @@ export default function Invest() {
  <span className="text-ink/55">{a.sizeLabel} · {a.priceShort}</span>
  <span className="font-display font-bold text-brand-dark">{a.cardStat}</span>
  </div>
+ <div className="mt-3">
+ <div className="flex items-center justify-between text-[11px]">
+ <span className="font-display font-bold text-brand-dark">{pledgedPct}% pledged</span>
+ <span className="text-ink/45">{pool.tokensRemaining.toLocaleString()} sq ft left</span>
+ </div>
+ <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-ink/8">
+ <div className="h-full rounded-full bg-gradient-to-r from-brand to-brand-mint" style={{ width: `${pledgedPct}%` }} />
+ </div>
+ </div>
  <p className="mt-auto flex items-center justify-between border-t border-hairline pt-3 text-xs leading-relaxed text-ink/50">
  <span>{a.note}</span>
  <span className="ml-2 shrink-0 font-bold text-brand-dark opacity-0 transition group-hover:opacity-100">View →</span>
@@ -96,7 +119,8 @@ export default function Invest() {
  </TiltCard>
  </Link>
  </Fx>
- ))}
+ );
+ })}
  </div>
  </div>
  </section>

@@ -28,6 +28,8 @@ create index if not exists pledges_created_idx on pledges (created_at desc);
 -- Base wallet on pledges (added 2026-09).
 alter table pledges add column if not exists wallet_address text;
 alter table pledges add column if not exists no_wallet boolean not null default false;
+-- Contact number on pledges (added 2026-09).
+alter table pledges add column if not exists phone text;
 
 create table if not exists leads (
   id uuid primary key default gen_random_uuid(),
@@ -39,6 +41,8 @@ create table if not exists leads (
 );
 create index if not exists leads_email_idx on leads (email);
 create index if not exists leads_created_idx on leads (created_at desc);
+-- Contact number on leads (added 2026-09).
+alter table leads add column if not exists phone text;
 
 -- Admin users (email + bcrypt hash). 2FA columns are reserved for a later milestone.
 create table if not exists admin_users (

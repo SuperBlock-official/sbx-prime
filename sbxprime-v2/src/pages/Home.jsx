@@ -15,6 +15,7 @@ import InterestModal from "../components/InterestModal";
 import { DualPhoneHero, DashboardMockup, AppShowcase } from "../components/mockups";
 import { CityCard } from "../components/cards";
 import { Fx, SectionHead, Counter, ReturnSplit } from "../components/ui";
+import { Icon } from "../components/icons";
 import londonImg from "../assets/images/london-office.png";
 
 const TYPED_CITIES = ["London.", "Dubai.", "Singapore.", "New York.", "Riyadh.", "Tokyo."];
@@ -104,7 +105,7 @@ export default function Home() {
  { label: "Launch asset", value: <Counter value={18036} suffix=" ft²" />, sub: "Victoria & Belgravia" },
  { label: "Per token", value: <><span className="align-top text-lg">$</span><Counter value={740} /></>, sub: "One saleable square foot" },
  { label: "Total return", value: "9–11%", sub: "Yield + appreciation p.a.", grad: true },
- { label: "Per token", value: "1 share", sub: "Register-backed SPV" },
+ { label: "Rent paid", value: "Monthly", sub: "Distributed in USDC" },
  ].map((s, i) => (
  <Fx key={i} delay={i * 90} scale>
  <div className={`kpi-card ${s.grad ? "kpi-card--grad" : ""} h-full`}>
@@ -254,12 +255,15 @@ export default function Home() {
  </Fx>
  <div className="mx-auto mt-9 grid max-w-4xl gap-5 sm:grid-cols-3">
  {[
- ["Simple enough for compliance", "One token = one square foot = one SPV share. A structure you can explain in a single sentence."],
- ["Comparable across markets", "The single square-foot standard makes comparing one building to another trivial."],
- ["Paid like clockwork", "Monthly USDC rental income, on time, with a clear on-chain statement."],
- ].map(([t, b], i) => (
+ ["scale", "Simple enough for compliance", "One token = one square foot = one SPV share. A structure you can explain in a single sentence."],
+ ["area", "Comparable across markets", "The single square-foot standard makes comparing one building to another trivial."],
+ ["clock", "Paid like clockwork", "Monthly USDC rental income, on time, with a clear on-chain statement."],
+ ].map(([icon, t, b], i) => (
  <Fx key={t} delay={i * 100} scale>
  <div className="card-dark gloss h-full p-5">
+ <span className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-brand/10 text-brand-dark">
+ <Icon name={icon} className="h-6 w-6" />
+ </span>
  <h3 className="font-display text-sm font-bold text-ink">{t}</h3>
  <p className="mt-2 text-sm leading-relaxed text-ink/65">{b}</p>
  </div>

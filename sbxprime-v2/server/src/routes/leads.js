@@ -16,10 +16,10 @@ router.post("/", async (req, res, next) => {
   const d = parsed.data;
   try {
     const { rows } = await query(
-      `insert into leads (email, name, source, meta)
-       values ($1, $2, $3, $4)
+      `insert into leads (email, name, phone, source, meta)
+       values ($1, $2, $3, $4, $5)
        returning id`,
-      [d.email, d.name || null, d.source || null, d.meta || {}]
+      [d.email, d.name || null, d.phone || null, d.source || null, d.meta || {}]
     );
 
     // Respond first, then send off the request path.

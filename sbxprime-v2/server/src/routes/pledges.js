@@ -19,11 +19,11 @@ router.post("/", async (req, res, next) => {
   try {
     const { rows } = await query(
       `insert into pledges
-         (name, email, country, asset_slug, usdc_amount, sqft, wallet_address, no_wallet,
+         (name, email, phone, country, asset_slug, usdc_amount, sqft, wallet_address, no_wallet,
           eligibility_self_certified, ip, user_agent)
-       values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+       values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
        returning id, investor_number`,
-      [d.name, d.email, d.country, d.assetSlug || null, d.usdcAmount, d.sqft,
+      [d.name, d.email, d.phone, d.country, d.assetSlug || null, d.usdcAmount, d.sqft,
        d.walletAddress || null, d.noWallet, d.eligibilitySelfCertified, req.ip, req.get("user-agent") || null]
     );
 

@@ -29,7 +29,8 @@ export default function Pledges() {
               <th className="px-4 py-3 font-bold">#</th>
               <th className="px-4 py-3 font-bold">Name</th>
               <th className="px-4 py-3 font-bold">Email</th>
-              <th className="px-4 py-3 font-bold">Country</th>
+              <th className="px-4 py-3 font-bold">Phone</th>
+ <th className="px-4 py-3 font-bold">Country</th>
               <th className="px-4 py-3 font-bold">Asset</th>
               <th className="px-4 py-3 font-bold">Amount</th>
               <th className="px-4 py-3 font-bold">Sq ft</th>
@@ -43,6 +44,7 @@ export default function Pledges() {
                 <td className="px-4 py-3 tabular-nums text-ink/50">{r.investor_number}</td>
                 <td className="px-4 py-3 font-bold text-ink">{r.name}</td>
                 <td className="px-4 py-3 text-ink/70">{r.email}</td>
+ <td className="px-4 py-3 text-ink/70">{r.phone || "—"}</td>
                 <td className="px-4 py-3 text-ink/70">{r.country}</td>
                 <td className="px-4 py-3 text-ink/70">{r.asset_slug || "—"}</td>
                 <td className="px-4 py-3 tabular-nums text-ink/70">{money(r.usdc_amount)}</td>
@@ -54,7 +56,7 @@ export default function Pledges() {
               </tr>
             ))}
             {!rows.length && (
-              <tr><td colSpan={9} className="px-4 py-8 text-center text-ink/40">No pledges yet.</td></tr>
+              <tr><td colSpan={10} className="px-4 py-8 text-center text-ink/40">No pledges yet.</td></tr>
             )}
           </tbody>
         </table>

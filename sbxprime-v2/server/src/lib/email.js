@@ -129,6 +129,7 @@ export function pledgeTeamNotice(p) {
     "",
     `Name:    ${p.name}`,
     `Email:   ${p.email}`,
+    `Phone:   ${p.phone || "—"}`,
     `Country: ${p.country}`,
     `Asset:   ${p.assetSlug || "—"}`,
     `Amount:  ${money(p.usdcAmount)} USDC`,

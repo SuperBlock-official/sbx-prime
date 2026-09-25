@@ -3,7 +3,7 @@ import { submitPledge } from "../lib/api";
 import { useRaise } from "../lib/hooks";
 import { Counter, Honeypot } from "./ui";
 import CountrySelect from "./CountrySelect";
-import { isEmail, isEvmAddress, isFilled } from "../lib/validators";
+import { isEmail, isEvmAddress, isFilled, isPhone } from "../lib/validators";
 
 const fmtUsd = (n) => n.toLocaleString("en-US", { maximumFractionDigits: 0 });
 
@@ -34,8 +34,8 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  };
  const [tab, setTab] = useState("usdc");
  const [usd, setUsd] = useState(25_000); // USDC amount
- const [sqft, setSqft] = useState(24);
- const [form, setForm] = useState({ name: "", email: "", country: "" });
+ const [sqft, setSqft] = useState(25);
+ const [form, setForm] = useState({ name: "", email: "", phone: "", country: "" });
  const [wallet, setWallet] = useState("");
  const [noWallet, setNoWallet] = useState(false);
  const [company, setCompany] = useState(""); // honeypot
@@ -66,6 +66,7 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  const errors = {
  name: !isFilled(form.name) ? "Enter your full name" : "",
  email: !isEmail(form.email) ? "Enter a valid email address" : "",
+ phone: !isPhone(form.phone) ? "Enter a valid contact number" : "",
  country: !isFilled(form.country) ? "Select your country of residence" : "",
  wallet: !noWallet && !isEvmAddress(wallet) ? "Enter a valid Base wallet address (0x…) or tick “I don’t have one”" : "",
  certified: !certified ? "Please confirm your eligibility" : "",
@@ -206,6 +207,10 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  <div>
  <input className={`field ${err("email") ? "!border-red-400" : ""}`} type="email" placeholder="Email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} aria-label="Email" />
  {err("email") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("email")}</p>}
+ </div>
+ <div className="sm:col-span-2">
+ <input className={`field ${err("phone") ? "!border-red-400" : ""}`} type="tel" placeholder="Contact number (e.g. +44 7911 123456)" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} aria-label="Contact number" />
+ {err("phone") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("phone")}</p>}
  </div>
  <div className="sm:col-span-2">
  <CountrySelect value={form.country} onChange={(c) => setForm({ ...form, country: c })} error={!!err("country")} />

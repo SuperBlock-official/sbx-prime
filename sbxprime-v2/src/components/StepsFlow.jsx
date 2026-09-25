@@ -1,29 +1,35 @@
 import { useInView } from "../lib/hooks";
 import { Fx } from "./ui";
+import { Icon } from "./icons";
 
 export const STEPS = [
  {
  n: 1,
+ icon: "search",
  title: "Discover",
  body: "Browse institutional-grade assets vetted by our team and partners. Every listing is standardised to 1 sq ft, so you can compare like for like.",
  },
  {
  n: 2,
+ icon: "doc",
  title: "Pledge",
  body: "Reserve your allocation by dollar amount or square feet, no KYC, no wallet, no funds move. Your place in the raise is held.",
  },
  {
  n: 3,
+ icon: "idcard",
  title: "Verify",
  body: "Complete KYC/AML and investor-status verification before closing. Your wallet is credentialed on-chain under ERC-3643.",
  },
  {
  n: 4,
+ icon: "token",
  title: "Own",
  body: "At closing, your subscription settles and tokens are issued: 1 token = 1 sq ft = 1 SPV share, recorded on-chain and in the register.",
  },
  {
  n: 5,
+ icon: "coins",
  title: "Earn & exit",
  body: "Rental income (6–7% p.a.) is distributed monthly in USDC, while the asset targets 3–5% p.a. capital appreciation. Sell any time on the secondary marketplace.",
  },
@@ -52,8 +58,11 @@ export default function StepsFlow() {
  {STEPS.map((s, i) => (
  <Fx as="li" key={s.n} delay={i * 100} scale>
  <div className="group h-full">
- <span className="grid h-14 w-14 place-items-center rounded-2xl border border-brand/40 bg-brand/10 font-display text-lg font-extrabold text-brand">
+ <span className="relative grid h-14 w-14 place-items-center rounded-2xl border border-brand/40 bg-brand/10 text-brand transition-transform duration-300 group-hover:-translate-y-1">
+ <Icon name={s.icon} className="h-7 w-7" />
+ <span className="absolute -right-1.5 -top-1.5 grid h-5 w-5 place-items-center rounded-full bg-brand font-display text-[11px] font-extrabold text-white shadow-sm">
  {s.n}
+ </span>
  </span>
  <h3 className="mt-4 font-display text-lg font-bold text-ink">{s.title}</h3>
  <p className="mt-2 text-sm leading-relaxed text-ink/60">{s.body}</p>

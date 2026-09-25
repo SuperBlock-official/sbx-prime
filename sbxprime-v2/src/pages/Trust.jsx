@@ -5,6 +5,7 @@ import PushNotification from "../components/PushNotification";
 import { Fx, SectionHead } from "../components/ui";
 import { Icon } from "../components/icons";
 import SpotlightGrid from "../components/SpotlightGrid";
+import SecurityStack from "../components/SecurityStack";
 import trustHero from "../assets/assets/trust-hero.jpg";
 
 const LAYERS = [
@@ -95,6 +96,29 @@ export default function Trust() {
  <Fx delay={160} className="mt-8 max-w-sm">
  <PushNotification body="Annual RICS valuation published, Central London asset +4.2% YoY." time="1d" delay={600} />
  </Fx>
+ </div>
+ </section>
+
+ {/* ---------- three-layer protection (3D diagram) ---------- */}
+ <section className="border-b border-hairline bg-white py-14 lg:py-16">
+ <div className="shell grid items-center gap-12 lg:grid-cols-[1fr_1fr]">
+ <div>
+ <SectionHead
+ eyebrow="Defence in depth"
+ title="Three independent layers stand between you and any single point of failure."
+ lede="Your ownership doesn't rest on SBX Prime staying in business. It's protected at the asset, on the platform, and by the regulatory structure — each one standing on its own."
+ />
+ <Fx delay={120} className="mt-7 flex flex-wrap gap-x-8 gap-y-3">
+ {[["shield", "Ring-fenced SPVs"], ["token", "Identity-bound tokens"], ["scale", "Compliance-first"]].map(([ic, t]) => (
+ <span key={t} className="inline-flex items-center gap-2 font-display text-sm font-bold text-ink/70">
+ <Icon name={ic} className="h-4 w-4 text-brand-dark" /> {t}
+ </span>
+ ))}
+ </Fx>
+ </div>
+ <div className="py-6">
+ <SecurityStack />
+ </div>
  </div>
  </section>
 

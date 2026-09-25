@@ -28,6 +28,7 @@ export async function submitPledge(pledge) {
  return apiPost("/pledges", {
  name: pledge.name,
  email: pledge.email,
+ phone: pledge.phone || "",
  country: pledge.country,
  assetSlug: pledge.assetSlug ?? null,
  usdcAmount: pledge.usdcAmount ?? 0,
@@ -40,10 +41,11 @@ export async function submitPledge(pledge) {
 }
 
 export async function registerInterest(interest) {
- const { email, name, source, company, ...rest } = interest;
+ const { email, name, phone, source, company, ...rest } = interest;
  return apiPost("/leads", {
  email,
  name: name ?? null,
+ phone: phone || "",
  source: source ?? "register-interest",
  company: company || "", // honeypot (must stay empty)
  meta: rest,

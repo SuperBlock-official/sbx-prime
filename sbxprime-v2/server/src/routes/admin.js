@@ -146,7 +146,7 @@ router.post("/uploads", uploadImage.single("image"), (req, res) => {
 router.get("/pledges", async (_req, res, next) => {
   try {
     const { rows } = await query(
-      `select id, created_at, investor_number, name, email, country, asset_slug,
+      `select id, created_at, investor_number, name, email, phone, country, asset_slug,
               usdc_amount, sqft, wallet_address, no_wallet, status
          from pledges order by created_at desc limit 500`
     );
@@ -159,7 +159,7 @@ router.get("/pledges", async (_req, res, next) => {
 router.get("/leads", async (_req, res, next) => {
   try {
     const { rows } = await query(
-      "select id, created_at, email, name, source from leads order by created_at desc limit 500"
+      "select id, created_at, email, name, phone, source from leads order by created_at desc limit 500"
     );
     res.json({ ok: true, leads: rows });
   } catch (err) {
