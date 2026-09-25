@@ -24,6 +24,22 @@ import doverHero from "../assets/assets/dover-hero.jpg";
 import dover1 from "../assets/assets/dover-1.jpg";
 import dover2 from "../assets/assets/dover-2.jpg";
 import dover3 from "../assets/assets/dover-3.jpg";
+// additional brochure photography (interiors, aerials, context)
+import grosvenor4 from "../assets/assets/grosvenor-4.jpg";
+import grosvenor5 from "../assets/assets/grosvenor-5.jpg";
+import grosvenor6 from "../assets/assets/grosvenor-6.jpg";
+import thread4 from "../assets/assets/threadneedle-4.jpg";
+import thread5 from "../assets/assets/threadneedle-5.jpg";
+import thread6 from "../assets/assets/threadneedle-6.jpg";
+import chiswell4 from "../assets/assets/chiswell-4.jpg";
+import chiswell5 from "../assets/assets/chiswell-5.jpg";
+import chiswell6 from "../assets/assets/chiswell-6.jpg";
+import vauxhall4 from "../assets/assets/vauxhall-4.jpg";
+import vauxhall5 from "../assets/assets/vauxhall-5.jpg";
+import vauxhall6 from "../assets/assets/vauxhall-6.jpg";
+import dover4 from "../assets/assets/dover-4.jpg";
+import dover5 from "../assets/assets/dover-5.jpg";
+import dover6 from "../assets/assets/dover-6.jpg";
 // LoopNet listing photography (9 Conduit St, 117-129 Baker St)
 import conduitHero from "../assets/assets/conduit-hero.jpg";
 import conduit1 from "../assets/assets/conduit-1.jpg";
@@ -86,7 +102,7 @@ export const ASSETS = [
     rent: { current: 78, comparable: 88, forecast5: 96 },
     valuePsf: { current: 582, comparable: 609, forecast5: 672 },
     roi5: 52.0,
-    images: { hero: grosvenorHero, gallery: [grosvenor1, grosvenor2, grosvenor3] },
+    images: { hero: grosvenorHero, gallery: [grosvenor1, grosvenor2, grosvenor3, grosvenor4, grosvenor5, grosvenor6] },
     overview:
       "A Grade II listed period building in Victoria & Belgravia, bought below replacement cost, part-let to established occupiers with leases to 2034 and clear reversionary headroom as the upper floors are brought to market rent.",
     whyInvest: [
@@ -141,7 +157,7 @@ export const ASSETS = [
     rent: { current: 48.5, comparable: 55, forecast5: 62 },
     valuePsf: { current: 645, comparable: 690, forecast5: 745 },
     roi5: 48.0,
-    images: { hero: threadHero, gallery: [thread1, thread2, thread3] },
+    images: { hero: threadHero, gallery: [thread1, thread2, thread3, thread4, thread5, thread6] },
     overview:
       "A highly attractive City core asset with a classic Portland stone façade, comprehensively refurbished in 2016 and single-let to a serviced-office operator on a lease to 2034 — a rare long-income opportunity in the heart of the City.",
     whyInvest: [
@@ -196,7 +212,7 @@ export const ASSETS = [
     rent: { current: 47.9, comparable: 58, forecast5: 65 },
     valuePsf: { current: 643, comparable: 680, forecast5: 735 },
     roi5: 53.0,
-    images: { hero: chiswellHero, gallery: [chiswell1, chiswell2, chiswell3] },
+    images: { hero: chiswellHero, gallery: [chiswell1, chiswell2, chiswell3, chiswell4, chiswell5, chiswell6] },
     overview:
       "A corner City freehold on the border of the City and Shoreditch, 300m from Moorgate. Multi-let to six tenants with roughly £1.5m of recent capital expenditure delivering fully fitted Cat A+ floors, an extensive roof terrace and clear reversionary potential.",
     whyInvest: [
@@ -251,7 +267,7 @@ export const ASSETS = [
     rent: { current: 42, comparable: 60, forecast5: 65 },
     valuePsf: { current: 390, comparable: 470, forecast5: 560 },
     roi5: 68.0,
-    images: { hero: vauxhallHero, gallery: [vauxhall1, vauxhall2, vauxhall3] },
+    images: { hero: vauxhallHero, gallery: [vauxhall1, vauxhall2, vauxhall3, vauxhall4, vauxhall5, vauxhall6] },
     overview:
       "A rare vacant former warehouse in Westminster with prominent frontage on Vauxhall Bridge Road, bought at a low £390 per sq ft. Refurbished, the office ERV is around £925,000 pa; alternatively, positive pre-application feedback supports a 53-unit co-living scheme.",
     whyInvest: [
@@ -306,7 +322,7 @@ export const ASSETS = [
     rent: { current: 112, comparable: 120, forecast5: 132 },
     valuePsf: { current: 2446, comparable: 2550, forecast5: 2820 },
     roi5: 42.0,
-    images: { hero: doverHero, gallery: [dover1, dover2, dover3] },
+    images: { hero: doverHero, gallery: [dover1, dover2, dover3, dover4, dover5, dover6] },
     overview:
       "An attractive corner freehold on Dover Street in the heart of Mayfair, single-let to luxury Italian mosaic house Sicis, who have occupied since 2015. A reversionary lease runs to September 2028 with RPI-linked reviews collared and capped at 2–5%.",
     whyInvest: [
