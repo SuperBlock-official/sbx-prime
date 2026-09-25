@@ -3,7 +3,7 @@ import Seo from "../lib/Seo";
 import PledgeModule from "../components/PledgeModule";
 import NodeBackground from "../components/NodeBackground";
 import PushNotification from "../components/PushNotification";
-import { TiltCard } from "../components/cards";
+import ProspectusGallery from "../components/ProspectusGallery";
 import { Fx, SectionHead, Counter, ReturnSplit } from "../components/ui";
 import ApproxMap from "../components/ApproxMap";
 import { Icon } from "../components/icons";
@@ -163,17 +163,7 @@ export default function Prospectus() {
 
             {/* gallery */}
             <Fx delay={140} scale className="mt-8">
-              <TiltCard max={6} className="overflow-hidden rounded-3xl border border-hairline">
-                <img src={a.images.hero} alt={a.name} className="h-[300px] w-full object-cover sm:h-[380px]" />
-              </TiltCard>
-              <div className="mt-3 grid grid-cols-4 gap-3">
-                {a.images.gallery.map((g, i) => (
-                  <img key={i} src={g} alt={`${a.name} view ${i + 1}`} className="h-20 w-full rounded-xl border border-hairline object-cover sm:h-24" />
-                ))}
-                <div className="grid h-20 place-items-center rounded-xl border border-dashed border-brand/40 bg-brand/[0.05] text-center sm:h-24">
-                  <span className="text-[11px] font-semibold text-brand-dark">+ virtual tour</span>
-                </div>
-              </div>
+              <ProspectusGallery hero={a.images.hero} gallery={a.images.gallery} name={a.name} />
             </Fx>
           </div>
 

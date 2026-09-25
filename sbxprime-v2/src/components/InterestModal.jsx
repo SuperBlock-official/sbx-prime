@@ -3,6 +3,7 @@ import { CITIES } from "../data/cities";
 import { registerInterest } from "../lib/api";
 import { Honeypot } from "./ui";
 import { isPhone } from "../lib/validators";
+import PhoneField from "./PhoneField";
 
 const AMOUNTS = ["Under $5K", "$5K–$25K", "$25K–$100K", "$100K+"];
 
@@ -69,7 +70,7 @@ export default function InterestModal({ open, initialCity = null, onClose }) {
  </div>
 
  <input className="field mt-5" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Email" required />
- <input className="field mt-3" type="tel" placeholder="Contact number (e.g. +44 7911 123456)" value={phone} onChange={(e) => setPhone(e.target.value)} aria-label="Contact number" required />
+ <div className="mt-3"><PhoneField value={phone} onChange={setPhone} /></div>
 
  <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-ink/50">Which cities interest you?</p>
  <div className="mt-2 flex flex-wrap gap-2">

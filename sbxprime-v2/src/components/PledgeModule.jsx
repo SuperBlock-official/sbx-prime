@@ -3,6 +3,7 @@ import { submitPledge } from "../lib/api";
 import { useRaise } from "../lib/hooks";
 import { Counter, Honeypot } from "./ui";
 import CountrySelect from "./CountrySelect";
+import PhoneField from "./PhoneField";
 import { isEmail, isEvmAddress, isFilled, isPhone } from "../lib/validators";
 
 const fmtUsd = (n) => n.toLocaleString("en-US", { maximumFractionDigits: 0 });
@@ -209,7 +210,7 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  {err("email") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("email")}</p>}
  </div>
  <div className="sm:col-span-2">
- <input className={`field ${err("phone") ? "!border-red-400" : ""}`} type="tel" placeholder="Contact number (e.g. +44 7911 123456)" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} aria-label="Contact number" />
+ <PhoneField value={form.phone} onChange={(v) => setForm({ ...form, phone: v })} error={!!err("phone")} />
  {err("phone") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("phone")}</p>}
  </div>
  <div className="sm:col-span-2">
