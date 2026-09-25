@@ -13,7 +13,7 @@ router.get("/", async (_req, res, next) => {
               count(*)::int as investors,
               coalesce(sum(sqft), 0)::int as sqft
          from pledges
-        where status <> 'withdrawn'`
+        where status not in ('withdrawn', 'ineligible')`
     );
     const byAsset = await query(
       `select asset_slug,
@@ -21,7 +21,7 @@ router.get("/", async (_req, res, next) => {
               count(*)::int as investors,
               coalesce(sum(sqft), 0)::int as sqft
          from pledges
-        where status <> 'withdrawn' and asset_slug is not null
+        where status not in ('withdrawn', 'ineligible') and asset_slug is not null
         group by asset_slug`
     );
     const t = totals.rows[0];

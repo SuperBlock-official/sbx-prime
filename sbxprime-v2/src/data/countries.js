@@ -39,6 +39,7 @@ export const COUNTRIES = [
   ["Taiwan", "TW"], ["Tajikistan", "TJ"], ["Tanzania", "TZ"], ["Thailand", "TH"], ["Timor-Leste", "TL"],
   ["Togo", "TG"], ["Tonga", "TO"], ["Trinidad and Tobago", "TT"], ["Tunisia", "TN"], ["Türkiye", "TR"],
   ["Turkmenistan", "TM"], ["Tuvalu", "TV"], ["Uganda", "UG"], ["Ukraine", "UA"], ["United Arab Emirates", "AE"],
+  ["United Kingdom", "GB"], ["United States", "US"],
   ["Uruguay", "UY"], ["Uzbekistan", "UZ"], ["Vanuatu", "VU"], ["Venezuela", "VE"], ["Vietnam", "VN"],
   ["Yemen", "YE"], ["Zambia", "ZM"], ["Zimbabwe", "ZW"],
 ];
@@ -80,3 +81,54 @@ export const DIAL_CODES = {
 };
 
 export const dialOf = (code) => DIAL_CODES[code] || "";
+
+/** Regions this offering cannot be sold into: the US, the UK, and the EEA/EU.
+ *  Excluded residents may still register their details, but receive no allocation. */
+export const EXCLUDED_CODES = new Set([
+  "US", "GB",
+  // EU-27
+  "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE",
+  "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE",
+  // EEA (non-EU)
+  "IS", "LI", "NO",
+]);
+
+/** ISO alpha-2 for a country name (or "" if unknown). */
+export const codeOfName = (name) => (COUNTRIES.find(([n]) => n === name) || [])[1] || "";
+
+/** True when the named country is in an excluded region. */
+export const isExcludedCountryName = (name) => EXCLUDED_CODES.has(codeOfName(name));
+
+/** Country name for an ISO alpha-2 code (or "" if unknown). */
+export function countryNameOf(code) {
+  const found = COUNTRIES.find(([, c]) => c === code);
+  return found ? found[0] : "";
+}
+
+// Names for dialing-code entries that aren't in the residence list (which
+// excludes UK/US). The phone picker offers every dialing code regardless.
+const PHONE_NAME_SUPPLEMENT = { GB: "United Kingdom", US: "United States", VA: "Vatican City" };
+
+/** All countries with a dialing code, [name, code], sorted by name — for the
+ *  phone picker (independent of the residence eligibility list). */
+export const PHONE_COUNTRIES = Object.keys(DIAL_CODES)
+  .map((code) => [countryNameOf(code) || PHONE_NAME_SUPPLEMENT[code] || code, code])
+  .sort((a, b) => a[0].localeCompare(b[0]));
+
+/** Best-guess ISO alpha-2 for the visitor, from the browser locale region
+ *  (e.g. "en-GB" → "GB"). Client-only, no network/geo-IP. Null if unknown. */
+export function guessCountryCode() {
+  try {
+    const langs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language];
+    for (const l of langs) {
+      const m = /[-_]([A-Za-z]{2})$/.exec(l || "");
+      if (m) {
+        const code = m[1].toUpperCase();
+        if (DIAL_CODES[code]) return code; // any known country (broader than residence list)
+      }
+    }
+  } catch {
+    /* navigator unavailable (SSR/prerender) */
+  }
+  return null;
+}

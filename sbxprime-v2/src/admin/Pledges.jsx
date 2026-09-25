@@ -35,6 +35,7 @@ export default function Pledges() {
               <th className="px-4 py-3 font-bold">Amount</th>
               <th className="px-4 py-3 font-bold">Sq ft</th>
               <th className="px-4 py-3 font-bold">Wallet</th>
+ <th className="px-4 py-3 font-bold">Status</th>
               <th className="px-4 py-3 font-bold">When</th>
             </tr>
           </thead>
@@ -52,11 +53,20 @@ export default function Pledges() {
                 <td className="px-4 py-3 font-mono text-[11px] text-ink/60">
                   {r.wallet_address ? `${r.wallet_address.slice(0, 6)}…${r.wallet_address.slice(-4)}` : r.no_wallet ? "no wallet" : "—"}
                 </td>
+                <td className="px-4 py-3">
+                  <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${
+                    r.status === "ineligible" ? "bg-[#c0492f]/12 text-[#c0492f]"
+                    : r.status === "withdrawn" ? "bg-ink/10 text-ink/50"
+                    : "bg-brand/12 text-brand-dark"
+                  }`}>
+                    {r.status === "ineligible" ? "no allocation" : (r.status || "pending")}
+                  </span>
+                </td>
                 <td className="px-4 py-3 text-ink/45">{date(r.created_at)}</td>
               </tr>
             ))}
             {!rows.length && (
-              <tr><td colSpan={10} className="px-4 py-8 text-center text-ink/40">No pledges yet.</td></tr>
+              <tr><td colSpan={11} className="px-4 py-8 text-center text-ink/40">No pledges yet.</td></tr>
             )}
           </tbody>
         </table>

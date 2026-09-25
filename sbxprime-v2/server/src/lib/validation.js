@@ -20,9 +20,10 @@ export const pledgeSchema = z.object({
   sqft: z.coerce.number().int().nonnegative().max(10_000_000).default(0),
   walletAddress: z.string().trim().max(64).optional().default(""),
   noWallet: z.coerce.boolean().optional().default(false),
-  eligibilitySelfCertified: z.coerce.boolean().refine((v) => v === true, {
-    message: "Eligibility self-certification is required.",
-  }),
+  // Whether the client believes the pledger is eligible. The server re-derives
+  // this from the country; self-cert is enforced (in the route) only when eligible.
+  eligible: z.coerce.boolean().optional().default(true),
+  eligibilitySelfCertified: z.coerce.boolean().optional().default(false),
 }).refine((d) => d.noWallet || /^0x[a-fA-F0-9]{40}$/.test(d.walletAddress), {
   message: "Enter a valid Base wallet address (0x…) or select that you don't have one.",
   path: ["walletAddress"],

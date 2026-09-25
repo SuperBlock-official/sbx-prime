@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { COUNTRIES, flagOf, DIAL_CODES } from "../data/countries";
+import { flagOf, DIAL_CODES, guessCountryCode, PHONE_COUNTRIES } from "../data/countries";
 
-// Only countries we have a dialing code for.
-const WITH_DIAL = COUNTRIES.filter(([, code]) => DIAL_CODES[code]);
+// Every country with a dialing code (independent of the residence list).
+const WITH_DIAL = PHONE_COUNTRIES;
 
 /** Phone input with a searchable country-code selector (flag + dial code).
  *  Emits the combined string, e.g. "+44 7911 123456", via onChange. */
@@ -14,6 +14,14 @@ export default function PhoneField({ value, onChange, error, id = "phone", defau
   const [active, setActive] = useState(0);
   const wrapRef = useRef(null);
   const searchRef = useRef(null);
+  const touched = useRef(false);
+
+  // Preselect the visitor's dialing code from their browser locale (once, and
+  // only until they choose one themselves). Runs after mount — no SSR mismatch.
+  useEffect(() => {
+    const g = guessCountryCode();
+    if (g && DIAL_CODES[g] && !touched.current) setCode(g);
+  }, []);
 
   // Keep the parent's combined value in sync with the two parts.
   useEffect(() => {
@@ -43,7 +51,7 @@ export default function PhoneField({ value, onChange, error, id = "phone", defau
     setActive(0);
   }, [open]);
 
-  const pick = (c) => { setCode(c); setOpen(false); };
+  const pick = (c) => { touched.current = true; setCode(c); setOpen(false); };
 
   const onKeyDown = (e) => {
     if (e.key === "ArrowDown") { e.preventDefault(); setActive((a) => Math.min(a + 1, results.length - 1)); }

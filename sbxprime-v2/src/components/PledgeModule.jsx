@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { submitPledge } from "../lib/api";
 import { useRaise } from "../lib/hooks";
 import { Counter, Honeypot } from "./ui";
 import CountrySelect from "./CountrySelect";
 import PhoneField from "./PhoneField";
+import { guessCountryCode, countryNameOf, isExcludedCountryName } from "../data/countries";
 import { isEmail, isEvmAddress, isFilled, isPhone } from "../lib/validators";
 
 const fmtUsd = (n) => n.toLocaleString("en-US", { maximumFractionDigits: 0 });
@@ -45,6 +46,13 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  const [state, setState] = useState("idle");
  const [assignedNo, setAssignedNo] = useState(null); // authoritative # from the server
 
+ // Preselect country of residence from the visitor's browser locale (once, only
+ // if they haven't chosen one). Runs after mount — no SSR mismatch.
+ useEffect(() => {
+ const name = countryNameOf(guessCountryCode());
+ if (name) setForm((f) => (f.country ? f : { ...f, country: name }));
+ }, []);
+
  const price = cfg.price;
  const cur = cfg.cur || "$";
  // pledges are made in USDC (USD-pegged); the asset is priced in its local currency
@@ -62,6 +70,9 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
 
  const pct = (cfg.raisedUsd / cfg.targetUsd) * 100;
  const investorNo = cfg.investors + 1;
+ // Residents of the US / UK / EEA-EU can't receive an allocation — but we still
+ // record their details (no allocation) so we can reach them if that changes.
+ const excluded = isExcludedCountryName(form.country);
 
  // Per-field validation (server re-validates). Errors surface after first submit.
  const errors = {
@@ -70,7 +81,9 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  phone: !isPhone(form.phone) ? "Enter a valid contact number" : "",
  country: !isFilled(form.country) ? "Select your country of residence" : "",
  wallet: !noWallet && !isEvmAddress(wallet) ? "Enter a valid Base wallet address (0x…) or tick “I don’t have one”" : "",
- certified: !certified ? "Please confirm your eligibility" : "",
+ // Self-certification only applies to eligible countries; excluded residents
+ // acknowledge the notice instead.
+ certified: (!excluded && !certified) ? "Please confirm your eligibility" : "",
  };
  const err = (k) => (submitted ? errors[k] : "");
  const hasErrors = Object.values(errors).some(Boolean);
@@ -85,7 +98,8 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  ...form, company, usdcAmount: calc.usdc, sqft: calc.ft,
  assetSlug: slug, // attribute the pledge to this property (null on the global module)
  walletAddress: noWallet ? "" : wallet.trim(), noWallet,
- eligibilitySelfCertified: true,
+ eligible: !excluded, // excluded residents are recorded with no allocation
+ eligibilitySelfCertified: !excluded,
  });
  // On a per-property module keep the property-level position (anchors + public
  // pledges) so the confirmation matches what they saw; the global module uses
@@ -98,6 +112,19 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  setState("error");
  }
  };
+
+ if (state === "done" && excluded)
+ return (
+ <div className="card-dark p-7 text-center">
+ <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-ink/10 font-display text-2xl text-ink/70">✓</span>
+ <h3 className="mt-4 font-display text-xl font-bold text-ink">Details recorded</h3>
+ <p className="mt-2 text-sm leading-relaxed text-ink/65">
+ Thanks. This offering isn't available to residents of <b className="text-ink">{form.country}</b>, so
+ <b className="text-ink"> no allocation has been made</b>. We've kept your details and will contact you if
+ eligibility opens in your region. No funds move and nothing is reserved.
+ </p>
+ </div>
+ );
 
  if (state === "done")
  return (
@@ -217,6 +244,14 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  <CountrySelect value={form.country} onChange={(c) => setForm({ ...form, country: c })} error={!!err("country")} />
  {err("country") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("country")}</p>}
  </div>
+ {excluded && (
+ <div className="flex items-start gap-2.5 rounded-xl border border-amber-300 bg-amber-50 p-3.5 sm:col-span-2">
+ <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" className="mt-0.5 shrink-0 text-amber-600"><path d="M12 8v5M12 16h.01" /><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" /></svg>
+ <p className="text-[12.5px] leading-relaxed text-ink/75">
+ Pledging isn't available to residents of <b className="text-ink">{form.country}</b> — this offering excludes the US, UK and EEA/EU. You can still submit your details; we'll record them with <b className="text-ink">no allocation</b> and contact you if eligibility opens in your region.
+ </p>
+ </div>
+ )}
  </div>
 
  {/* Base wallet address (or opt out) */}
@@ -237,7 +272,10 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  {err("wallet") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("wallet")}</p>}
  </div>
 
- {/* eligibility self-certification, required, unchecked by default */}
+ {/* eligibility self-certification — only for eligible countries; excluded
+ residents acknowledge the notice above instead. */}
+ {!excluded && (
+ <>
  <label className={`mt-4 flex cursor-pointer items-start gap-3 rounded-xl border bg-mist p-4 ${err("certified") ? "border-red-400" : "border-hairline"}`}>
  <input type="checkbox" checked={certified} onChange={(e) => setCertified(e.target.checked)} className="mt-0.5 h-4 w-4 accent-[#1FB462]" />
  <span className="text-xs leading-relaxed text-ink/65">
@@ -247,15 +285,19 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  </span>
  </label>
  {err("certified") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("certified")}</p>}
+ </>
+ )}
 
  <Honeypot value={company} onChange={(e) => setCompany(e.target.value)} />
 
  <button type="submit" disabled={state === "sending"} className="btn-primary mt-5 w-full disabled:cursor-not-allowed disabled:opacity-40">
- {state === "sending" ? "Submitting…" : `Pledge ${calc.ft.toLocaleString()} sq ft, no funds move today`}
+ {state === "sending" ? "Submitting…" : excluded ? "Submit my details (no allocation)" : `Pledge ${calc.ft.toLocaleString()} sq ft, no funds move today`}
  </button>
  {state === "error" && <p className="mt-2 text-xs text-[#c0492f]">Something went wrong, please try again.</p>}
  <p className="mt-3 text-center text-[11px] text-ink/45">
- A pledge reserves allocation only. KYC and settlement happen at closing.
+ {excluded
+ ? "Your details are recorded only — no allocation, no funds move."
+ : "A pledge reserves allocation only. KYC and settlement happen at closing."}
  </p>
  </div>
  </form>

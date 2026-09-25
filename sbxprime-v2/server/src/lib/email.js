@@ -123,14 +123,19 @@ export function pledgeConfirmation(p) {
 
 export function pledgeTeamNotice(p) {
   const sqft = Number(p.sqft || 0).toLocaleString("en-US");
-  const subject = `New pledge · #${p.investorNumber} · ${p.name}`;
+  const ineligible = p.eligible === false || p.status === "ineligible";
+  const subject = ineligible
+    ? `Ineligible enquiry (no allocation) · ${p.name}`
+    : `New pledge · #${p.investorNumber} · ${p.name}`;
   const text = [
-    `New pledge received (investor #${p.investorNumber})`,
+    ineligible
+      ? `Enquiry from an EXCLUDED region — recorded with NO ALLOCATION.`
+      : `New pledge received (investor #${p.investorNumber})`,
     "",
     `Name:    ${p.name}`,
     `Email:   ${p.email}`,
     `Phone:   ${p.phone || "—"}`,
-    `Country: ${p.country}`,
+    `Country: ${p.country}${ineligible ? "  (excluded)" : ""}`,
     `Asset:   ${p.assetSlug || "—"}`,
     `Amount:  ${money(p.usdcAmount)} USDC`,
     `Sq ft:   ${sqft}`,
