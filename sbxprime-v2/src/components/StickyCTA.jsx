@@ -3,14 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 
 /* Mobile-only pledge bar. Slides up once past the fold; hidden on the pages
    that already lead with the pledge form. Translucent material over content,
-   in the Apple sense — chrome that floats, not an opaque strip. */
+   in the Apple sense, chrome that floats, not an opaque strip. */
 const HIDE_ON = ["/register", "/verify"];
 const consentResolved = () => /sbx_cookie_consent=/.test(document.cookie);
 
 export default function StickyCTA() {
   const { pathname } = useLocation();
   const [show, setShow] = useState(false);
-  // Hold the bar until the cookie choice is made — otherwise both dock at the
+  // Hold the bar until the cookie choice is made, otherwise both dock at the
   // bottom on mobile and overlap.
   const [ready, setReady] = useState(consentResolved);
 

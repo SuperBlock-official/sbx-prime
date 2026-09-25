@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------
-   SBX Prime icon set — one consistent hand-drawn line style on a 24px
+   SBX Prime icon set, one consistent hand-drawn line style on a 24px
    grid (1.7 stroke, round caps/joins). Use anywhere:
      import { Icon } from "../components/icons";
      <Icon name="building" className="h-6 w-6" />

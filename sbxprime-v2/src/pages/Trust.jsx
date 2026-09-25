@@ -82,11 +82,7 @@ export default function Trust() {
  <div className="absolute inset-0 bg-gradient-to-r from-ink/92 via-ink/75 to-ink/35" />
  <div className="shell relative py-20 lg:py-28">
  <Fx className="max-w-2xl">
- <span className="inline-flex items-center gap-2.5 font-display text-[13px] font-semibold text-white">
- <span className="h-px w-7 bg-white/60" />
- Trust & security
- </span>
- <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl">
+ <h1 className="font-display text-4xl font-extrabold leading-[1.05] text-white sm:text-5xl">
  Engineered so you never have to trust us.
  </h1>
  <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
@@ -106,7 +102,7 @@ export default function Trust() {
  <SectionHead
  eyebrow="Defence in depth"
  title="Three independent layers stand between you and any single point of failure."
- lede="Your ownership doesn't rest on SBX Prime staying in business. It's protected at the asset, on the platform, and by the regulatory structure — each one standing on its own."
+ lede="Your ownership doesn't rest on SBX Prime staying in business. It's protected at the asset, on the platform, and by the regulatory structure, each one standing on its own."
  />
  <Fx delay={120} className="mt-7 flex flex-wrap gap-x-8 gap-y-3">
  {[["shield", "Ring-fenced SPVs"], ["token", "Identity-bound tokens"], ["scale", "Compliance-first"]].map(([ic, t]) => (
@@ -127,8 +123,7 @@ export default function Trust() {
  {LAYERS.map((layer, li) => (
  <div key={layer.h}>
  <Fx>
- <p className="eyebrow">{`0${li + 1}`}</p>
- <h2 className="mt-2 font-display text-2xl font-extrabold">{layer.h}</h2>
+ <h2 className="font-display text-2xl font-extrabold">{layer.h}</h2>
  </Fx>
  <SpotlightGrid className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
  {layer.items.map(([ic, t, b], i) => (

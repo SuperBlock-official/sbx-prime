@@ -47,7 +47,7 @@ export default function ProspectusGallery({ hero, gallery = [], name }) {
       >
         <img
           src={images[idx]}
-          alt={`${name} — view ${idx + 1} of ${images.length}`}
+          alt={`${name}, view ${idx + 1} of ${images.length}`}
           className="h-[300px] w-full object-cover sm:h-[420px]"
         />
 

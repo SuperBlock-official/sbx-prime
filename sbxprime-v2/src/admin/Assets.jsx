@@ -57,8 +57,8 @@ export default function Assets() {
                   </div>
                 </td>
                 <td className="px-4 py-3 tabular-nums text-ink/70">{money(a.data.cur, a.data.valuation)}</td>
-                <td className="px-4 py-3 text-ink/70">{a.data.yieldPa || "—"}</td>
-                <td className="px-4 py-3 text-ink/70">{a.data.economics?.manager || "—"}</td>
+                <td className="px-4 py-3 text-ink/70">{a.data.yieldPa || "–"}</td>
+                <td className="px-4 py-3 text-ink/70">{a.data.economics?.manager || "–"}</td>
                 <td className="px-4 py-3">
                   <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-bold ${a.published ? "bg-brand/12 text-brand-dark" : "bg-ink/10 text-ink/50"}`}>
                     {a.published ? "Published" : "Draft"}

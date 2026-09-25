@@ -118,7 +118,7 @@ export default function Prospectus() {
   return (
     <>
       <Seo
-        title={`${a.name}, ${a.neighbourhood} — Prospectus | SBX Prime`}
+        title={`${a.name}, ${a.neighbourhood} · Prospectus | SBX Prime`}
         description={`Investment prospectus for ${a.name} in ${a.neighbourhood}: ${a.size.toLocaleString()} sq ft. Financials, tenancy, valuation and gated document bank.`}
         path={`/invest/${a.slug}/prospectus`}
         image={`/og/${a.slug}.jpg`}
@@ -244,7 +244,7 @@ export default function Prospectus() {
       {/* ---------- location / map ---------- */}
       <section className="border-t border-hairline bg-white py-12 lg:py-14">
         <div className="shell">
-          <SectionHead eyebrow="Location" title={`${a.locationTitle} — the address that defends value.`} />
+          <SectionHead eyebrow="Location" title={`${a.locationTitle}. The address that defends value.`} />
           <div className="mt-10 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
             <Fx scale className="relative overflow-hidden rounded-3xl border border-hairline">
               <ApproxMap marker={a.mapMarker} className="h-[360px] w-full" />
@@ -271,7 +271,7 @@ export default function Prospectus() {
         <div className="shell">
           <SectionHead
             eyebrow="Investment breakdown"
-            title="Rent, value and return — with the market as the check."
+            title="Rent, value and return, with the market as the check."
             lede="Every figure below is triangulated against independent comparable evidence, not our own optimism. Current, market-comparable and forecast are shown side by side so you can see the headroom."
           />
 
@@ -463,7 +463,7 @@ export default function Prospectus() {
         <div className="shell">
           <SectionHead
             eyebrow="Management & lifecycle"
-            title="We run the building for its whole life — so you never have to."
+            title="We run the building for its whole life, so you never have to."
             lede="From acquisition to eventual sale, SUPERBLOCK manages the full institutional lifecycle of the asset. You hold the token; we handle everything a landlord does."
           />
           <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -490,7 +490,7 @@ export default function Prospectus() {
           <SectionHead
             eyebrow="Document bank"
             title="The full data room, once you're verified."
-            lede="The complete institutional data room — valuation, leases, title and token terms — is available to verified investors. Create an account and complete verification to unlock it."
+            lede="The complete institutional data room (valuation, leases, title and token terms) is available to verified investors. Create an account and complete verification to access it."
           />
           <div className="mt-10 grid gap-3 sm:grid-cols-2">
             {DOCUMENTS.map(([name, meta], i) => (
@@ -512,7 +512,7 @@ export default function Prospectus() {
             ))}
           </div>
           <Fx delay={120} className="mt-8 flex flex-col items-center gap-3 rounded-3xl border border-brand/25 bg-brand/[0.06] p-8 text-center">
-            <p className="font-display text-lg font-bold text-ink">Unlock the full data room</p>
+            <p className="font-display text-lg font-bold text-ink">Access the full data room</p>
             <p className="max-w-xl text-sm text-ink/60">
               Create your account and complete verification to view and download every document.
               Verification is handled by our team, usually within one business day.
@@ -546,7 +546,7 @@ export default function Prospectus() {
             performance is not a guide to future returns.
           </p>
         </div>
-        <SectionCTA label="Pledge your allocation" sub="Reserve your square feet — no funds move today" />
+        <SectionCTA label="Pledge your allocation" sub="Reserve your square feet, no funds move today" />
       </section>
 
       {/* floating proof */}

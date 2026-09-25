@@ -25,7 +25,7 @@ const STATIC = [
   ["/about", "About, SBX Prime by SUPERBLOCK", "SBX Prime is built by SUPERBLOCK and a team of specialists across finance, real estate, technology, transformation, accounting and audit, working with the world's best builders, to give investors direct, compliant ownership of trophy commercial real estate."],
   ["/whitepaper", "Whitepaper | SBX Prime", "The SBX Prime whitepaper: structure, ERC-3643 token standard, underwriting, USDC distribution mechanics, secondary-market and liquidity design ($SBX), governance, and risk factors."],
   ["/faq", "FAQ | SBX Prime", "Everything investors ask about SBX Prime: eligibility, the pledge process, ERC-3643 tokens, rental distributions, the secondary market, custody, and risk."],
-  ["/dashboard", "Your Dashboard | SBX Prime", "Track portfolio value, monthly USDC rent, holdings, DAO governance and compliance — the full SBX Prime investor console."],
+  ["/dashboard", "Your Dashboard | SBX Prime", "Track portfolio value, monthly USDC rent, holdings, DAO governance and compliance. The full SBX Prime investor console."],
   ["/register", "Pledge Your Allocation | SBX Prime", "Reserve your allocation in the Central London launch. Pledge by USDC amount or square feet, no KYC, no wallet, no funds move until closing."],
   ["/verify", "Verify your account | SBX Prime", "Create your SBX Prime account, set up two-factor authentication, and complete identity verification to unlock the full investor data room."],
 ];
@@ -46,7 +46,7 @@ const routes = [
   ...STATIC.map(([p, title, description]) => ({ p, title, description, image: "/og.jpg" })),
   ...ASSETS.map(([slug, name, hood, size]) => ({
     p: `/invest/${slug}/prospectus`,
-    title: `${name}, ${hood} — Prospectus | SBX Prime`,
+    title: `${name}, ${hood} · Prospectus | SBX Prime`,
     description: `Investment prospectus for ${name} in ${hood}: ${size.toLocaleString("en-US")} sq ft. Financials, tenancy, valuation and gated document bank.`,
     image: `/og/${slug}.jpg`,
   })),

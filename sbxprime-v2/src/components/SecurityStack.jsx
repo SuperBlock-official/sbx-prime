@@ -2,7 +2,7 @@ import { Fx } from "./ui";
 import { Icon } from "./icons";
 
 /* Lightweight CSS 3D diagram: the three independent layers that protect an
-   investor's ownership. Pure CSS transforms — no WebGL, ~0 bundle cost. */
+   investor's ownership. Pure CSS transforms, no WebGL, ~0 bundle cost. */
 const LAYERS = [
  { icon: "building", n: "01", h: "Asset layer", b: "Ring-fenced English-law SPV holds the building." },
  { icon: "token", n: "02", h: "Platform layer", b: "ERC-3643 identity-bound tokens = your shares." },

@@ -5,7 +5,7 @@ import { ASSETS as STATIC_ASSETS } from "../data/asset";
   Hybrid asset source. The rich static data (src/data/asset.js) is the base, so
   first paint is exactly today's site and nothing breaks if the API is down.
   On mount we fetch the DB-backed /api/assets and overlay the fields the admin
-  can edit (financials, core details, images) on top — so admin edits go live
+  can edit (financials, core details, images) on top, so admin edits go live
   while long-form content the DB doesn't hold stays intact.
 */
 

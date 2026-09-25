@@ -180,7 +180,7 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  <span className="text-xs font-semibold uppercase tracking-wider text-ink/50">Amount in USDC</span>
  <div className="mt-1.5 flex items-center gap-2 rounded-xl border border-ink/15 bg-white px-4 focus-within:border-brand">
  <span className="font-display font-bold text-brand-dark">$</span>
- <input type="number" min={Math.ceil(priceUsdc)} step="500" value={usd} onChange={(e) => setUsd(+e.target.value)}
+ <input type="number" min={Math.ceil(priceUsdc)} step="any" value={usd} onChange={(e) => setUsd(+e.target.value)}
  className="w-full bg-transparent py-3 font-display text-lg font-bold text-ink outline-none" aria-label="Pledge amount in USDC" />
  <span className="text-xs text-ink/45">USDC{cur !== "$" && ` ≈ ${cur}${fmtUsd(calc.amount)}`}</span>
  </div>
@@ -248,7 +248,7 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  <div className="flex items-start gap-2.5 rounded-xl border border-amber-300 bg-amber-50 p-3.5 sm:col-span-2">
  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" className="mt-0.5 shrink-0 text-amber-600"><path d="M12 8v5M12 16h.01" /><path d="M10.3 3.9 2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" /></svg>
  <p className="text-[12.5px] leading-relaxed text-ink/75">
- Pledging isn't available to residents of <b className="text-ink">{form.country}</b> — this offering excludes the US, UK and EEA/EU. You can still submit your details; we'll record them with <b className="text-ink">no allocation</b> and contact you if eligibility opens in your region.
+ Pledging isn't available to residents of <b className="text-ink">{form.country}</b>. This offering excludes the US, UK and EEA/EU. You can still submit your details; we'll record them with <b className="text-ink">no allocation</b> and contact you if eligibility opens in your region.
  </p>
  </div>
  )}
@@ -267,7 +267,7 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  />
  <label className="mt-2 flex cursor-pointer items-center gap-2 text-xs text-ink/60">
  <input type="checkbox" checked={noWallet} onChange={(e) => setNoWallet(e.target.checked)} className="h-3.5 w-3.5 accent-[#1FB462]" />
- I don’t have a wallet yet — help me set one up before closing.
+ I don’t have a wallet yet, help me set one up before closing.
  </label>
  {err("wallet") && <p className="mt-1 text-[11px] text-[#c0492f]">{err("wallet")}</p>}
  </div>
@@ -296,7 +296,7 @@ export default function PledgeModule({ compact = false, pool, slug = null, onPle
  {state === "error" && <p className="mt-2 text-xs text-[#c0492f]">Something went wrong, please try again.</p>}
  <p className="mt-3 text-center text-[11px] text-ink/45">
  {excluded
- ? "Your details are recorded only — no allocation, no funds move."
+ ? "Your details are recorded only. No allocation, no funds move."
  : "A pledge reserves allocation only. KYC and settlement happen at closing."}
  </p>
  </div>

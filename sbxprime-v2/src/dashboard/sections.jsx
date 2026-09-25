@@ -397,9 +397,9 @@ export function Kyc() {
 
 export function Documents() {
   const docs = [
-    ["Monthly rent statement — Aug 2026", "PDF"],
+    ["Monthly rent statement · Aug 2026", "PDF"],
     ["Q2 2026 portfolio report", "PDF"],
-    ["Grosvenor Gardens — RICS valuation", "PDF"],
+    ["Grosvenor Gardens · RICS valuation", "PDF"],
     ["SPV shareholder certificate", "PDF"],
     ["ERC-3643 token terms", "PDF"],
     ["Annual audited accounts 2025", "PDF"],

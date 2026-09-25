@@ -34,9 +34,9 @@ export default function Leads() {
             {rows.map((r) => (
               <tr key={r.id} className="border-b border-hairline/70 last:border-0">
                 <td className="px-4 py-3 font-bold text-ink">{r.email}</td>
-                <td className="px-4 py-3 text-ink/70">{r.name || "—"}</td>
-                <td className="px-4 py-3 text-ink/70">{r.phone || "—"}</td>
-                <td className="px-4 py-3 text-ink/70">{r.source || "—"}</td>
+                <td className="px-4 py-3 text-ink/70">{r.name || "–"}</td>
+                <td className="px-4 py-3 text-ink/70">{r.phone || "–"}</td>
+                <td className="px-4 py-3 text-ink/70">{r.source || "–"}</td>
                 <td className="px-4 py-3 text-ink/45">{date(r.created_at)}</td>
               </tr>
             ))}

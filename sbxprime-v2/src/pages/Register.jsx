@@ -57,7 +57,7 @@ export default function Register() {
  className="field appearance-none pr-10 font-display font-bold text-ink"
  >
  {ASSETS.map((a) => (
- <option key={a.slug} value={a.slug}>{a.name} — {a.area}</option>
+ <option key={a.slug} value={a.slug}>{a.name} · {a.area}</option>
  ))}
  </select>
  <svg aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

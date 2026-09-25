@@ -114,7 +114,7 @@ export const ASSETS = [
     locationTitle: "Victoria & Belgravia, SW1",
     location: [
       ["Transport", "Victoria Station 300m away; Hyde Park Corner and St James's Park within a short walk."],
-      ["Occupier demand", "20 years of regeneration — Nova, Cardinal Place, 105 Victoria Street; Grade-A supply remains tight."],
+      ["Occupier demand", "20 years of regeneration, from Nova to Cardinal Place to 105 Victoria Street; Grade-A supply remains tight."],
       ["Neighbours", "Google, American Express, Sky and Moët Hennessy, alongside Belgravia's luxury hotels."],
     ],
     tenants: [
@@ -159,7 +159,7 @@ export const ASSETS = [
     roi5: 48.0,
     images: { hero: threadHero, gallery: [thread1, thread2, thread3, thread4, thread5, thread6] },
     overview:
-      "A highly attractive City core asset with a classic Portland stone façade, comprehensively refurbished in 2016 and single-let to a serviced-office operator on a lease to 2034 — a rare long-income opportunity in the heart of the City.",
+      "A highly attractive City core asset with a classic Portland stone façade, comprehensively refurbished in 2016 and single-let to a serviced-office operator on a lease to 2034. A rare long-income opportunity in the heart of the City.",
     whyInvest: [
       "6.47% net initial yield, a rare long-income City core asset.",
       "Single-let to a serviced-office operator to 2034, with an 8.7-year WAULT.",
@@ -168,7 +168,7 @@ export const ASSETS = [
     ],
     locationTitle: "The heart of the City, EC2",
     location: [
-      ["Transport", "Within a 10-minute walk of 8 transport hubs — Bank, Liverpool Street, Moorgate and Cannon Street."],
+      ["Transport", "Within a 10-minute walk of 8 transport hubs: Bank, Liverpool Street, Moorgate and Cannon Street."],
       ["Landmarks", "Steps from the Bank of England, the Royal Exchange and the City Tower Cluster."],
       ["Occupier demand", "One of Central London's most prestigious and best-connected office markets."],
     ],
@@ -334,7 +334,7 @@ export const ASSETS = [
     locationTitle: "Mayfair, W1",
     location: [
       ["Transport", "Green Park Underground within a four-minute walk."],
-      ["Setting", "Between Bond Street and Albemarle Street — luxury retail and fine dining."],
+      ["Setting", "Between Bond Street and Albemarle Street, amid luxury retail and fine dining."],
       ["Covenant", "Sicis: global luxury brand; projects include The Arts Club and Burj Al Arab."],
     ],
     tenants: [
@@ -390,7 +390,7 @@ export const ASSETS = [
     location: [
       ["Setting", "Prime Conduit Street position, linking Regent Street with Bond Street."],
       ["Rarity", "Late-night licence permitting operation until 2am."],
-      ["Market", "Mayfair — one of the world's most renowned luxury destinations."],
+      ["Market", "Mayfair, one of the world's most renowned luxury destinations."],
     ],
     tenants: [
       ["Single let", "NOI £1,394,000 pa", "6.8% gross yield"],
@@ -444,7 +444,7 @@ export const ASSETS = [
     ],
     locationTitle: "Marylebone, W1U",
     location: [
-      ["Transport", "Opposite Baker Street Underground — Metropolitan, Jubilee, Circle, District and Bakerloo lines."],
+      ["Transport", "Opposite Baker Street Underground, on the Metropolitan, Jubilee, Circle, District and Bakerloo lines."],
       ["Footfall", "Over 21.5 million annual passenger movements at the station opposite."],
       ["Income", "100% let; 90% of income secured beyond seven years."],
     ],

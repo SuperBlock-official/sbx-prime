@@ -78,7 +78,7 @@ export default function Verify() {
     <>
       <Seo
         title="Verify your account | SBX Prime"
-        description="Create your SBX Prime account, set up two-factor authentication, and complete identity verification to unlock the full investor data room."
+        description="Create your SBX Prime account, set up two-factor authentication, and complete identity verification to access the full investor data room."
         path="/verify"
       />
 
@@ -90,10 +90,10 @@ export default function Verify() {
             <Fx>
               <span className="badge-live">Investor verification</span>
               <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.08] sm:text-[2.75rem]">
-                Unlock the full <span className="text-brand">data room</span>.
+                Access the full <span className="text-brand">data room</span>.
               </h1>
               <p className="lede">
-                Verified investors get the complete institutional data room for every asset —
+                Verified investors get the complete institutional data room for every asset:
                 independent valuations, leases, title and token terms. It takes a few minutes.
               </p>
             </Fx>
@@ -222,7 +222,7 @@ export default function Verify() {
                     <div>
                       <h2 className="font-display text-2xl font-extrabold text-ink">You're all set</h2>
                       <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-ink/60">
-                        Your verification is in review. We'll email <b className="text-ink">{form.email || "you"}</b> within one business day, and the full data room unlocks automatically once approved.
+                        Your verification is in review. We'll email <b className="text-ink">{form.email || "you"}</b> within one business day, and the full data room opens automatically once approved.
                       </p>
                     </div>
                     <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:justify-center">

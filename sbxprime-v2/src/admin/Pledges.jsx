@@ -45,13 +45,13 @@ export default function Pledges() {
                 <td className="px-4 py-3 tabular-nums text-ink/50">{r.investor_number}</td>
                 <td className="px-4 py-3 font-bold text-ink">{r.name}</td>
                 <td className="px-4 py-3 text-ink/70">{r.email}</td>
- <td className="px-4 py-3 text-ink/70">{r.phone || "—"}</td>
+ <td className="px-4 py-3 text-ink/70">{r.phone || "–"}</td>
                 <td className="px-4 py-3 text-ink/70">{r.country}</td>
-                <td className="px-4 py-3 text-ink/70">{r.asset_slug || "—"}</td>
+                <td className="px-4 py-3 text-ink/70">{r.asset_slug || "–"}</td>
                 <td className="px-4 py-3 tabular-nums text-ink/70">{money(r.usdc_amount)}</td>
                 <td className="px-4 py-3 tabular-nums text-ink/70">{Number(r.sqft).toLocaleString("en-US")}</td>
                 <td className="px-4 py-3 font-mono text-[11px] text-ink/60">
-                  {r.wallet_address ? `${r.wallet_address.slice(0, 6)}…${r.wallet_address.slice(-4)}` : r.no_wallet ? "no wallet" : "—"}
+                  {r.wallet_address ? `${r.wallet_address.slice(0, 6)}…${r.wallet_address.slice(-4)}` : r.no_wallet ? "no wallet" : "–"}
                 </td>
                 <td className="px-4 py-3">
                   <span className={`rounded-full px-2 py-0.5 text-[11px] font-bold ${

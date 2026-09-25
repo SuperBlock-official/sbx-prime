@@ -11,7 +11,7 @@ export default function Dashboard() {
     <>
       <Seo
         title="Your Dashboard | SBX Prime"
-        description="Track portfolio value, monthly USDC rent, holdings, DAO governance and compliance — the full SBX Prime investor console."
+        description="Track portfolio value, monthly USDC rent, holdings, DAO governance and compliance. The full SBX Prime investor console."
         path="/dashboard"
       />
       <section className="relative overflow-hidden border-b border-hairline">
@@ -21,7 +21,7 @@ export default function Dashboard() {
             center
             eyebrow="The investor console"
             title="Your whole portfolio, in one place."
-            lede="Value, monthly rent, holdings, secondary market, DAO governance and compliance — navigate the full SBX Prime app."
+            lede="Value, monthly rent, holdings, secondary market, DAO governance and compliance. Navigate the full SBX Prime app."
           />
           <Fx scale delay={120} className="mt-10">
             <LaptopFrame>

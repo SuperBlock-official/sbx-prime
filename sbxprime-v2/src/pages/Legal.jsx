@@ -3,7 +3,7 @@ import Seo from "../lib/Seo";
 import { Fx } from "../components/ui";
 
 /* Privacy / Terms. Working-draft legal copy reflecting the offshore, not-a-
-   security structure — must be reviewed and finalised by qualified counsel
+   security structure, must be reviewed and finalised by qualified counsel
    before launch. Rendered from one component by slug. */
 const DOCS = {
   privacy: {
@@ -16,7 +16,7 @@ const DOCS = {
       ["Information we collect", "Details you provide: name, email, country of residence, and pledge or interest details. At verification (KYC): identity documents, date of birth, address, and source-of-funds information. If you connect a wallet, your public wallet address. Automatically: basic device, log and usage data, and analytics where you have consented."],
       ["How we use it", "To operate the platform and your account; to process pledges, verification and settlement; to comply with anti-money-laundering (AML), know-your-customer (KYC), sanctions and other legal obligations; to communicate with you; to prevent fraud and abuse; and to improve the product. We rely on your consent, the performance of a contract, our legitimate interests, and legal obligations as appropriate. We do not sell your personal data."],
       ["Cookies & analytics", "Essential cookies are required to run the site. Optional analytics (Google Analytics) load only after you accept them in the cookie banner, and you can change your choice at any time. See the banner controls for details."],
-      ["Sharing & processors", "We share personal data only with service providers acting on our instructions — hosting and infrastructure, email delivery, identity-verification (KYC) providers, our tokenization partner, and analytics — and with regulators, auditors or authorities where we are legally required to. We do not sell personal data or share it for third-party marketing."],
+      ["Sharing & processors", "We share personal data only with service providers acting on our instructions (hosting and infrastructure, email delivery, identity-verification (KYC) providers, our tokenization partner, and analytics), and with regulators, auditors or authorities where we are legally required to. We do not sell personal data or share it for third-party marketing."],
       ["International transfers", "As an offshore-structured platform, your data may be processed in jurisdictions other than your own. Where we transfer personal data internationally we use appropriate safeguards consistent with applicable data-protection law."],
       ["Data retention", "We keep personal data only as long as necessary for the purposes above, and for the periods required by AML and other laws (identity and transaction records are typically retained for several years after your relationship with us ends)."],
       ["Security", "We use encryption in transit, access controls and reputable processors to protect your data. No method of transmission or storage is completely secure, and we cannot guarantee absolute security."],
@@ -58,8 +58,7 @@ export default function Legal() {
       <section className="py-14 lg:py-16">
         <div className="mx-auto w-full max-w-3xl px-5 sm:px-8">
           <Fx>
-            <p className="eyebrow">Legal</p>
-            <h1 className="mt-4 font-display text-4xl font-extrabold text-ink sm:text-5xl">{d.title}</h1>
+            <h1 className="font-display text-4xl font-extrabold text-ink sm:text-5xl">{d.title}</h1>
             <p className="mt-2 font-mono text-xs uppercase tracking-[0.14em] text-ink/40">Last updated {d.updated}</p>
             <p className="mt-6 text-[15px] leading-relaxed text-ink/65">{d.intro}</p>
           </Fx>

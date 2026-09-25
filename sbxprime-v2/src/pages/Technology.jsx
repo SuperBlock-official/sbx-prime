@@ -181,8 +181,7 @@ export default function Technology() {
  <div className="shell relative grid items-center gap-10 py-16 lg:grid-cols-[1.05fr_1fr] lg:py-14">
  <div>
  <Fx>
- <span className="eyebrow">Technology</span>
- <h1 className="mt-3 font-display text-4xl font-extrabold leading-tight sm:text-5xl">
+ <h1 className="font-display text-4xl font-extrabold leading-tight sm:text-5xl">
  Powered by <span className="text-brand">SUPERBLOCK</span>.
  </h1>
  <p className="lede">

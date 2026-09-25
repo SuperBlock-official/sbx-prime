@@ -24,11 +24,12 @@ export function Fx({ as: Tag = "div", delay = 0, scale = false, className = "", 
  );
 }
 
+// eslint-disable-next-line no-unused-vars
 export function SectionHead({ eyebrow, title, lede, center = false }) {
+ // Eyebrow kickers intentionally removed — the heading carries the section.
  return (
  <Fx className={center ? "text-center" : ""}>
- {eyebrow && <p className="eyebrow">{eyebrow}</p>}
- <h2 className="h-section mt-3">{title}</h2>
+ <h2 className="h-section">{title}</h2>
  {lede && <p className={`lede ${center ? "mx-auto" : ""}`}>{lede}</p>}
  </Fx>
  );
