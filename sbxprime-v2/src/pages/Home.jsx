@@ -14,7 +14,7 @@ import FaqAccordion from "../components/FaqAccordion";
 import InterestModal from "../components/InterestModal";
 import { DualPhoneHero, DashboardMockup, AppShowcase } from "../components/mockups";
 import { CityCard } from "../components/cards";
-import { Fx, SectionHead, Counter, ReturnSplit } from "../components/ui";
+import { Fx, SectionHead, Counter, ReturnSplit, SqFtMark } from "../components/ui";
 import { Icon } from "../components/icons";
 import londonImg from "../assets/images/london-office.png";
 
@@ -145,7 +145,7 @@ export default function Home() {
  ["English-law SPV", "The building is held in a single-asset SPV; each token is a registered share, not synthetic exposure."],
  ].map(([t, b], i) => (
  <Fx as="li" key={t} delay={i * 90} className="flex gap-4">
- <span className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand/15 font-display text-sm font-bold text-brand">✓</span>
+ <span className="mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand/15 text-brand"><SqFtMark className="h-4 w-4" /></span>
  <div>
  <p className="font-display text-[15px] font-bold text-ink">{t}</p>
  <p className="mt-1 text-sm leading-relaxed text-ink/55">{b}</p>

@@ -1,5 +1,18 @@
 import { useInView, useCountUp } from "../lib/hooks";
 
+/** The square-foot mark — SBX Prime's repeating brand motif. One filled cell in
+ *  a 2×2 grid: a single square foot within a building. Reused site-wide as a
+ *  section marker, a list bullet, and a corner accent. Colour via `text-*`. */
+export function SqFtMark({ className = "h-5 w-5" }) {
+ return (
+ <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+ <rect x="3" y="3" width="18" height="18" rx="4.5" stroke="currentColor" strokeWidth="1.6" />
+ <path d="M12 3.5v17M3.5 12h17" stroke="currentColor" strokeWidth="1.1" opacity="0.45" />
+ <rect x="5" y="5" width="6" height="6" rx="1.6" fill="currentColor" />
+ </svg>
+ );
+}
+
 /** Off-screen honeypot field. Real users never see or fill it; bots do, and the
  *  server silently drops any submission where it's non-empty. */
 export function Honeypot({ value, onChange }) {
@@ -26,10 +39,11 @@ export function Fx({ as: Tag = "div", delay = 0, scale = false, className = "", 
 
 // eslint-disable-next-line no-unused-vars
 export function SectionHead({ eyebrow, title, lede, center = false }) {
- // Eyebrow kickers intentionally removed — the heading carries the section.
+ // Eyebrow kickers removed; the square-foot mark is the consistent motif instead.
  return (
  <Fx className={center ? "text-center" : ""}>
- <h2 className="h-section">{title}</h2>
+ <SqFtMark className={`h-6 w-6 text-brand ${center ? "mx-auto" : ""}`} />
+ <h2 className="h-section mt-3">{title}</h2>
  {lede && <p className={`lede ${center ? "mx-auto" : ""}`}>{lede}</p>}
  </Fx>
  );
