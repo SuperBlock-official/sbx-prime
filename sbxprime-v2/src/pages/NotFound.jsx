@@ -11,7 +11,7 @@ export default function NotFound() {
         <NodeBackground opacity={0.3} />
         <div className="shell relative grid min-h-[70vh] place-items-center py-16 text-center">
           <Fx>
-            <p className="eyebrow mx-auto">Error 404</p>
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-ink/40">Error 404</p>
             <h1 className="mt-4 font-display text-6xl font-extrabold text-ink sm:text-7xl">
               This floor doesn't <span className="text-brand">exist</span>.
             </h1>

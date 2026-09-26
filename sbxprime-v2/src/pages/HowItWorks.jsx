@@ -6,6 +6,8 @@ import PushNotification from "../components/PushNotification";
 import NodeBackground from "../components/NodeBackground";
 import { PhoneFan, WebShowcase } from "../components/mockups";
 import { Fx, SectionHead } from "../components/ui";
+import PersonaFrame from "../components/PersonaFrame";
+import investorPro from "../assets/people/professional.jpg";
 import { Icon } from "../components/icons";
 import SpotlightGrid from "../components/SpotlightGrid";
 
@@ -20,12 +22,15 @@ export default function HowItWorks() {
  <section className="relative overflow-hidden border-b border-hairline">
  <NodeBackground opacity={0.3} />
  <div className="shell relative py-12 lg:py-14">
+ <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
  <SectionHead
- eyebrow="How it works"
  title="Five steps from browsing to a rent payment."
  lede="The full investor journey, built so that nothing irreversible happens until you've verified and the raise has closed."
- center
  />
+ <Fx scale delay={120} className="hidden lg:block">
+ <PersonaFrame src={investorPro} alt="An SBX Prime investor" className="mx-auto max-w-[320px]" />
+ </Fx>
+ </div>
 
  {/* explainer video (same as the original site) */}
  <Fx scale delay={120} className="mx-auto mt-10 max-w-3xl">

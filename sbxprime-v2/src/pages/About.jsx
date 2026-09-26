@@ -1,9 +1,12 @@
 import Seo from "../lib/Seo";
 import NodeBackground from "../components/NodeBackground";
 import PartnerStrip from "../components/PartnerStrip";
-import { Fx, SectionHead } from "../components/ui";
+import { Fx, SectionHead, SqFtMark } from "../components/ui";
 import { Icon } from "../components/icons";
 import SpotlightGrid from "../components/SpotlightGrid";
+import PersonaFrame from "../components/PersonaFrame";
+import investorGcc from "../assets/people/gcc.jpg";
+import investorFamily from "../assets/people/family-office.jpg";
 import mark from "../assets/images/sbx-mark-round.svg";
 import peopleImg from "../assets/assets/people-office.jpg";
 import aboutHero from "../assets/assets/about-hero-london.jpg";
@@ -41,7 +44,7 @@ export default function About() {
  <section className="border-b border-hairline bg-white py-12 lg:py-14">
  <div className="shell">
  <Fx className="mx-auto max-w-4xl text-center">
- <p className="eyebrow mx-auto">Vision</p>
+ <SqFtMark className="mx-auto h-6 w-6 text-brand" />
  <h2 className="mt-3 font-display text-3xl font-extrabold leading-[1.1] sm:text-4xl">
  A sovereign wealth fund, <span className="text-brand">owned and governed by the people</span>.
  </h2>
@@ -66,6 +69,10 @@ export default function About() {
  USDC income, and on-chain governance that hands the biggest decisions back to token holders.
  </p>
  </Fx>
+ </div>
+ <div className="mx-auto mt-6 grid max-w-4xl grid-cols-2 gap-6">
+ <Fx scale><PersonaFrame src={investorGcc} alt="An SBX Prime investor" /></Fx>
+ <Fx scale delay={100}><PersonaFrame src={investorFamily} alt="An SBX Prime investor" /></Fx>
  </div>
  </div>
  </section>
