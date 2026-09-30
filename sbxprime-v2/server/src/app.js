@@ -51,12 +51,21 @@ export function createApp() {
     message: { ok: false, error: "Too many requests, please try again shortly." },
   });
 
+  // Leads are the most-spammed endpoint — throttle harder per IP.
+  const leadLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000,
+    max: 6,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { ok: false, error: "Too many requests, please try again later." },
+  });
+
   // Uploaded images, served read-only.
   app.use("/uploads", express.static(UPLOAD_ROOT, { maxAge: "7d", index: false }));
 
   app.use("/api/health", health);
   app.use("/api/pledges", writeLimiter, pledges);
-  app.use("/api/leads", writeLimiter, leads);
+  app.use("/api/leads", leadLimiter, leads);
   app.use("/api/assets", assets);
   app.use("/api/stats", stats);
   app.use("/api/admin", admin);

@@ -36,6 +36,8 @@ export const leadSchema = z.object({
   // phone; the interest form enforces a valid number on the client.
   phone: z.string().trim().max(32).optional().nullable().default(""),
   source: z.string().trim().max(80).optional().nullable(),
+  // Client render time (ms epoch) — used to reject instant bot submissions.
+  renderedAt: z.coerce.number().optional(),
   meta: z.record(z.any()).optional().default({}),
 });
 

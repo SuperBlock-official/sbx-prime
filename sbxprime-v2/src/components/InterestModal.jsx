@@ -10,17 +10,21 @@ const AMOUNTS = ["Under $5K", "$5K–$25K", "$25K–$100K", "$100K+"];
 /** Demand-intelligence capture for pipeline cities. */
 export default function InterestModal({ open, initialCity = null, onClose }) {
  const [email, setEmail] = useState("");
+ const [name, setName] = useState("");
  const [phone, setPhone] = useState("");
  const [cities, setCities] = useState(initialCity ? [initialCity] : []);
  const [amount, setAmount] = useState("");
  const [company, setCompany] = useState(""); // honeypot
+ const [renderedAt, setRenderedAt] = useState(0); // anti-bot timing gate
  const [state, setState] = useState("idle");
 
  useEffect(() => {
  if (open) {
  setCities(initialCity ? [initialCity] : []);
  setState("idle");
+ setName("");
  setPhone("");
+ setRenderedAt(Date.now());
  }
  }, [open, initialCity]);
 
@@ -33,13 +37,13 @@ export default function InterestModal({ open, initialCity = null, onClose }) {
  if (!open) return null;
 
  const toggle = (slug) => setCities((c) => (c.includes(slug) ? c.filter((x) => x !== slug) : [...c, slug]));
- const canSubmit = /\S+@\S+\.\S+/.test(email) && isPhone(phone) && cities.length && amount && state !== "sending";
+ const canSubmit = /\S+@\S+\.\S+/.test(email) && name.trim().length >= 2 && isPhone(phone) && cities.length && amount && state !== "sending";
 
  const submit = async (e) => {
  e.preventDefault();
  if (!canSubmit) return;
  setState("sending");
- await registerInterest({ email, phone, company, cities, indicativeAmount: amount });
+ await registerInterest({ email, name, phone, company, renderedAt, cities, indicativeAmount: amount });
  setState("done");
  };
 
@@ -69,7 +73,8 @@ export default function InterestModal({ open, initialCity = null, onClose }) {
  <button type="button" onClick={onClose} aria-label="Close" className="rounded-lg border border-hairline px-2.5 py-1 text-ink/55">✕</button>
  </div>
 
- <input className="field mt-5" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Email" required />
+ <input className="field mt-5" placeholder="Full name" value={name} onChange={(e) => setName(e.target.value)} aria-label="Full name" required />
+ <input className="field mt-3" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Email" required />
  <div className="mt-3"><PhoneField value={phone} onChange={setPhone} /></div>
 
  <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-ink/50">Which cities interest you?</p>

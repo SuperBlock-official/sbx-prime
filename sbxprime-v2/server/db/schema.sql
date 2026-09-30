@@ -43,6 +43,11 @@ create index if not exists leads_email_idx on leads (email);
 create index if not exists leads_created_idx on leads (created_at desc);
 -- Contact number on leads (added 2026-09).
 alter table leads add column if not exists phone text;
+-- Anti-spam + traceability on leads (added 2026-09).
+alter table leads add column if not exists ip text;
+alter table leads add column if not exists user_agent text;
+alter table leads add column if not exists normalized_email text;
+create index if not exists leads_normalized_email_idx on leads (normalized_email);
 
 -- Admin users (email + bcrypt hash). 2FA columns are reserved for a later milestone.
 create table if not exists admin_users (

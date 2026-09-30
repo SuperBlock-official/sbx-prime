@@ -3,6 +3,15 @@ import { adminApi } from "../lib/adminApi";
 
 const date = (s) => new Date(s).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short" });
 
+// Summarise the meta jsonb (cities of interest / indicative amount) for the table.
+const interestOf = (meta) => {
+  if (!meta || typeof meta !== "object") return "–";
+  const bits = [];
+  if (meta.indicativeAmount) bits.push(meta.indicativeAmount);
+  if (Array.isArray(meta.cities) && meta.cities.length) bits.push(meta.cities.join(", "));
+  return bits.length ? bits.join(" · ") : "–";
+};
+
 export default function Leads() {
   const [rows, setRows] = useState(null);
   const [error, setError] = useState("");
@@ -26,7 +35,9 @@ export default function Leads() {
               <th className="px-4 py-3 font-bold">Email</th>
               <th className="px-4 py-3 font-bold">Name</th>
               <th className="px-4 py-3 font-bold">Phone</th>
+              <th className="px-4 py-3 font-bold">Interest</th>
               <th className="px-4 py-3 font-bold">Source</th>
+              <th className="px-4 py-3 font-bold">IP</th>
               <th className="px-4 py-3 font-bold">When</th>
             </tr>
           </thead>
@@ -36,12 +47,14 @@ export default function Leads() {
                 <td className="px-4 py-3 font-bold text-ink">{r.email}</td>
                 <td className="px-4 py-3 text-ink/70">{r.name || "–"}</td>
                 <td className="px-4 py-3 text-ink/70">{r.phone || "–"}</td>
+                <td className="px-4 py-3 text-ink/60">{interestOf(r.meta)}</td>
                 <td className="px-4 py-3 text-ink/70">{r.source || "–"}</td>
+                <td className="px-4 py-3 font-mono text-[11px] text-ink/45">{r.ip || "–"}</td>
                 <td className="px-4 py-3 text-ink/45">{date(r.created_at)}</td>
               </tr>
             ))}
             {!rows.length && (
-              <tr><td colSpan={5} className="px-4 py-8 text-center text-ink/40">No leads yet.</td></tr>
+              <tr><td colSpan={7} className="px-4 py-8 text-center text-ink/40">No leads yet.</td></tr>
             )}
           </tbody>
         </table>

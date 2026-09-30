@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Seo from "../lib/Seo";
 import { registerInterest } from "../lib/api";
+import { isPhone } from "../lib/validators";
+import PhoneField from "../components/PhoneField";
+import { Honeypot } from "../components/ui";
 
 /* GitHub-docs-style whitepaper: persistent left nav, content column, right
    "on this page" with scroll-spy, anchor links. Grounded in SBX Prime's own
@@ -214,9 +217,13 @@ function AnchorHeading({ id, n, children }) {
 
 export default function Whitepaper() {
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState(""); // honeypot
+  const [renderedAt] = useState(() => Date.now());
   const [state, setState] = useState("idle");
   const [active, setActive] = useState(SECTIONS[0].id);
-  const ok = /\S+@\S+\.\S+/.test(email);
+  const ok = /\S+@\S+\.\S+/.test(email) && name.trim().length >= 2 && isPhone(phone);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -238,7 +245,7 @@ export default function Whitepaper() {
     e.preventDefault();
     if (!ok || state === "sending") return;
     setState("sending");
-    await registerInterest({ email, cities: [], indicativeAmount: "whitepaper-download" });
+    await registerInterest({ email, name, phone, company, renderedAt, cities: [], indicativeAmount: "whitepaper-download" });
     setState("done");
   };
 
@@ -371,16 +378,18 @@ export default function Whitepaper() {
                 <p className="text-sm text-ink/70">The PDF is on its way to <b className="text-ink">{email}</b>.</p>
               </div>
             ) : (
-              <form onSubmit={submit} className="flex flex-col gap-3 sm:flex-row sm:items-end">
-                <div className="flex-1">
+              <form onSubmit={submit} className="flex flex-col gap-3">
+                <div>
                   <h3 className="font-display text-base font-bold text-ink">Download the full PDF</h3>
-                  <p className="mt-1 text-[12px] text-ink/55">The 40-page version with appendices, gated only by email.</p>
-                  <input
-                    className="field mt-3" type="email" placeholder="Work email" value={email}
-                    onChange={(e) => setEmail(e.target.value)} aria-label="Email" required
-                  />
+                  <p className="mt-1 text-[12px] text-ink/55">The 40-page version with appendices. Tell us where to send it.</p>
                 </div>
-                <button type="submit" disabled={!ok || state === "sending"} className="btn-primary shrink-0 disabled:opacity-40">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  <input className="field" placeholder="Full name" value={name} onChange={(e) => setName(e.target.value)} aria-label="Full name" required />
+                  <input className="field" type="email" placeholder="Work email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Email" required />
+                </div>
+                <PhoneField value={phone} onChange={setPhone} />
+                <Honeypot value={company} onChange={(e) => setCompany(e.target.value)} />
+                <button type="submit" disabled={!ok || state === "sending"} className="btn-primary disabled:opacity-40">
                   {state === "sending" ? "Sending…" : "Email me the PDF"}
                 </button>
               </form>

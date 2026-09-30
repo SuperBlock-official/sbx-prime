@@ -41,12 +41,13 @@ export async function submitPledge(pledge) {
 }
 
 export async function registerInterest(interest) {
- const { email, name, phone, source, company, ...rest } = interest;
+ const { email, name, phone, source, company, renderedAt, ...rest } = interest;
  return apiPost("/leads", {
  email,
  name: name ?? null,
  phone: phone || "",
  source: source ?? "register-interest",
+ renderedAt: renderedAt || undefined, // anti-bot timing gate
  company: company || "", // honeypot (must stay empty)
  meta: rest,
  });

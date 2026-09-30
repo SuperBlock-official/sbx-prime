@@ -159,7 +159,7 @@ router.get("/pledges", async (_req, res, next) => {
 router.get("/leads", async (_req, res, next) => {
   try {
     const { rows } = await query(
-      "select id, created_at, email, name, phone, source from leads order by created_at desc limit 500"
+      "select id, created_at, email, name, phone, source, meta, ip from leads order by created_at desc limit 500"
     );
     res.json({ ok: true, leads: rows });
   } catch (err) {
